@@ -1,0 +1,173 @@
+/* ============================================
+   GRUDADO EM VOCÊ — Páginas de Coleção
+   colecao.css
+   ============================================ */
+
+/* ------------------------------------------
+   BANNER DA COLEÇÃO
+   ------------------------------------------ */
+.colecao-banner {
+  padding: 3.5rem 1.5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.colecao-banner__inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.colecao-banner h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+}
+
+.colecao-banner p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Variante: Vinil Branco */
+.colecao-banner--branco {
+  background: linear-gradient(135deg, #253746 0%, #1a2a36 100%);
+  color: #fff;
+}
+
+/* Variante: Vinil Transparente */
+.colecao-banner--transparente {
+  background: linear-gradient(135deg, #05C3DE 0%, #0299ad 100%);
+  color: #fff;
+}
+
+/* Variante: DTF */
+.colecao-banner--dtf {
+  background: linear-gradient(135deg, #EF426F 0%, #c42e56 100%);
+  color: #fff;
+}
+
+/* ------------------------------------------
+   SEÇÃO DE PRODUTOS
+   ------------------------------------------ */
+.colecao-produtos {
+  padding: 3rem 0 4rem;
+  background: #f8f8f8;
+}
+
+/* ------------------------------------------
+   GRID DE PRODUTOS (3 colunas)
+   ------------------------------------------ */
+.produtos-colecao-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .produtos-colecao-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .produtos-colecao-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------
+   CARD DE PRODUTO
+   ------------------------------------------ */
+.produto-colecao-card {
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.produto-colecao-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+}
+
+/* Área da imagem / placeholder */
+.produto-colecao-card__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.produto-colecao-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ícone placeholder quando não há imagem */
+.produto-colecao-card__img svg {
+  width: 48px;
+  height: 48px;
+  color: #aaa;
+}
+
+/* Info do produto */
+.produto-colecao-card__info {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.produto-colecao-card__info h3 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+  color: var(--color-navy);
+}
+
+.produto-colecao-card__info p {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.produto-colecao-card__cta {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-pink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ------------------------------------------
+   ANIMAÇÕES (reutiliza do style.css)
+   ------------------------------------------ */
+.produto-colecao-card.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
+}
+
+.produto-colecao-card.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.produto-colecao-card.animate-on-scroll:hover.is-visible {
+  transform: translateY(-4px);
+}
