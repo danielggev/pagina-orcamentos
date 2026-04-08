@@ -155,6 +155,9 @@ const Carrinho = (() => {
             ${item.arquivo ? `<li><span>Arquivo</span>${item.arquivo}</li>` : ''}
             ${item.obs ? `<li><span>Obs</span>${item.obs}</li>` : ''}
           </ul>
+          ${item.preco != null
+            ? `<p class="drawer-item__preco">${item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>`
+            : ''}
         </div>
         <button class="drawer-item__remover" data-id="${item.id}" aria-label="Remover item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -172,9 +175,15 @@ const Carrinho = (() => {
     const isSubpage = window.location.pathname.includes('/produtos/') || window.location.pathname.includes('/colecoes/');
     const carrinhoHref = isSubpage ? '../carrinho.html' : 'carrinho.html';
 
+    const totalGeral = itens.reduce((acc, i) => acc + (i.preco || 0), 0);
+    const totalStr = totalGeral > 0
+      ? totalGeral.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+      : null;
+
     footer.innerHTML = `
       <div class="drawer-footer__info">
         <span>${itens.length} ${itens.length === 1 ? 'produto' : 'produtos'} no pedido</span>
+        ${totalStr ? `<strong>${totalStr}</strong>` : ''}
       </div>
       <a href="${carrinhoHref}" class="drawer-btn-ver">Ver Carrinho</a>
       <button class="drawer-btn-whatsapp" id="drawer-btn-wpp">

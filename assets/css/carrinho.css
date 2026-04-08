@@ -214,6 +214,14 @@ body.drawer-is-open {
   flex-shrink: 0;
 }
 
+.drawer-item__preco {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--color-navy);
+  margin: 0.5rem 0 0;
+}
+
 .drawer-item__remover {
   position: absolute;
   top: 0.75rem;
@@ -256,6 +264,12 @@ body.drawer-is-open {
   font-size: 0.82rem;
   color: #888;
   font-weight: 600;
+}
+.drawer-footer__info strong {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-navy);
 }
 .drawer-btn-ver {
   display: flex;

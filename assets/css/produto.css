@@ -304,7 +304,88 @@ textarea {
 }
 textarea:focus { outline: none; border-color: var(--color-navy); }
 
-/* Botão */
+/* ------------------------------------------
+   DISPLAY DE PREÇO EM TEMPO REAL
+   ------------------------------------------ */
+#preco-display {
+  margin-top: 1.25rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.preco-hint {
+  display: block;
+  font-size: 0.82rem;
+  color: #aaa;
+  text-align: center;
+  padding: 0.75rem 0;
+}
+
+.preco-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-navy);
+  color: #fff;
+  padding: 1rem 1.25rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.preco-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.preco-valor {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.preco-detalhes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: #f0f2f4;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.78rem;
+  color: #666;
+  border-radius: 0 0 12px 12px;
+}
+
+.preco-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.preco-badge--desconto {
+  background: #d4f5e2;
+  color: #1a7a42;
+}
+
+.preco-minimo {
+  display: block;
+  font-size: 0.75rem;
+  color: #f0a500;
+  background: #fff8e6;
+  padding: 0.4rem 1.25rem;
+  border-top: 1px solid #fce8b2;
+  border-radius: 0 0 12px 12px;
+  text-align: center;
+}
+
+/* ------------------------------------------
+   BOTÃO */
 .btn-orcamento {
   display: flex;
   align-items: center;

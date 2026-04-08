@@ -102,7 +102,7 @@
               <span>5.0 · 36 avaliações</span>
             </div>
           </div>
-          <form class="orcamento-form" id="orcamento-form" novalidate>
+          <form class="orcamento-form" id="orcamento-form" data-material="vinil-branco" novalidate>
             <div class="form-step">
               <h3 class="form-step__titulo"><span class="form-step__num">1</span>Envie seu arquivo</h3>
               <div class="upload-area" id="upload-area">
@@ -153,6 +153,7 @@
               <h3 class="form-step__titulo"><span class="form-step__num">5</span>Observações <span style="font-weight:400;font-size:0.85rem">(opcional)</span></h3>
               <textarea name="obs" id="obs" rows="3" placeholder="Alguma informação adicional sobre o seu pedido..."></textarea>
             </div>
+            <div id="preco-display"><span class="preco-hint">Preencha tamanho e quantidade para ver o preço</span></div>
             <button type="submit" class="btn-adicionar-carrinho">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         Comprar
@@ -206,6 +207,7 @@
     </div>
   </footer>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/precos.js"></script>
   <script src="../assets/js/carrinho.js"></script>
   <script src="../assets/js/produto.js"></script>
 </body>
