@@ -339,12 +339,24 @@ textarea:focus { outline: none; border-color: var(--color-navy); }
   letter-spacing: 0.05em;
 }
 
+.preco-total__valores {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
 .preco-valor {
   font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.01em;
+}
+
+.preco-unidade {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
 }
 
 .preco-detalhes {
@@ -373,16 +385,6 @@ textarea:focus { outline: none; border-color: var(--color-navy); }
   color: #1a7a42;
 }
 
-.preco-minimo {
-  display: block;
-  font-size: 0.75rem;
-  color: #f0a500;
-  background: #fff8e6;
-  padding: 0.4rem 1.25rem;
-  border-top: 1px solid #fce8b2;
-  border-radius: 0 0 12px 12px;
-  text-align: center;
-}
 
 /* ------------------------------------------
    BOTÃO */

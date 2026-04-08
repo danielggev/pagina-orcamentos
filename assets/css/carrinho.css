@@ -271,6 +271,17 @@ body.drawer-is-open {
   font-weight: 800;
   color: var(--color-navy);
 }
+.drawer-aviso-minimo {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #b45309;
+  background: #fff8e6;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+}
+
 .drawer-btn-ver {
   display: flex;
   align-items: center;

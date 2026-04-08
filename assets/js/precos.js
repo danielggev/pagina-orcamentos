@@ -51,15 +51,15 @@ const Precos = (() => {
       }
     }
 
-    let total = m2Total * precoPorM2;
-    const aplicouMinimo = total < MINIMO;
-    if (aplicouMinimo) total = MINIMO;
+    const total = m2Total * precoPorM2;
+    const precoPorUnidade = total / quantidade;
 
     return {
-      m2Total: m2Total,
+      m2Total,
       precoPorM2,
       total,
-      aplicouMinimo,
+      precoPorUnidade,
+      quantidade,
       faixa: m2Total <= (tabela[0].ate || 0)
         ? 'normal'
         : m2Total <= (tabela[1]?.ate || 0)
@@ -85,7 +85,7 @@ const Precos = (() => {
       return;
     }
 
-    const { m2Total, precoPorM2, total, aplicouMinimo, faixa } = resultado;
+    const { m2Total, precoPorM2, total, precoPorUnidade, quantidade, faixa } = resultado;
 
     let badgeHTML = '';
     if (faixa === 'desconto-15') {
@@ -94,20 +94,18 @@ const Precos = (() => {
       badgeHTML = `<span class="preco-badge preco-badge--desconto">25% off acima de 10m²</span>`;
     }
 
-    const minimoHTML = aplicouMinimo
-      ? `<span class="preco-minimo">* Valor mínimo de pedido aplicado</span>`
-      : '';
-
     el.innerHTML = `
       <div class="preco-total">
         <span class="preco-label">Total estimado</span>
-        <span class="preco-valor">${formatar(total)}</span>
+        <div class="preco-total__valores">
+          <span class="preco-valor">${formatar(total)}</span>
+          <span class="preco-unidade">${formatar(precoPorUnidade)} / unid.</span>
+        </div>
       </div>
       <div class="preco-detalhes">
         <span>${m2Total.toFixed(4)} m² × ${formatar(precoPorM2)}/m²</span>
         ${badgeHTML}
       </div>
-      ${minimoHTML}
     `;
   }
 
