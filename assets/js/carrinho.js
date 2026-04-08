@@ -194,7 +194,7 @@ const Carrinho = (() => {
       </button>
     `;
 
-    document.getElementById('drawer-btn-wpp').addEventListener('click', enviarWhatsApp);
+    document.getElementById('drawer-btn-wpp').addEventListener('click', () => {});
   }
 
   function abrirDrawer() {
