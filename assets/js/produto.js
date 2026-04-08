@@ -64,15 +64,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (tamanhoVal === 'personalizado') {
       const l = parseFloat(document.getElementById('largura')?.value);
-      const a = parseFloat(document.getElementById('altura')?.value);
+      const alturaEl = document.getElementById('altura');
+      // Produto redondo: apenas diâmetro (sem campo altura)
+      if (!alturaEl) {
+        if (!l || l <= 0) return null;
+        return { largura: l, altura: l };
+      }
+      const a = parseFloat(alturaEl.value);
       if (!l || !a || l <= 0 || a <= 0) return null;
       return { largura: l, altura: a };
     }
 
     // Parsear "5x5cm", "3x5cm", "6x4cm", etc.
     const match = tamanhoVal.match(/^(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)cm$/i);
-    if (!match) return null;
-    return { largura: parseFloat(match[1]), altura: parseFloat(match[2]) };
+    if (match) return { largura: parseFloat(match[1]), altura: parseFloat(match[2]) };
+
+    // Parsear "5cm" (diâmetro — produtos redondos)
+    const matchCirc = tamanhoVal.match(/^(\d+(?:\.\d+)?)cm$/i);
+    if (matchCirc) { const d = parseFloat(matchCirc[1]); return { largura: d, altura: d }; }
+
+    // Parsear tamanhos DTF padrão ISO
+    const dtfSizes = { A5: { largura: 14.8, altura: 21 }, A4: { largura: 21, altura: 29.7 }, A3: { largura: 29.7, altura: 42 } };
+    if (dtfSizes[tamanhoVal]) return dtfSizes[tamanhoVal];
+
+    return null;
   }
 
   function getQuantidade() {
@@ -118,9 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const tamanhoSelecionado = document.querySelector('input[name="tamanho"]:checked')?.value;
     let tamanho = tamanhoSelecionado || 'Não informado';
     if (tamanhoSelecionado === 'personalizado') {
-      const l = document.getElementById('largura').value;
-      const a = document.getElementById('altura').value;
-      tamanho = l && a ? `${l}cm × ${a}cm` : 'Personalizado (sem medidas)';
+      const l = document.getElementById('largura')?.value;
+      const alturaEl = document.getElementById('altura');
+      if (alturaEl) {
+        const a = alturaEl.value;
+        tamanho = l && a ? `${l}cm × ${a}cm` : 'Personalizado (sem medidas)';
+      } else {
+        tamanho = l ? `${l}cm (diâmetro)` : 'Personalizado (sem medidas)';
+      }
     }
 
     const qtdSelecionada = document.querySelector('input[name="quantidade"]:checked')?.value;
