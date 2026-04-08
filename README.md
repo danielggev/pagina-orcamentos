@@ -68,8 +68,3 @@ git add .
 git commit -m "descrição da alteração"
 git push
 ```
-
-## Contato
-
-- WhatsApp: [wa.me/5521991909015](https://wa.me/5521991909015)
-- Instagram: [@grudadoemvoce](https://instagram.com/grudadoemvoce)
