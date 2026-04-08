@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/produto.css">
+  <link rel="stylesheet" href="../assets/css/carrinho.css">
 </head>
 <body>
   <div class="announcement-bar" aria-label="Avisos">
@@ -150,7 +151,10 @@
               <h3 class="form-step__titulo"><span class="form-step__num">5</span>Observações <span style="font-weight:400;font-size:0.85rem">(opcional)</span></h3>
               <textarea name="obs" id="obs" rows="3" placeholder="Alguma informação adicional sobre o seu pedido..."></textarea>
             </div>
-            <button type="submit" class="btn-orcamento">Comprar</button>
+            <button type="submit" class="btn-adicionar-carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Adicionar ao Carrinho
+      </button>
           </form>
           <ul class="produto-beneficios">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Impressão em até 2 dias úteis</li>
@@ -200,6 +204,7 @@
     </div>
   </footer>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/carrinho.js"></script>
   <script src="../assets/js/produto.js"></script>
 </body>
 </html>

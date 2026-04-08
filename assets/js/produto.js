@@ -42,11 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('input[name="tamanho"]').forEach(radio => {
     radio.addEventListener('change', () => {
       const custom = document.getElementById('tamanho-custom');
-      if (radio.value === 'personalizado') {
-        custom.classList.add('visivel');
-      } else {
-        custom.classList.remove('visivel');
-      }
+      custom.classList.toggle('visivel', radio.value === 'personalizado');
     });
   });
 
@@ -54,21 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('input[name="quantidade"]').forEach(radio => {
     radio.addEventListener('change', () => {
       const custom = document.getElementById('quantidade-custom');
-      if (radio.value === 'outro') {
-        custom.classList.add('visivel');
-      } else {
-        custom.classList.remove('visivel');
-      }
+      custom.classList.toggle('visivel', radio.value === 'outro');
     });
   });
 
-  /* --- Enviar via WhatsApp --- */
+  /* --- Adicionar ao carrinho --- */
   const form = document.getElementById('orcamento-form');
+  const btnAdicionar = form.querySelector('.btn-adicionar-carrinho');
+
   form.addEventListener('submit', e => {
     e.preventDefault();
 
     const tamanhoSelecionado = document.querySelector('input[name="tamanho"]:checked')?.value;
-    let tamanho = tamanhoSelecionado;
+    let tamanho = tamanhoSelecionado || 'Não informado';
     if (tamanhoSelecionado === 'personalizado') {
       const l = document.getElementById('largura').value;
       const a = document.getElementById('altura').value;
@@ -76,26 +70,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const qtdSelecionada = document.querySelector('input[name="quantidade"]:checked')?.value;
-    let quantidade = qtdSelecionada;
+    let quantidade = qtdSelecionada || '50';
     if (qtdSelecionada === 'outro') {
       quantidade = document.getElementById('qtd-outro').value || 'Não informado';
     }
 
     const acabamento = document.querySelector('input[name="acabamento"]:checked')?.value || 'Não informado';
-    const obs = document.getElementById('obs').value;
-    const arquivo = inputArquivo.files[0]?.name || 'Não enviado';
-    const produto = document.querySelector('.produto-info__titulo')?.textContent || 'Produto';
+    const obs = document.getElementById('obs').value.trim();
+    const arquivo = inputArquivo.files[0]?.name || null;
+    const nome = document.querySelector('.produto-info__titulo')?.textContent?.trim() || 'Produto';
+    const colecao = document.querySelector('.produto-info__colecao')?.textContent?.trim() || '';
 
-    let msg = `Olá! Gostaria de um orçamento:\n\n`;
-    msg += `*Produto:* ${produto}\n`;
-    msg += `*Tamanho:* ${tamanho}\n`;
-    msg += `*Quantidade:* ${quantidade} unidades\n`;
-    msg += `*Acabamento:* ${acabamento}\n`;
-    msg += `*Arquivo:* ${arquivo}\n`;
-    if (obs) msg += `*Obs:* ${obs}\n`;
+    // Imagem principal
+    const imgEl = document.getElementById('galeria-principal');
+    const imagem = imgEl ? imgEl.src : null;
 
-    const url = `https://wa.me/5521991909015?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+    const item = { nome, colecao, tamanho, quantidade, acabamento, obs, arquivo, imagem };
+
+    // Adicionar ao carrinho (carrinho.js)
+    if (typeof Carrinho !== 'undefined') {
+      Carrinho.adicionar(item);
+    }
+
+    // Feedback no botão
+    if (btnAdicionar) {
+      const textoOriginal = btnAdicionar.innerHTML;
+      btnAdicionar.classList.add('adicionado');
+      btnAdicionar.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Adicionado!
+      `;
+      setTimeout(() => {
+        btnAdicionar.classList.remove('adicionado');
+        btnAdicionar.innerHTML = textoOriginal;
+      }, 2000);
+    }
   });
 
 });

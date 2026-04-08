@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DTF — Grudado em Você</title>
+  <title>Carrinho — Grudado em Você</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/carrinho.css">
-  <link rel="stylesheet" href="../assets/css/colecao.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/carrinho.css">
 </head>
 <body>
 
@@ -59,8 +58,8 @@
   <header class="site-header" id="site-header">
     <div class="header-main">
       <div class="container header-main__inner">
-        <a href="../index.html" class="logo" aria-label="Grudado em Você — Página inicial">
-          <img src="../assets/images/logo.svg" alt="Grudado em Você" class="logo-img">
+        <a href="index.html" class="logo" aria-label="Grudado em Você — Página inicial">
+          <img src="assets/images/logo.svg" alt="Grudado em Você" class="logo-img">
         </a>
         <div class="header-search">
           <input type="search" placeholder="Buscar" aria-label="Buscar produtos">
@@ -75,7 +74,7 @@
           <a href="https://grudadoemvoce.com.br/wishlist" class="header-icon-btn" aria-label="Lista de desejos">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </a>
-          <a href="https://grudadoemvoce.com.br/cart" class="header-icon-btn header-icon-btn--dark" aria-label="Carrinho">
+          <a href="carrinho.html" class="header-icon-btn header-icon-btn--dark" aria-label="Carrinho">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </a>
           <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-label="Abrir menu">
@@ -87,107 +86,27 @@
   </header>
 
   <main>
-
-    <!-- NAV -->
-    <nav class="header-nav" aria-label="Categorias">
+    <div class="produto-breadcrumb">
       <div class="container">
-        <ul class="header-nav__list" id="main-nav">
-          <li><a href="https://grudadoemvoce.com.br/collections/all">Toda Loja</a></li>
-          <li><a href="https://grudadoemvoce.com.br/collections/kits">Kits</a></li>
-          <li><a href="https://grudadoemvoce.com.br/collections/etiquetas">Etiquetas</a></li>
-          <li><a href="https://grudadoemvoce.com.br/collections/tags">Tags</a></li>
-          <li><a href="https://grudadoemvoce.com.br/collections/pulseiras">Pulseiras</a></li>
-          <li><a href="https://grudadoemvoce.com.br/collections/bolsas">Bolsas e Sacos</a></li>
-          <li><a href="https://grudadoemvoce.com.br/collections/necessaires">Necessaires e Estojos</a></li>
-          <li><a href="https://grudadoemvoce.com.br/collections/acessorios">Acessórios</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- BANNER DA COLEÇÃO -->
-    <div class="colecao-banner colecao-banner--dtf">
-      <div class="colecao-banner__inner">
-        <h1>DTF</h1>
-        <p>Impressão direta no tecido com cores vibrantes e durabilidade excepcional. Ideal para roupas, bolsas e tecidos em geral.</p>
+        <a href="index.html">Início</a><span aria-hidden="true">›</span>
+        <span>Carrinho</span>
       </div>
     </div>
 
-    <!-- GRID DE PRODUTOS -->
-    <section class="colecao-produtos">
+    <section class="carrinho-page">
       <div class="container">
-        <div class="produtos-colecao-grid">
-
-          <a href="../produtos/dtf-camiseta.html" class="produto-colecao-card animate-on-scroll" data-animation="fade-up" data-delay="0">
-            <div class="produto-colecao-card__img">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            </div>
-            <div class="produto-colecao-card__info">
-              <h3>DTF Camiseta</h3>
-              <p>Estampa colorida e durável diretamente na malha da camiseta</p>
-              <span class="produto-colecao-card__cta">Ver produto</span>
-            </div>
-          </a>
-          <a href="#" class="produto-colecao-card animate-on-scroll" data-animation="fade-up" data-delay="100">
-            <div class="produto-colecao-card__img">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            </div>
-            <div class="produto-colecao-card__info">
-              <h3>DTF Bolsa</h3>
-              <p>Personalize bolsas de tecido com estampas vibrantes e lavável</p>
-              <span class="produto-colecao-card__cta">Ver produto</span>
-            </div>
-          </a>
-          <a href="#" class="produto-colecao-card animate-on-scroll" data-animation="fade-up" data-delay="200">
-            <div class="produto-colecao-card__img">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            </div>
-            <div class="produto-colecao-card__info">
-              <h3>DTF Moletom</h3>
-              <p>Estampa de alta definição em moletom e peças de frio</p>
-              <span class="produto-colecao-card__cta">Ver produto</span>
-            </div>
-          </a>
-          <a href="#" class="produto-colecao-card animate-on-scroll" data-animation="fade-up" data-delay="0">
-            <div class="produto-colecao-card__img">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            </div>
-            <div class="produto-colecao-card__info">
-              <h3>DTF Uniforme</h3>
-              <p>Personalize uniformes corporativos com logo e cores da marca</p>
-              <span class="produto-colecao-card__cta">Ver produto</span>
-            </div>
-          </a>
-          <a href="#" class="produto-colecao-card animate-on-scroll" data-animation="fade-up" data-delay="100">
-            <div class="produto-colecao-card__img">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            </div>
-            <div class="produto-colecao-card__info">
-              <h3>DTF Nécessaire</h3>
-              <p>Personalize nécessaires e estojos com impressão colorida</p>
-              <span class="produto-colecao-card__cta">Ver produto</span>
-            </div>
-          </a>
-
-          <!-- Banner promocional -->
-          <a href="https://wa.me/5521991909015" class="colecao-promo-banner animate-on-scroll" data-animation="fade-up" data-delay="200" target="_blank" rel="noopener">
-            <div class="colecao-promo-banner__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <h3>Precisa de ajuda para escolher?</h3>
-            <p>Nossa equipe está pronta para te orientar e montar o orçamento ideal para o seu projeto.</p>
-            <span class="colecao-promo-banner__btn">Solicitar Orçamento</span>
-          </a>
+        <h1 class="carrinho-titulo" id="carrinho-titulo">Carrinho</h1>
+        <div class="carrinho-page__inner" id="carrinho-conteudo">
+          <!-- Renderizado via JS -->
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="../assets/images/logo.svg" alt="Grudado em Você" style="height:32px">
+        <img src="assets/images/logo.svg" alt="Grudado em Você" style="height:32px">
         <p class="footer-copy">© 2025 Grudado em Você. Todos os direitos reservados.</p>
       </div>
       <nav class="footer-links" aria-label="Links do rodapé">
@@ -198,7 +117,107 @@
     </div>
   </footer>
 
-  <script src="../assets/js/script.js"></script>
-  <script src="../assets/js/carrinho.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/carrinho.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCarrinhoPage();
+    });
+
+    function renderCarrinhoPage() {
+      const itens = Carrinho.getItens();
+      const conteudo = document.getElementById('carrinho-conteudo');
+      const titulo = document.getElementById('carrinho-titulo');
+
+      titulo.textContent = itens.length === 0
+        ? 'Carrinho'
+        : `Carrinho (${itens.length} ${itens.length === 1 ? 'item' : 'itens'})`;
+
+      if (itens.length === 0) {
+        conteudo.innerHTML = `
+          <div class="carrinho-vazio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <h2>Seu carrinho está vazio</h2>
+            <p>Adicione produtos para solicitar seu orçamento</p>
+            <a href="index.html">Ver Produtos</a>
+          </div>`;
+        return;
+      }
+
+      const listaHTML = `
+        <div class="carrinho-lista" id="carrinho-lista">
+          ${itens.map(item => `
+            <div class="carrinho-item" data-id="${item.id}">
+              <div class="carrinho-item__img">
+                ${item.imagem
+                  ? `<img src="${item.imagem}" alt="${item.nome}" loading="lazy">`
+                  : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`
+                }
+              </div>
+              <div class="carrinho-item__info">
+                <p class="carrinho-item__colecao">${item.colecao}</p>
+                <p class="carrinho-item__nome">${item.nome}</p>
+                <ul class="carrinho-item__specs">
+                  <li><span>Tamanho</span>${item.tamanho}</li>
+                  <li><span>Quantidade</span>${item.quantidade} un.</li>
+                  <li><span>Acabamento</span>${item.acabamento}</li>
+                  ${item.arquivo ? `<li><span>Arquivo</span>${item.arquivo}</li>` : ''}
+                  ${item.obs ? `<li><span>Obs</span>${item.obs}</li>` : ''}
+                </ul>
+              </div>
+              <button class="carrinho-item__remover" data-id="${item.id}" aria-label="Remover item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          `).join('')}
+        </div>`;
+
+      const resumoHTML = `
+        <aside class="carrinho-resumo">
+          <h3>Resumo do Pedido</h3>
+          <div class="resumo-linha">
+            <span>Produtos</span>
+            <strong>${itens.length} ${itens.length === 1 ? 'item' : 'itens'}</strong>
+          </div>
+          <div class="resumo-linha">
+            <span>Frete</span>
+            <strong style="color:#25D366">A calcular</strong>
+          </div>
+          <hr class="resumo-divider">
+          <div class="resumo-total">
+            <span>Total de itens</span>
+            <span>${itens.length} ${itens.length === 1 ? 'produto' : 'produtos'}</span>
+          </div>
+          <button class="btn-finalizar" id="btn-finalizar-pedido">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L.057 23.868a.5.5 0 0 0 .612.612l6.01-1.476A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.374l-.36-.214-3.724.914.933-3.608-.234-.372A9.797 9.797 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+            Solicitar Orçamento
+          </button>
+          <button class="btn-limpar" id="btn-limpar-carrinho">Limpar carrinho</button>
+        </aside>`;
+
+      conteudo.innerHTML = listaHTML + resumoHTML;
+
+      // Eventos remoção
+      document.querySelectorAll('.carrinho-item__remover').forEach(btn => {
+        btn.addEventListener('click', () => {
+          Carrinho.remover(btn.dataset.id);
+          renderCarrinhoPage();
+        });
+      });
+
+      // Finalizar pedido
+      document.getElementById('btn-finalizar-pedido').addEventListener('click', () => {
+        Carrinho.enviarWhatsApp();
+      });
+
+      // Limpar carrinho
+      document.getElementById('btn-limpar-carrinho').addEventListener('click', () => {
+        if (confirm('Tem certeza que deseja limpar o carrinho?')) {
+          Carrinho.limpar();
+          renderCarrinhoPage();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
