@@ -359,29 +359,36 @@ textarea:focus { outline: none; border-color: var(--color-navy); }
   color: rgba(255,255,255,0.6);
 }
 
-.preco-detalhes {
+.preco-desconto-hints {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  background: #f0f2f4;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.78rem;
-  color: #666;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: #f8f9fa;
   border-radius: 0 0 12px 12px;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid #eee;
 }
 
-.preco-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.preco-hint-desconto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
 }
-.preco-badge--desconto {
-  background: #d4f5e2;
+.preco-hint-desconto svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #25a244;
+}
+.preco-hint-desconto strong { color: var(--color-navy); }
+
+.preco-hint-desconto--ativo {
+  color: #1a7a42;
+  font-weight: 700;
+}
+.preco-hint-desconto--ativo svg {
   color: #1a7a42;
 }
 

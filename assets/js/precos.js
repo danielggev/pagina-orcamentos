@@ -42,10 +42,10 @@ const Precos = (() => {
 
     if (m2Total <= 0 || isNaN(m2Total)) return null;
 
-    // Determinar faixa
+    // Determinar faixa (>= 5m² = 15% off, >= 10m² = 25% off)
     let precoPorM2 = tabela[tabela.length - 1].preco; // fallback maior faixa
     for (const faixa of tabela) {
-      if (faixa.ate === undefined || m2Total <= faixa.ate) {
+      if (faixa.ate === undefined || m2Total < faixa.ate) {
         precoPorM2 = faixa.preco;
         break;
       }
@@ -60,9 +60,10 @@ const Precos = (() => {
       total,
       precoPorUnidade,
       quantidade,
-      faixa: m2Total <= (tabela[0].ate || 0)
+      material,
+      faixa: m2Total < tabela[0].ate
         ? 'normal'
-        : m2Total <= (tabela[1]?.ate || 0)
+        : m2Total < tabela[1].ate
           ? 'desconto-15'
           : 'desconto-25',
     };
@@ -85,13 +86,47 @@ const Precos = (() => {
       return;
     }
 
-    const { m2Total, precoPorM2, total, precoPorUnidade, quantidade, faixa } = resultado;
+    const { m2Total, precoPorM2, total, precoPorUnidade, quantidade, faixa, material } = resultado;
+    const tabela = TABELA[material] || [];
 
-    let badgeHTML = '';
-    if (faixa === 'desconto-15') {
-      badgeHTML = `<span class="preco-badge preco-badge--desconto">15% off acima de 5m²</span>`;
+    // Calcular qtd necessária para atingir cada faixa de desconto
+    const m2PorUnidade = m2Total / quantidade;
+    const qtdPara15 = m2PorUnidade > 0 ? Math.ceil(tabela[0].ate / m2PorUnidade) : null;
+    const qtdPara25 = m2PorUnidade > 0 ? Math.ceil(tabela[1].ate / m2PorUnidade) : null;
+
+    let descontoHints = '';
+    if (faixa === 'normal' && qtdPara15) {
+      descontoHints = `
+        <div class="preco-desconto-hints">
+          <span class="preco-hint-desconto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Com <strong>${qtdPara15} unid.</strong> você ganha <strong>15% de desconto</strong>
+          </span>
+          <span class="preco-hint-desconto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Com <strong>${qtdPara25} unid.</strong> você ganha <strong>25% de desconto</strong>
+          </span>
+        </div>`;
+    } else if (faixa === 'desconto-15' && qtdPara25) {
+      descontoHints = `
+        <div class="preco-desconto-hints">
+          <span class="preco-hint-desconto preco-hint-desconto--ativo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            15% de desconto aplicado
+          </span>
+          <span class="preco-hint-desconto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Com <strong>${qtdPara25} unid.</strong> você ganha <strong>25% de desconto</strong>
+          </span>
+        </div>`;
     } else if (faixa === 'desconto-25') {
-      badgeHTML = `<span class="preco-badge preco-badge--desconto">25% off acima de 10m²</span>`;
+      descontoHints = `
+        <div class="preco-desconto-hints">
+          <span class="preco-hint-desconto preco-hint-desconto--ativo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Melhor preço — 25% de desconto aplicado!
+          </span>
+        </div>`;
     }
 
     el.innerHTML = `
@@ -102,10 +137,7 @@ const Precos = (() => {
           <span class="preco-unidade">${formatar(precoPorUnidade)} / unid.</span>
         </div>
       </div>
-      <div class="preco-detalhes">
-        <span>${m2Total.toFixed(4)} m² × ${formatar(precoPorM2)}/m²</span>
-        ${badgeHTML}
-      </div>
+      ${descontoHints}
     `;
   }
 
