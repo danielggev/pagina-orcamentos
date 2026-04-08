@@ -33,6 +33,17 @@
   opacity: 0.85;
 }
 
+/* Variante: imagem real */
+.colecao-banner--img {
+  padding: 0;
+  line-height: 0;
+}
+.colecao-banner--img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Variante: Vinil Branco */
 .colecao-banner--branco {
   background: linear-gradient(135deg, #253746 0%, #1a2a36 100%);
