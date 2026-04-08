@@ -61,6 +61,7 @@
 
 /* ------------------------------------------
    GRID DE PRODUTOS (3 colunas)
+   5 produtos + 1 banner promocional (último slot)
    ------------------------------------------ */
 .produtos-colecao-grid {
   display: grid;
@@ -152,6 +153,84 @@
   color: var(--color-pink);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+/* ------------------------------------------
+   BANNER PROMOCIONAL (slot direito do grid)
+   ------------------------------------------ */
+.colecao-promo-banner {
+  height: 100%;
+  min-height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(160deg, var(--color-navy) 0%, #1a2a36 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  text-decoration: none;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.colecao-promo-banner:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  transform: translateY(-3px);
+}
+
+.colecao-promo-banner__icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.colecao-promo-banner__icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-cyan);
+}
+
+.colecao-promo-banner h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+  color: #fff;
+}
+
+.colecao-promo-banner p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  opacity: 0.85;
+  margin: 0 0 1.75rem;
+}
+
+.colecao-promo-banner__btn {
+  display: inline-block;
+  background: var(--color-pink);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.colecao-promo-banner:hover .colecao-promo-banner__btn {
+  background: #d63060;
 }
 
 /* ------------------------------------------
