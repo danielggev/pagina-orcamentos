@@ -1,0 +1,142 @@
+/* ============================================
+   GRUDADO EM VOCÊ — Design Tokens
+   Fonte oficial: Hurme Geometric Sans 1
+   ============================================ */
+
+/* @font-face — servido localmente */
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-THIN.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-THINOBLIQUE.woff2') format('woff2');
+  font-weight: 100;
+  font-style: oblique;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-LIGHT.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-LIGHTOBLIQUE.woff2') format('woff2');
+  font-weight: 300;
+  font-style: oblique;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-OBLIQUE.woff2') format('woff2');
+  font-weight: 400;
+  font-style: oblique;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-SEMIBOLD.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1SEMIBOLDOBLIQUE.woff2') format('woff2');
+  font-weight: 600;
+  font-style: oblique;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-BOLD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-BOLDOBLIQUE.woff2') format('woff2');
+  font-weight: 700;
+  font-style: oblique;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-BLACK.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 1';
+  src: url('../fonts/HURMEGEOMETRICSANS1-BLACKOBLIQUE.woff2') format('woff2');
+  font-weight: 900;
+  font-style: oblique;
+  font-display: swap;
+}
+
+:root {
+  /* ── Cores oficiais da marca ── */
+  --gv-amarelo:     #F9E547;
+  --gv-verde:       #8EDD65;
+  --gv-rosa:        #EF426F;
+  --gv-azul-claro:  #05C3DE;
+  --gv-laranja:     #FF6A39;
+  --gv-azul-escuro: #253746;
+
+  /* ── Aliases funcionais ── */
+  --gv-text:        #253746;
+  --gv-text-light:  #FFFFFF;
+  --gv-bg:          #FFFFFF;
+
+  /* ── Tints sutis (fundos de seção) ── */
+  --gv-amarelo-10:    rgba(249,229,71,  0.10);
+  --gv-verde-10:      rgba(142,221,101, 0.10);
+  --gv-rosa-10:       rgba(239,66,111,  0.10);
+  --gv-azul-claro-10: rgba(5,195,222,   0.10);
+  --gv-laranja-10:    rgba(255,106,57,  0.10);
+
+  /* ── Tipografia ── */
+  --gv-font: 'Hurme Geometric Sans 1', system-ui, sans-serif;
+
+  /* ── Espaçamento (grid de 8px) ── */
+  --gv-space-xs:  4px;
+  --gv-space-sm:  8px;
+  --gv-space-md:  16px;
+  --gv-space-lg:  24px;
+  --gv-space-xl:  32px;
+  --gv-space-2xl: 48px;
+  --gv-space-3xl: 64px;
+  --gv-space-4xl: 96px;
+
+  /* ── Radius (sempre arredondado — DNA da marca) ── */
+  --gv-radius-sm:     8px;
+  --gv-radius-md:     12px;
+  --gv-radius-lg:     16px;
+  --gv-radius-xl:     24px;
+  --gv-radius-pill:   999px;
+  --gv-radius-circle: 50%;
+
+  /* ── Sombras ── */
+  --gv-shadow-sm: 0 1px 3px  rgba(37,55,70,0.08);
+  --gv-shadow-md: 0 4px 12px rgba(37,55,70,0.10);
+  --gv-shadow-lg: 0 8px 24px rgba(37,55,70,0.12);
+
+  /* ── Transições ── */
+  --gv-ease:     cubic-bezier(0.4, 0, 0.2, 1);
+  --gv-duration: 250ms;
+}

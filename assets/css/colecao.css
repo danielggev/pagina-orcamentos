@@ -19,9 +19,9 @@
 }
 
 .colecao-banner h1 {
-  font-family: var(--font-heading);
+  font-family: var(--gv-font);
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.1;
   margin: 0 0 0.75rem;
 }
@@ -46,20 +46,20 @@
 
 /* Variante: Vinil Branco */
 .colecao-banner--branco {
-  background: linear-gradient(135deg, #253746 0%, #1a2a36 100%);
-  color: #fff;
+  background: var(--gv-azul-escuro);
+  color: #FFFFFF;
 }
 
 /* Variante: Vinil Transparente */
 .colecao-banner--transparente {
-  background: linear-gradient(135deg, #05C3DE 0%, #0299ad 100%);
-  color: #fff;
+  background: var(--gv-azul-claro);
+  color: var(--gv-azul-escuro);
 }
 
 /* Variante: DTF */
 .colecao-banner--dtf {
-  background: linear-gradient(135deg, #EF426F 0%, #c42e56 100%);
-  color: #fff;
+  background: var(--gv-rosa);
+  color: #FFFFFF;
 }
 
 /* ------------------------------------------
@@ -67,7 +67,7 @@
    ------------------------------------------ */
 .colecao-produtos {
   padding: 3rem 0 4rem;
-  background: #f8f8f8;
+  background: var(--color-gray-50);
 }
 
 /* ------------------------------------------
@@ -98,10 +98,10 @@
    ------------------------------------------ */
 .produto-colecao-card {
   display: block;
-  background: #fff;
-  border-radius: 12px;
+  background: #FFFFFF;
+  border-radius: var(--gv-radius-lg);
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  box-shadow: var(--gv-shadow-sm);
   text-decoration: none;
   color: inherit;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -109,14 +109,14 @@
 
 .produto-colecao-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  box-shadow: var(--gv-shadow-lg);
 }
 
 /* Área da imagem / placeholder */
 .produto-colecao-card__img {
   width: 100%;
   aspect-ratio: 1 / 1;
-  background: #e8e8e8;
+  background: var(--color-gray-100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,7 +134,7 @@
 .produto-colecao-card__img svg {
   width: 48px;
   height: 48px;
-  color: #aaa;
+  color: var(--color-gray-400);
 }
 
 /* Info do produto */
@@ -143,16 +143,17 @@
 }
 
 .produto-colecao-card__info h3 {
-  font-family: var(--font-heading);
+  font-family: var(--gv-font);
   font-size: 0.95rem;
   font-weight: 700;
   margin: 0 0 0.3rem;
-  color: var(--color-navy);
+  color: var(--gv-azul-escuro);
 }
 
 .produto-colecao-card__info p {
   font-size: 0.82rem;
-  color: #666;
+  color: var(--gv-azul-escuro);
+  opacity: 0.6;
   margin: 0 0 0.75rem;
   line-height: 1.4;
 }
@@ -161,7 +162,7 @@
   display: inline-block;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--color-pink);
+  color: var(--gv-rosa);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -172,7 +173,7 @@
 .colecao-promo-banner {
   height: 100%;
   min-height: 300px;
-  border-radius: 12px;
+  border-radius: var(--gv-radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -180,15 +181,15 @@
   justify-content: center;
   text-align: center;
   padding: 2.5rem 2rem;
-  background: linear-gradient(160deg, var(--color-navy) 0%, #1a2a36 100%);
-  color: #fff;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  background: var(--gv-azul-escuro);
+  color: #FFFFFF;
+  box-shadow: var(--gv-shadow-md);
   text-decoration: none;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .colecao-promo-banner:hover {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  box-shadow: var(--gv-shadow-lg);
   transform: translateY(-3px);
 }
 
@@ -196,7 +197,7 @@
   width: 56px;
   height: 56px;
   background: rgba(255,255,255,0.12);
-  border-radius: 50%;
+  border-radius: var(--gv-radius-circle);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -206,16 +207,16 @@
 .colecao-promo-banner__icon svg {
   width: 28px;
   height: 28px;
-  color: var(--color-cyan);
+  color: var(--gv-azul-claro);
 }
 
 .colecao-promo-banner h3 {
-  font-family: var(--font-heading);
+  font-family: var(--gv-font);
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.25;
   margin: 0 0 0.75rem;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .colecao-promo-banner p {
@@ -227,35 +228,35 @@
 
 .colecao-promo-banner__btn {
   display: inline-block;
-  background: var(--color-pink);
-  color: #fff;
-  font-family: var(--font-heading);
+  background: var(--gv-rosa);
+  color: #FFFFFF;
+  font-family: var(--gv-font);
   font-size: 0.85rem;
   font-weight: 700;
   padding: 0.65rem 1.4rem;
-  border-radius: 999px;
+  border-radius: var(--gv-radius-pill);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-decoration: none;
-  transition: background 0.2s ease;
+  transition: filter 0.2s ease;
 }
 
 .colecao-promo-banner:hover .colecao-promo-banner__btn {
-  background: #d63060;
+  filter: brightness(1.1);
 }
 
 /* Variante: imagem */
 .colecao-promo-banner--img {
   padding: 0;
   background: none;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  box-shadow: var(--gv-shadow-md);
 }
 .colecao-promo-banner--img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
+  border-radius: var(--gv-radius-lg);
 }
 
 /* ------------------------------------------
