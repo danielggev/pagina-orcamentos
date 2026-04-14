@@ -139,11 +139,11 @@ h1, h2, h3, h4 {
    ANNOUNCEMENT BAR
    ============================================ */
 .announcement-bar {
-  background: var(--color-navy);
-  color: var(--color-white);
+  background: var(--gv-laranja);
+  color: #FFFFFF;
   font-size: 0.8125rem;
-  font-family: var(--font-heading);
-  font-weight: 600;
+  font-family: var(--gv-font);
+  font-weight: 700;
   overflow: hidden;
   white-space: nowrap;
   padding-block: 0.5rem;
@@ -172,9 +172,9 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
 }
 .announcement-bar__item svg { width: 16px; height: 16px; opacity: 0.85; }
-.announcement-bar__item strong { color: var(--color-yellow); }
+.announcement-bar__item strong { color: var(--gv-amarelo); }
 .announcement-bar__sep {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.4);
   flex-shrink: 0;
 }
 
