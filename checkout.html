@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Grudado em Você</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/carrinho.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ck-green:       #008060;
+      --ck-green-dark:  #004c3f;
+      --ck-green-light: #e8f5f1;
+      --ck-border:      #d9d9d9;
+      --ck-bg:          #f5f5f5;
+      --ck-text:        #1a1a1a;
+      --ck-muted:       #6b6b6b;
+      --ck-radius:      8px;
+      --ck-radius-sm:   4px;
+    }
+
+    body {
+      font-family: var(--gv-font, 'Inter', sans-serif);
+      background: var(--ck-bg);
+      color: var(--ck-text);
+      font-size: 14px;
+      min-height: 100vh;
+    }
+
+    a { color: var(--ck-green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── TOPO ── */
+    .ck-header {
+      background: #fff;
+      border-bottom: 1px solid var(--ck-border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ck-logo { height: 36px; width: auto; display: block; }
+
+    /* ── LAYOUT ── */
+    .ck-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 0;
+      max-width: 1080px;
+      margin: 0 auto;
+      min-height: calc(100vh - 69px);
+    }
+
+    /* ── COLUNA ESQUERDA ── */
+    .ck-left {
+      background: #fff;
+      padding: 32px 48px 48px 24px;
+      border-right: 1px solid var(--ck-border);
+    }
+
+    /* ── BREADCRUMB ── */
+    .ck-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ck-muted);
+      margin-bottom: 28px;
+    }
+    .ck-breadcrumb a { color: var(--ck-green); }
+    .ck-breadcrumb span { color: #bbb; }
+
+    /* ── BLOCOS ── */
+    .ck-block {
+      margin-bottom: 28px;
+    }
+    .ck-block-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ck-text);
+      margin-bottom: 16px;
+    }
+
+    /* ── CONTA ── */
+    .ck-account-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--ck-bg);
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius);
+      padding: 12px 16px;
+      margin-bottom: 28px;
+    }
+    .ck-account-bar__left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ck-account-avatar {
+      width: 32px; height: 32px;
+      background: var(--ck-green);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ck-account-bar__email { font-size: 13px; font-weight: 500; }
+    .ck-account-bar__action { font-size: 12px; color: var(--ck-muted); }
+
+    /* ── TABS (Enviar / Retirada) ── */
+    .ck-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .ck-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #fff;
+      border: none;
+      color: var(--ck-muted);
+      transition: background .2s, color .2s;
+    }
+    .ck-tab.active {
+      background: var(--ck-green-light);
+      color: var(--ck-green);
+      border-bottom: 2px solid var(--ck-green);
+    }
+    .ck-tab svg { width: 16px; height: 16px; }
+
+    /* ── CAMPOS ── */
+    .ck-field-row {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .ck-field-row--2 { grid-template-columns: 1fr 1fr; }
+    .ck-field-row--3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    .ck-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .ck-field label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ck-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .ck-field input,
+    .ck-field select {
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius-sm);
+      padding: 10px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--ck-text);
+      background: #fff;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      width: 100%;
+    }
+    .ck-field input:focus,
+    .ck-field select:focus {
+      border-color: var(--ck-green);
+      box-shadow: 0 0 0 3px rgba(0,128,96,.12);
+    }
+
+    /* endereço preenchido */
+    .ck-endereco-preenchido {
+      background: var(--ck-bg);
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--ck-green);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .ck-endereco-preenchido svg {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--ck-green);
+    }
+
+    /* ── FRETE ── */
+    .ck-frete-option {
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius);
+      margin-bottom: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .ck-frete-option.selected {
+      border-color: var(--ck-green);
+      box-shadow: 0 0 0 1px var(--ck-green);
+    }
+    .ck-frete-option.selected .ck-radio {
+      border-color: var(--ck-green);
+    }
+    .ck-frete-option.selected .ck-radio-dot {
+      display: block;
+    }
+    .ck-frete-option__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      background: #fff;
+    }
+    .ck-frete-option__label { flex: 1; font-size: 14px; font-weight: 500; }
+    .ck-frete-option__prazo { font-size: 12px; color: var(--ck-muted); margin-top: 2px; }
+    .ck-frete-option__price { font-size: 14px; font-weight: 600; white-space: nowrap; }
+    .ck-frete-option__sr {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: #FFD700;
+      color: #1a1a1a;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-left: 6px;
+    }
+    .ck-frete-option__sr svg { width: 8px; height: 8px; fill: #1a1a1a; }
+    .ck-frete-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ck-muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin: 14px 0 6px;
+    }
+    .ck-frete-section-label:first-child { margin-top: 0; }
+
+    /* ── PAGAMENTO ── */
+    .ck-payment-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .ck-payment-subtitle {
+      font-size: 12px;
+      color: var(--ck-muted);
+      margin-bottom: 16px;
+    }
+
+    .ck-payment-option {
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius);
+      margin-bottom: 8px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .ck-payment-option.selected {
+      border-color: var(--ck-green);
+      box-shadow: 0 0 0 1px var(--ck-green);
+    }
+    .ck-payment-option__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #fff;
+    }
+    .ck-radio {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--ck-border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .2s;
+    }
+    .ck-payment-option.selected .ck-radio {
+      border-color: var(--ck-green);
+    }
+    .ck-radio-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--ck-green);
+      display: none;
+    }
+    .ck-payment-option.selected .ck-radio-dot { display: block; }
+
+    .ck-payment-option__label { flex: 1; font-size: 14px; font-weight: 500; }
+    .ck-payment-option__icons {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .ck-payment-icon {
+      background: #f0f0f0;
+      border-radius: 3px;
+      padding: 2px 6px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #333;
+    }
+    .ck-pix-icon {
+      background: #32bcad;
+      color: #fff;
+      border-radius: 3px;
+      padding: 3px 7px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .ck-payment-option__body {
+      border-top: 1px solid var(--ck-border);
+      padding: 16px;
+      background: #fafafa;
+      font-size: 13px;
+      color: var(--ck-muted);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── ENDEREÇO FATURAMENTO ── */
+    .ck-billing-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 24px 0 14px;
+    }
+    .ck-billing-option {
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius);
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .ck-billing-option.selected {
+      border-color: var(--ck-green);
+      box-shadow: 0 0 0 1px var(--ck-green);
+      background: var(--ck-green-light);
+    }
+
+    /* ── BOTÃO PAGAR ── */
+    .ck-btn-pagar {
+      width: 100%;
+      background: var(--ck-green);
+      color: #fff;
+      border: none;
+      border-radius: var(--ck-radius);
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: background .2s, transform .15s;
+    }
+    .ck-btn-pagar:hover {
+      background: var(--ck-green-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ── LINKS RODAPÉ ── */
+    .ck-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--ck-muted);
+    }
+    .ck-footer-links a { color: var(--ck-muted); }
+    .ck-footer-links a:hover { color: var(--ck-green); text-decoration: underline; }
+
+    /* ── COLUNA DIREITA (resumo) ── */
+    .ck-right {
+      background: var(--ck-bg);
+      border-left: 1px solid var(--ck-border);
+      padding: 32px 24px;
+    }
+
+    /* itens */
+    .ck-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .ck-item__img {
+      width: 56px; height: 56px;
+      border-radius: var(--ck-radius-sm);
+      background: #e0e0e0;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--ck-border);
+    }
+    .ck-item__img img { width: 100%; height: 100%; object-fit: cover; }
+    .ck-item__img-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 20px;
+    }
+    .ck-item__badge {
+      position: absolute;
+      top: -5px; right: -5px;
+      width: 18px; height: 18px;
+      background: #888;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ck-item__info { flex: 1; }
+    .ck-item__name { font-size: 13px; font-weight: 600; color: var(--ck-text); }
+    .ck-item__desc { font-size: 12px; color: var(--ck-muted); margin-top: 2px; }
+    .ck-item__sr-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: #FFD700;
+      color: #1a1a1a;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .ck-item__sr-flag svg { width: 8px; height: 8px; fill: #1a1a1a; }
+    .ck-item__price { font-size: 13px; font-weight: 600; white-space: nowrap; }
+
+    .ck-divider { border: none; border-top: 1px solid var(--ck-border); margin: 16px 0; }
+
+    /* desconto */
+    .ck-discount {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .ck-discount input {
+      flex: 1;
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius-sm);
+      padding: 10px 12px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .ck-discount input:focus { border-color: var(--ck-green); }
+    .ck-discount button {
+      background: #fff;
+      border: 1px solid var(--ck-border);
+      border-radius: var(--ck-radius-sm);
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      color: var(--ck-text);
+      transition: background .2s;
+    }
+    .ck-discount button:hover { background: var(--ck-bg); }
+
+    /* totais */
+    .ck-totals { margin-bottom: 16px; }
+    .ck-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .ck-total-row__label { color: var(--ck-muted); }
+    .ck-total-row__value { font-weight: 500; }
+    .ck-total-row--frete .ck-total-row__value {
+      background: #e0e0e0;
+      border-radius: 3px;
+      width: 36px; height: 14px;
+      display: inline-block;
+    }
+    .ck-total-final {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--ck-border);
+    }
+    .ck-total-final__label { font-size: 15px; font-weight: 700; }
+    .ck-total-final__value {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+    .ck-total-final__currency { font-size: 12px; color: var(--ck-muted); }
+    .ck-total-final__amount { font-size: 22px; font-weight: 700; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 768px) {
+      .ck-layout {
+        grid-template-columns: 1fr;
+      }
+      .ck-right {
+        order: -1;
+        border-left: none;
+        border-bottom: 1px solid var(--ck-border);
+      }
+      .ck-left { padding: 24px 16px; }
+      .ck-field-row--2,
+      .ck-field-row--3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPO -->
+  <header class="ck-header">
+    <a href="index.html"><img src="assets/images/logo.svg" alt="Grudado em Você" class="ck-logo"></a>
+  </header>
+
+  <div class="ck-layout">
+
+    <!-- ══════════════ ESQUERDA ══════════════ -->
+    <div class="ck-left">
+
+      <!-- Breadcrumb -->
+      <nav class="ck-breadcrumb" aria-label="Passos do checkout">
+        <a href="carrinho.html">Carrinho</a>
+        <span>›</span>
+        <strong>Informações</strong>
+        <span>›</span>
+        <span style="color:#bbb">Envio</span>
+        <span>›</span>
+        <span style="color:#bbb">Pagamento</span>
+      </nav>
+
+      <!-- Conta logada -->
+      <div class="ck-account-bar">
+        <div class="ck-account-bar__left">
+          <div class="ck-account-avatar">N</div>
+          <span class="ck-account-bar__email">teste@grudadoemvoce.com.br</span>
+        </div>
+        <button class="ck-account-bar__action" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:12px;color:#6b6b6b;">Sair</button>
+      </div>
+
+      <!-- Tabs Enviar / Retirada -->
+      <div class="ck-block">
+        <div class="ck-tabs">
+          <button class="ck-tab active" onclick="setTab(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Enviar
+          </button>
+          <button class="ck-tab" onclick="setTab(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Retirada
+          </button>
+        </div>
+      </div>
+
+      <!-- Endereço preenchido -->
+      <div class="ck-endereco-preenchido" onclick="toggleEndereco(this)">
+        <div>
+          <div style="font-weight:600;color:#1a1a1a;margin-bottom:4px;">Endereço de entrega</div>
+          <div>Grudado, Av. Tenente Luiz Meirelles, 138, SL, Várzea, 25963-160 Teresópolis RJ, BR, (21)91234-5678</div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+
+      <!-- Campos de endereço (colapsados) -->
+      <div id="endereco-form" style="display:none;">
+        <div class="ck-field-row">
+          <div class="ck-field">
+            <label>CEP</label>
+            <input type="text" placeholder="00000-000" maxlength="9">
+          </div>
+        </div>
+        <div class="ck-field-row ck-field-row--2">
+          <div class="ck-field">
+            <label>Endereço</label>
+            <input type="text" placeholder="Rua, Avenida...">
+          </div>
+          <div class="ck-field">
+            <label>Número</label>
+            <input type="text" placeholder="123">
+          </div>
+        </div>
+        <div class="ck-field-row ck-field-row--2">
+          <div class="ck-field">
+            <label>Complemento</label>
+            <input type="text" placeholder="Apto, Bloco... (opcional)">
+          </div>
+          <div class="ck-field">
+            <label>Bairro</label>
+            <input type="text">
+          </div>
+        </div>
+        <div class="ck-field-row ck-field-row--3">
+          <div class="ck-field">
+            <label>Cidade</label>
+            <input type="text">
+          </div>
+          <div class="ck-field">
+            <label>Estado</label>
+            <select>
+              <option>RJ</option><option>SP</option><option>MG</option>
+              <option>RS</option><option>PR</option><option>SC</option>
+              <option>BA</option><option>CE</option><option>PE</option>
+            </select>
+          </div>
+          <div class="ck-field">
+            <label>País</label>
+            <select><option>Brasil</option></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forma de frete -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:13px;color:var(--ck-muted);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Forma de frete</div>
+        <div id="ck-frete-container"></div>
+      </div>
+
+      <!-- Pagamento -->
+      <div class="ck-block">
+        <div class="ck-payment-title">Pagamento</div>
+        <div class="ck-payment-subtitle">Todas as transações são seguras e criptografadas.</div>
+
+        <!-- PIX -->
+        <div class="ck-payment-option selected" onclick="selectPayment(this)">
+          <div class="ck-payment-option__header">
+            <div class="ck-radio"><div class="ck-radio-dot"></div></div>
+            <span class="ck-payment-option__label">Pix</span>
+            <div class="ck-payment-option__icons">
+              <span class="ck-pix-icon">PIX</span>
+            </div>
+          </div>
+          <div class="ck-payment-option__body">
+            Depois de clicar em "Pagar agora", você será redirecionado para Pix (Mercado Pago) para finalizar sua compra com segurança.<br>
+            <span style="font-size:11px;margin-top:4px;display:block;">Processado por Mercado Pago</span>
+          </div>
+        </div>
+
+        <!-- Cartão de crédito -->
+        <div class="ck-payment-option" onclick="selectPayment(this)">
+          <div class="ck-payment-option__header">
+            <div class="ck-radio"><div class="ck-radio-dot"></div></div>
+            <span class="ck-payment-option__label">Cartão de crédito</span>
+            <div class="ck-payment-option__icons">
+              <span class="ck-payment-icon">VISA</span>
+              <span class="ck-payment-icon">MC</span>
+              <span class="ck-payment-icon">AMEX</span>
+              <span style="font-size:11px;color:var(--ck-muted);">+2</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Endereço de faturamento -->
+      <div>
+        <div class="ck-billing-title">Endereço de faturamento</div>
+        <div class="ck-billing-option selected" onclick="selectBilling(this)">
+          <div class="ck-radio"><div class="ck-radio-dot"></div></div>
+          <span>Usar o endereço de entrega</span>
+        </div>
+        <div class="ck-billing-option" onclick="selectBilling(this)">
+          <div class="ck-radio"><div class="ck-radio-dot"></div></div>
+          <span>Usar um endereço de faturamento diferente</span>
+        </div>
+      </div>
+
+      <!-- Botão pagar -->
+      <button class="ck-btn-pagar">Pagar agora</button>
+
+      <!-- Links rodapé -->
+      <div class="ck-footer-links">
+        <a href="#">Política de reembolso</a>
+        <a href="#">Política de privacidade</a>
+        <a href="#">Termos de serviço</a>
+      </div>
+
+    </div>
+
+    <!-- ══════════════ DIREITA ══════════════ -->
+    <div class="ck-right">
+
+      <!-- Itens do pedido (renderizados pelo JS do carrinho) -->
+      <div id="ck-itens"></div>
+
+      <hr class="ck-divider">
+
+      <!-- Código de desconto -->
+      <div class="ck-discount">
+        <input type="text" placeholder="Código de desconto ou cartão-presente">
+        <button>Aplicar</button>
+      </div>
+
+      <hr class="ck-divider">
+
+      <!-- Totais -->
+      <div class="ck-totals">
+        <div class="ck-total-row">
+          <span class="ck-total-row__label">Subtotal</span>
+          <span class="ck-total-row__value" id="ck-subtotal">R$ 0,00</span>
+        </div>
+        <div class="ck-total-row ck-total-row--frete">
+          <span class="ck-total-row__label">Frete</span>
+          <span class="ck-total-row__value"></span>
+        </div>
+      </div>
+
+      <div class="ck-total-final">
+        <span class="ck-total-final__label">Total</span>
+        <div class="ck-total-final__value">
+          <span class="ck-total-final__currency">BRL</span>
+          <span class="ck-total-final__amount" id="ck-total">R$ 0,00</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/js/carrinho.js"></script>
+  <script>
+    /* ── Renderiza itens do carrinho no resumo ── */
+    function renderItens() {
+      const itens = Carrinho.getItens();
+      const container = document.getElementById('ck-itens');
+
+      if (itens.length === 0) {
+        container.innerHTML = '<p style="font-size:13px;color:#6b6b6b;text-align:center;padding:16px 0;">Nenhum item no carrinho.</p>';
+      } else {
+        container.innerHTML = itens.map(item => `
+          <div class="ck-item">
+            <div class="ck-item__img">
+              ${item.imagem
+                ? `<img src="${item.imagem}" alt="${item.nome}">`
+                : `<div class="ck-item__img-placeholder">📦</div>`}
+              <span class="ck-item__badge">1</span>
+            </div>
+            <div class="ck-item__info">
+              <div class="ck-item__name">${item.nome}</div>
+              <div class="ck-item__desc">${item.acabamento ? item.acabamento + ' · ' : ''}${item.quantidade} un.</div>
+              ${item.superRapido ? `
+              <span class="ck-item__sr-flag">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><polygon points="386.415,193.208 287.481,193.208 359.434,0 161.566,0 125.585,280.151 206.528,280.151 170.557,512"/></svg>
+                Super Rápido
+              </span>` : ''}
+            </div>
+            <div class="ck-item__price">${item.preco != null ? item.preco.toLocaleString('pt-BR', {style:'currency',currency:'BRL'}) : '—'}</div>
+          </div>
+        `).join('');
+      }
+
+      const total = itens.reduce((acc, i) => acc + (i.preco || 0), 0);
+      const fmt = v => v.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+      document.getElementById('ck-subtotal').textContent = fmt(total);
+      document.getElementById('ck-total').textContent = fmt(total);
+    }
+
+    /* ── Renderiza opções de frete condicionalmente ── */
+    const FRETE_SR = [
+      { id: 'sr-express', label: 'Super Rápido Express', prazo: '2 dias úteis', preco: 8.90, sr: true },
+      { id: 'sr-padrao',  label: 'Super Rápido Padrão',  prazo: '3 dias úteis', preco: 5.90, sr: true },
+    ];
+    const FRETE_NORMAL = [
+      { id: 'sedex',  label: 'Sedex',  prazo: '7 dias úteis',  preco: 11.72, sr: false },
+      { id: 'jadlog', label: 'Jadlog', prazo: '12 dias úteis', preco: 22.50, sr: false },
+    ];
+
+    function freteOptionHTML(opt, selected) {
+      const srBadge = opt.sr ? `
+        <span class="ck-frete-option__sr">
+          <svg width="8" height="8" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><polygon points="386.415,193.208 287.481,193.208 359.434,0 161.566,0 125.585,280.151 206.528,280.151 170.557,512"/></svg>
+          SR
+        </span>` : '';
+      return `
+        <div class="ck-frete-option${selected ? ' selected' : ''}" onclick="selectFrete(this)" data-frete-id="${opt.id}" data-preco="${opt.preco}">
+          <div class="ck-frete-option__header">
+            <div class="ck-radio"><div class="ck-radio-dot"></div></div>
+            <div class="ck-frete-option__label">
+              ${opt.label}${srBadge}
+              <div class="ck-frete-option__prazo">${opt.prazo}</div>
+            </div>
+            <div class="ck-frete-option__price">${opt.preco.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</div>
+          </div>
+        </div>`;
+    }
+
+    function renderFrete() {
+      const itens = Carrinho.getItens();
+      const temSR     = itens.some(i => i.superRapido);
+      const temNormal = itens.some(i => !i.superRapido);
+      const container = document.getElementById('ck-frete-container');
+
+      let html = '';
+      let firstOption = true;
+
+      if (temSR && temNormal) {
+        html += `<div class="ck-frete-section-label">Super Rápido</div>`;
+        FRETE_SR.forEach((opt, idx) => {
+          html += freteOptionHTML(opt, firstOption);
+          firstOption = false;
+        });
+        html += `<div class="ck-frete-section-label">Entrega convencional</div>`;
+        FRETE_NORMAL.forEach(opt => { html += freteOptionHTML(opt, false); });
+      } else if (temSR) {
+        FRETE_SR.forEach((opt, idx) => {
+          html += freteOptionHTML(opt, idx === 0);
+        });
+      } else if (temNormal) {
+        FRETE_NORMAL.forEach((opt, idx) => {
+          html += freteOptionHTML(opt, idx === 0);
+        });
+      } else {
+        html = '<p style="font-size:13px;color:var(--ck-muted);">Nenhum item no carrinho.</p>';
+      }
+
+      container.innerHTML = html;
+    }
+
+    function selectFrete(el) {
+      // Encontra a label da seção anterior
+      let sectionLabel = null;
+      let current = el.previousElementSibling;
+      while (current) {
+        if (current.classList.contains('ck-frete-section-label')) {
+          sectionLabel = current;
+          break;
+        }
+        current = current.previousElementSibling;
+      }
+      
+      // Se tem label de seção, desseleciona apenas opções dessa seção
+      if (sectionLabel) {
+        current = sectionLabel.nextElementSibling;
+        while (current && !current.classList.contains('ck-frete-section-label')) {
+          if (current.classList.contains('ck-frete-option') && current !== el) {
+            current.classList.remove('selected');
+          }
+          current = current.nextElementSibling;
+        }
+      } else {
+        // Se não tem seção (só um tipo de frete), desseleciona todos
+        document.querySelectorAll('.ck-frete-option').forEach(o => {
+          if (o !== el) o.classList.remove('selected');
+        });
+      }
+      
+      // Seleciona a opção clicada
+      el.classList.add('selected');
+      
+      // Atualiza o cálculo de frete e total
+      calcularFrete();
+    }
+
+    function calcularFrete() {
+      const itens = Carrinho.getItens();
+      const subtotal = itens.reduce((acc, i) => acc + (i.preco || 0), 0);
+      
+      // Soma fretes selecionados
+      let freteTotal = 0;
+      document.querySelectorAll('.ck-frete-option.selected').forEach(el => {
+        freteTotal += parseFloat(el.dataset.preco) || 0;
+      });
+      
+      // Atualiza campos
+      const fmt = v => v.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+      document.querySelector('.ck-total-row--frete .ck-total-row__value').textContent = fmt(freteTotal);
+      document.getElementById('ck-total').textContent = fmt(subtotal + freteTotal);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => { 
+      renderItens(); 
+      renderFrete(); 
+      calcularFrete();
+    });
+
+    /* ── Tabs ── */
+    function setTab(btn) {
+      btn.closest('.ck-tabs').querySelectorAll('.ck-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    /* ── Endereço toggle ── */
+    function toggleEndereco(el) {
+      const form = document.getElementById('endereco-form');
+      const open = form.style.display !== 'none';
+      form.style.display = open ? 'none' : 'block';
+      el.querySelector('svg').style.transform = open ? '' : 'rotate(180deg)';
+    }
+
+    /* ── Selecionar pagamento ── */
+    function selectPayment(el) {
+      document.querySelectorAll('.ck-payment-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      // mostrar/ocultar body
+      document.querySelectorAll('.ck-payment-option__body').forEach(b => b.style.display = 'none');
+      const body = el.querySelector('.ck-payment-option__body');
+      if (body) body.style.display = 'block';
+    }
+
+    /* ── Selecionar faturamento ── */
+    function selectBilling(el) {
+      document.querySelectorAll('.ck-billing-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    // Ocultar bodies de pagamento não selecionados no load
+    document.querySelectorAll('.ck-payment-option:not(.selected) .ck-payment-option__body')
+      .forEach(b => b.style.display = 'none');
+  </script>
+
+</body>
+</html>

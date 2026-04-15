@@ -224,6 +224,19 @@ body.drawer-is-open {
   color: var(--gv-azul-escuro);
   margin: 0.5rem 0 0;
 }
+.drawer-item__price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.drawer-item__sr-flag--inline {
+  margin: 0;
+  flex-shrink: 0;
+  align-self: center;
+  transform: translateY(7px);
+}
 
 .drawer-item__remover {
   position: absolute;
@@ -309,7 +322,6 @@ body.drawer-is-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
   width: 100%;
   padding: 0.9rem;
   background: var(--gv-verde);
@@ -323,8 +335,8 @@ body.drawer-is-open {
   transition: filter 0.2s, transform 0.15s;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  text-decoration: none;
 }
-.drawer-btn-whatsapp svg { width: 20px; height: 20px; flex-shrink: 0; }
 .drawer-btn-whatsapp:hover { filter: brightness(1.08); transform: translateY(-1px); }
 .drawer-btn-whatsapp:active { transform: translateY(0); }
 
@@ -599,4 +611,26 @@ body.drawer-is-open {
 @media (max-width: 480px) {
   #carrinho-drawer { width: 100vw; }
   .carrinho-item__specs { grid-template-columns: 1fr; }
+}
+
+/* ── FLAG SUPER RÁPIDO NO DRAWER ── */
+.drawer-item__sr-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #FFD700;
+  color: var(--gv-azul-escuro);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.drawer-item__sr-flag svg {
+  width: 8px;
+  height: 8px;
+  fill: var(--gv-azul-escuro);
+  flex-shrink: 0;
 }
