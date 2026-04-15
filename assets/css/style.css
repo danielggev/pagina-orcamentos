@@ -545,8 +545,9 @@ h1, h2, h3, h4 {
   }
 
   .hero__content {
-    top: 50%;
-    height: 50%;
+    top: auto;
+    bottom: 0;
+    height: auto;
     align-items: flex-end;
     padding-bottom: 1.25rem;
   }
