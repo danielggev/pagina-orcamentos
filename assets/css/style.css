@@ -92,13 +92,13 @@ h1, h2, h3, h4 {
   border: 2px solid transparent;
 }
 .btn--primary {
-  background: var(--color-pink);
+  background: var(--gv-verde);
   color: var(--color-white);
-  box-shadow: var(--shadow-pink);
+  box-shadow: 0 10px 30px rgba(142,221,101,0.25);
 }
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 32px rgba(239,66,111,0.45);
+  box-shadow: 0 10px 32px rgba(142,221,101,0.3);
 }
 .btn--ghost {
   background: transparent;
@@ -528,8 +528,8 @@ h1, h2, h3, h4 {
 }
 
 .hero__cta:hover {
-  background: var(--gv-text-light);
-  color: var(--gv-azul-escuro);
+  background: var(--gv-azul-claro);
+  color: var(--gv-text-light);
   transform: scale(1.05);
 }
 
@@ -665,7 +665,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-size: 2.25rem;
   line-height: 1.05;
-  color: var(--color-navy);
+  color: var(--color-white);
 }
 .material-card__action {
   justify-self: start;
