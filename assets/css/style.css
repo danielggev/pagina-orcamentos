@@ -918,6 +918,9 @@ h1, h2, h3, h4 {
   .header-search { display: none; }
   .nav-toggle { display: flex; }
 
+  /* Header */
+  .header-main__inner { gap: 1rem; }
+
   /* Nav mobile: off-canvas drawer */
   .header-nav {
     position: fixed;
@@ -957,13 +960,30 @@ h1, h2, h3, h4 {
     color: var(--color-pink);
   }
 
-  /* Grids */
-  .materiais-grid { grid-template-columns: 1fr; }
-  .avaliacoes-grid { grid-template-columns: 1fr; }
+  /* Benefits bar */
+  .benefits-bar__inner {
+    gap: 1rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-inline: 1rem;
+  }
+  .benefits-bar__item { flex-shrink: 0; }
 
-  /* Mais vendidos: scroll horizontal */
+  /* Section headers */
+  .section-header { margin-bottom: 1.75rem; }
+  .section-header p { font-size: 0.875rem; }
+
+  /* Materiais */
+  .materiais { padding-block: 2.5rem; }
+  .materiais > .container { padding-inline: 1rem; }
+  .materiais-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Mais vendidos */
+  .mais-vendidos { padding-block: 2.5rem; }
+  .mais-vendidos-header h2 { font-size: 1.25rem; }
   .produtos-grid {
-    grid-template-columns: repeat(5, 180px);
+    grid-template-columns: repeat(5, 150px);
     overflow-x: auto;
     padding-bottom: 0.5rem;
     scroll-snap-type: x mandatory;
@@ -971,13 +991,20 @@ h1, h2, h3, h4 {
   }
   .produto-card { scroll-snap-align: start; }
 
-  .mais-vendidos-header h2 { font-size: 1.25rem; }
+  /* Avaliações */
+  .avaliacoes { padding-block: 2.5rem; }
+  .avaliacoes-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .depoimento-card { padding: 1.25rem; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; text-align: center; gap: 1rem; }
+  .footer-links { justify-content: center; flex-wrap: wrap; gap: 1rem; }
 }
 
 /* Mobile — ≤ 480px */
 @media (max-width: 480px) {
-  .footer-inner { flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
+  .produtos-grid { grid-template-columns: repeat(5, 130px); }
+  .section-header h2 { font-size: 1.4rem; }
 }
 
 /* Overlay quando menu mobile está aberto */
