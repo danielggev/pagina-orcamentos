@@ -165,7 +165,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------
-     5. SMOOTH SCROLL (links âncora internos)
+     5. REORDENAÇÃO DA NAV NO MOBILE
+     ------------------------------------------ */
+  const mainNav = document.getElementById('main-nav');
+  if (mainNav) {
+    const mqNav = window.matchMedia('(max-width: 768px)');
+    const originalOrder = Array.from(mainNav.children);
+
+    function reorderNav(isMobile) {
+      const items = Array.from(mainNav.children);
+      if (isMobile) {
+        // Super Rápido primeiro, Toda Loja por último
+        const superRapido = items.find(li => li.querySelector('.btn-super-rapido'));
+        const todaLoja    = items.find(li => !li.querySelector('.btn-super-rapido') && li === items[0]);
+        if (superRapido) mainNav.prepend(superRapido);
+        if (todaLoja)    mainNav.append(todaLoja);
+      } else {
+        // Restaura ordem original
+        originalOrder.forEach(li => mainNav.append(li));
+      }
+    }
+
+    reorderNav(mqNav.matches);
+    mqNav.addEventListener('change', e => reorderNav(e.matches));
+  }
+
+  /* ------------------------------------------
+     6. SMOOTH SCROLL (links âncora internos)
      ------------------------------------------ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
