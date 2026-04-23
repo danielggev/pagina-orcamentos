@@ -184,4 +184,4 @@ git push
 
 ## Desenvolvido por
 
-[Daniel Gomes](https://github.com/danielggev) — projeto criado para a loja [Grudado em Você](https://grudadoemvoce.com.br).
+[Daniel Medeiros](https://github.com/danielggev) — projeto criado para a loja [Grudado em Você](https://grudadoemvoce.com.br).
