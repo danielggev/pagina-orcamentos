@@ -63,12 +63,28 @@
     <div class="header-main">
       <div class="container header-main__inner">
 
-        <!-- Logo à esquerda -->
+        <!-- Ícones à esquerda (mobile: conta + busca) -->
+        <div class="header-left">
+          <a href="https://grudadoemvoce.com.br/account" class="header-icon-btn" aria-label="Minha conta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </a>
+          <button class="header-icon-btn header-search-mobile-btn" aria-label="Buscar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Logo centralizado -->
         <a href="https://grudadoemvoce.com.br" class="logo" aria-label="Grudado em Você — Página inicial">
           <img src="assets/images/logo.svg" alt="Grudado em Você" class="logo-img">
         </a>
 
-        <!-- Barra de busca centralizada -->
+        <!-- Barra de busca (desktop) -->
         <div class="header-search">
           <input type="search" placeholder="Buscar" aria-label="Buscar produtos">
           <button type="button" aria-label="Pesquisar">
@@ -81,7 +97,7 @@
 
         <!-- Ícones à direita -->
         <div class="header-right">
-          <a href="https://grudadoemvoce.com.br/account" class="header-icon-btn" aria-label="Minha conta">
+          <a href="https://grudadoemvoce.com.br/account" class="header-icon-btn header-icon-desktop-only" aria-label="Minha conta">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
               <circle cx="12" cy="7" r="4"/>
@@ -99,10 +115,6 @@
               <path d="M16 10a4 4 0 0 1-8 0"/>
             </svg>
           </a>
-          <!-- Hamburger (só mobile) -->
-          <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-label="Abrir menu">
-            <span></span><span></span><span></span>
-          </button>
         </div>
 
       </div>
