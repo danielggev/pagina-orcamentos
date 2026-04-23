@@ -554,37 +554,38 @@ h1, h2, h3, h4 {
   }
 
   .hero__container {
-    max-width: 75%;
-    width: 75%;
-    padding-left: 4rem;
-    padding-right: 0.5rem;
-    gap: 0.6rem;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 0.75rem;
     line-height: normal;
   }
 
   .hero__badge {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.2;
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 0.9rem;
   }
 
   .hero__title {
-    font-size: clamp(28px, 8vw, 36px);
+    font-size: clamp(26px, 7.5vw, 34px);
     max-width: 100%;
   }
 
   .hero__description {
-    font-size: clamp(14px, 3.8vw, 17px);
+    font-size: clamp(13px, 3.5vw, 16px);
     max-width: 100%;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .hero__cta {
-    font-size: 16px;
-    padding: 0.8rem 1.5rem;
-    margin-top: 0.25rem;
+    font-size: 14px;
+    padding: 0.75rem 1.4rem;
+    margin-top: 0.1rem;
     line-height: 1.2;
     white-space: nowrap;
+    align-self: flex-start;
   }
 }
 
@@ -975,12 +976,17 @@ h1, h2, h3, h4 {
 
   /* Section headers */
   .section-header { margin-bottom: 1.75rem; }
+  .section-header h2 { font-size: clamp(1.4rem, 5vw, 2rem); }
   .section-header p { font-size: 0.875rem; }
 
   /* Materiais */
   .materiais { padding-block: 2.5rem; }
   .materiais > .container { padding-inline: 1rem; }
   .materiais-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .material-card__copy { left: 1.25rem; max-width: 48%; gap: 0.6rem; }
+  .material-card__title { font-size: 1.3rem; }
+  .material-card__copy--sm .material-card__title { font-size: 1.2rem; }
+  .material-card__action { font-size: 0.8rem; padding: 0.5rem 1rem; }
 
   /* Mais vendidos */
   .mais-vendidos { padding-block: 2.5rem; }
@@ -991,8 +997,10 @@ h1, h2, h3, h4 {
     padding-bottom: 0.5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    gap: 1rem;
   }
   .produto-card { scroll-snap-align: start; }
+  .produto-card__name { font-size: 0.8rem; }
 
   /* Avaliações */
   .avaliacoes { padding-block: 2.5rem; }
@@ -1006,8 +1014,42 @@ h1, h2, h3, h4 {
 
 /* Mobile — ≤ 480px */
 @media (max-width: 480px) {
+  /* Header */
+  .logo-img { height: 26px; }
+
+  /* Hero */
+  .hero__container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    max-width: 100%;
+    width: 100%;
+    gap: 0.6rem;
+  }
+  .hero__badge { font-size: 11px; padding: 0.4rem 0.75rem; }
+  .hero__title { font-size: clamp(22px, 7vw, 28px); }
+  .hero__description { font-size: clamp(12px, 3.2vw, 14px); }
+  .hero__cta { font-size: 13px; padding: 0.65rem 1.2rem; align-self: flex-start; }
+
+  /* Section headers */
+  .section-header h2 { font-size: 1.35rem; }
+  .section-header p { font-size: 0.8125rem; }
+
+  /* Materiais */
+  .materiais-grid { gap: 0.75rem; }
+  .material-card__copy { left: 1rem; gap: 0.5rem; }
+  .material-card__title { font-size: 1.15rem; }
+  .material-card__copy--sm .material-card__title { font-size: 1.05rem; }
+  .material-card__action { font-size: 0.75rem; padding: 0.4rem 0.85rem; }
+
+  /* Mais vendidos */
   .produtos-grid { grid-template-columns: repeat(5, 130px); }
-  .section-header h2 { font-size: 1.4rem; }
+
+  /* Avaliações */
+  .depoimento-card blockquote { font-size: 0.875rem; }
+
+  /* Footer */
+  .footer-copy { font-size: 0.75rem; }
+  .footer-links a { font-size: 0.8125rem; }
 }
 
 /* Overlay quando menu mobile está aberto */
@@ -1192,7 +1234,8 @@ body.nav-is-open::after {
   display: block;
   width: 100%;
   aspect-ratio: 9 / 16;
-  object-fit: cover;
+  object-fit: contain;
+  background: #000;
 }
 
 /* Botão de som */
@@ -1226,12 +1269,17 @@ body.nav-is-open::after {
   pointer-events: none;
 }
 
-/* --- Responsivo --- */
+/* --- Responsivo tablet ≤ 900px --- */
 @media (max-width: 900px) {
   .como-funciona__container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
     text-align: center;
+  }
+
+  /* Vídeo sobe para cima do texto */
+  .como-funciona__video-wrap {
+    order: -1;
   }
 
   .como-funciona__texto > p,
@@ -1248,17 +1296,27 @@ body.nav-is-open::after {
     margin-inline: auto;
   }
 
+  .como-funciona__texto .hero__cta {
+    margin-inline: auto;
+  }
+
   .video-frame {
-    width: 340px;
+    width: 280px;
   }
 }
 
+/* --- Responsivo mobile ≤ 480px --- */
 @media (max-width: 480px) {
   .como-funciona {
-    padding-block: 3.5rem;
+    padding-block: 2.5rem;
+  }
+
+  .como-funciona__container {
+    gap: 2rem;
+    padding-inline: 1.25rem;
   }
 
   .video-frame {
-    width: 300px;
+    width: min(260px, 72vw);
   }
 }
