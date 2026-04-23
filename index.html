@@ -150,6 +150,82 @@
     </section>
 
     <!-- ============================================================
+         COMO FUNCIONA (VIDEO)
+         ============================================================ -->
+    <section class="como-funciona" id="como-funciona">
+      <div class="container como-funciona__container">
+
+        <!-- Texto lado esquerdo -->
+        <div class="como-funciona__texto animate-on-scroll" data-animation="fade-right">
+          <span class="section-eyebrow">Simples e rápido</span>
+          <h2>Como funciona?</h2>
+          <p>Em poucos passos você personaliza e recebe seus adesivos, etiquetas e rótulos onde quiser. Veja como é fácil criar o seu pedido.</p>
+
+          <ol class="como-funciona__steps">
+            <li class="como-funciona__step">
+              <span class="step-number">01</span>
+              <div>
+                <strong>Escolha o material</strong>
+                <p>Selecione entre vinil branco, transparente, DTF ou super rápido.</p>
+              </div>
+            </li>
+            <li class="como-funciona__step">
+              <span class="step-number">02</span>
+              <div>
+                <strong>Escolha o formato</strong>
+                <p>Redondo, quadrado, retangular, oval ou corte personalizado no seu shape.</p>
+              </div>
+            </li>
+            <li class="como-funciona__step">
+              <span class="step-number">03</span>
+              <div>
+                <strong>Configure seu projeto</strong>
+                <p>Defina tamanho, quantidade e envie seu arquivo ou crie com a gente.</p>
+              </div>
+            </li>
+            <li class="como-funciona__step">
+              <span class="step-number">04</span>
+              <div>
+                <strong>Receba em casa</strong>
+                <p>Produção rápida e entrega para todo o Brasil.</p>
+              </div>
+            </li>
+          </ol>
+
+          <a href="#materiais" class="hero__cta">CRIAR MEU PEDIDO</a>
+        </div>
+
+        <!-- Vídeo lado direito -->
+        <div class="como-funciona__video-wrap animate-on-scroll" data-animation="fade-left">
+          <div class="video-frame">
+            <video
+              id="tutorial-video"
+              class="video-frame__player"
+              src="assets/videos/GrudadoTutorial.mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+            ></video>
+            <!-- Controle de som -->
+            <button class="video-frame__sound-btn" id="sound-toggle" aria-label="Ativar som">
+              <svg class="icon-mute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+              </svg>
+              <svg class="icon-sound" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
          MATERIAIS (3 CARDS)
          ============================================================ -->
     <section class="materiais" id="materiais">
@@ -176,7 +252,7 @@
           <a href="colecoes/dtf.html" class="material-card animate-on-scroll" data-animation="scale-in" data-delay="100">
             <div class="material-card__inner">
               <img class="material-card__image" src="assets/images/cards/CARD-3.png" alt="DTF">
-              <div class="material-card__copy">
+              <div class="material-card__copy material-card__copy--sm">
                 <h3 class="material-card__title">VINIL<br>TRANSPARENTE</h3>
                 <span class="material-card__action btn btn--primary">Personalizar Já!</span>
               </div>

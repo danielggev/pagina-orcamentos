@@ -147,7 +147,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------
-     4. SMOOTH SCROLL (links âncora internos)
+     4. CONTROLE DE SOM — VÍDEO TUTORIAL
+     ------------------------------------------ */
+  const tutorialVideo = document.getElementById('tutorial-video');
+  const soundToggle   = document.getElementById('sound-toggle');
+
+  if (tutorialVideo && soundToggle) {
+    const iconMute  = soundToggle.querySelector('.icon-mute');
+    const iconSound = soundToggle.querySelector('.icon-sound');
+
+    soundToggle.addEventListener('click', () => {
+      tutorialVideo.muted = !tutorialVideo.muted;
+      iconMute.style.display  = tutorialVideo.muted ? '' : 'none';
+      iconSound.style.display = tutorialVideo.muted ? 'none' : '';
+      soundToggle.setAttribute('aria-label', tutorialVideo.muted ? 'Ativar som' : 'Desativar som');
+    });
+  }
+
+  /* ------------------------------------------
+     5. SMOOTH SCROLL (links âncora internos)
      ------------------------------------------ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
