@@ -37,11 +37,119 @@
 .colecao-banner--img {
   padding: 0;
   line-height: 0;
+  position: relative;
 }
-.colecao-banner--img img {
+.colecao-banner--img picture,
+.colecao-banner--img picture img {
   width: 100%;
   height: auto;
   display: block;
+  line-height: 0;
+}
+
+@keyframes banner-float {
+  0%   { transform: translateY(calc(-50% - 8px)); }
+  50%  { transform: translateY(calc(-50% + 8px)); }
+  100% { transform: translateY(calc(-50% - 8px)); }
+}
+
+/* Imagem de produto flutuando no banner */
+.colecao-banner__produto {
+  position: absolute;
+  left: 60%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 320px;
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+  animation: banner-float 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
+}
+
+/* Overlay de texto sobre o banner */
+.colecao-banner__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0 20%;
+  pointer-events: none;
+}
+
+.colecao-banner__overlay h1 {
+  font-family: var(--gv-font);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.colecao-banner__overlay p {
+  font-family: var(--gv-font);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 40%;
+  color: #FFFFFF;
+  opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  /* Banner vira coluna: texto em cima, foto embaixo */
+  .colecao-banner--img {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* A imagem de fundo (picture) ocupa metade superior */
+  .colecao-banner--img picture {
+    order: 1;
+  }
+
+  /* Overlay sai do absolute e vira bloco normal abaixo da imagem */
+  .colecao-banner__overlay {
+    position: relative;
+    inset: auto;
+    order: 2;
+    padding: 1.5rem 6% 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .colecao-banner__overlay h1 {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .colecao-banner__overlay p {
+    font-size: clamp(0.8rem, 3.2vw, 1rem);
+    max-width: 100%;
+  }
+
+  /* Foto do produto abaixo do texto */
+  .colecao-banner__produto {
+    position: relative;
+    order: 3;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    height: 180px;
+    margin: 1rem auto 1.5rem;
+    animation: banner-float-mobile 3.5s ease-in-out infinite;
+  }
+
+  @keyframes banner-float-mobile {
+    0%   { transform: translateY(-6px); }
+    50%  { transform: translateY(6px); }
+    100% { transform: translateY(-6px); }
+  }
 }
 
 /* Variante: Vinil Branco */
