@@ -1006,6 +1006,7 @@ h1, h2, h3, h4 {
   }
   .header-nav__list li:first-child a { border-radius: 12px 0 0 12px !important; }
   .header-nav__list li:last-child a  { border-radius: 0 12px 12px 0 !important; }
+  .header-nav__list li a.btn-super-rapido { color: var(--color-pink); }
   .header-nav__list li a:hover {
     background: var(--color-gray-50);
     color: var(--color-pink);
@@ -1111,44 +1112,44 @@ body.nav-is-open::after {
 .btn-super-rapido {
   position: relative;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  padding-block: 0.5rem;
-  padding-inline: 1.25rem;
-  background-color: #FFD700;
-  border-radius: 9999px;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  gap: 8px;
+  color: var(--color-pink);
+  gap: 6px;
   font-weight: bold;
-  border: 3px solid rgba(255,255,255,0.3);
   outline: none;
   overflow: hidden;
-  font-size: 15px;
+  font-size: 0.875rem;
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
+  padding: 0.75rem 1.25rem;
 }
 
 .btn-super-rapido .btn-sr-icon {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
-  fill: var(--color-navy);
+  fill: var(--color-pink);
   display: inline-block;
   vertical-align: middle;
   transition: transform 0.3s ease-in-out;
 }
 
 .btn-super-rapido:hover {
-  transform: scale(1.05);
-  border-color: rgba(255,255,255,0.6);
-  color: #fff;
+  transform: none;
+  color: var(--color-pink);
+  opacity: 0.8;
 }
 
 .btn-super-rapido:hover .btn-sr-icon {
   fill: var(--color-pink);
+  transform: scale(1.15);
 }
 
 .btn-super-rapido:hover::before {
@@ -1178,6 +1179,7 @@ body.nav-is-open::after {
 
 .header-nav__list li a.btn-super-rapido {
   margin-left: 4px;
+  color: var(--color-pink);
 }
 
 /* ============================================
