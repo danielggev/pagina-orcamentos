@@ -46,6 +46,10 @@
    ------------------------------------------ */
 .produto-galeria { position: sticky; top: 100px; }
 
+@media (max-width: 900px) {
+  .produto-galeria { position: static; }
+}
+
 .produto-galeria__principal {
   border-radius: var(--gv-radius-lg);
   overflow: hidden;
@@ -469,6 +473,23 @@ textarea:focus { outline: none; border-color: var(--gv-azul-escuro); }
 }
 @media (max-width: 768px) {
   .produto-descricao__inner { grid-template-columns: 1fr; }
+  .produto-page { padding: 1.5rem 0 2.5rem; }
+  .produto-info__titulo { font-size: clamp(1.35rem, 5vw, 1.75rem); }
+  .preco-valor { font-size: 1.4rem; }
+  .btn-adicionar-carrinho { font-size: 1rem; padding: 0.9rem 1.25rem; }
+  .thumb { width: 60px; height: 60px; }
+  .tamanho-custom input { width: 100px; }
+}
+
+@media (max-width: 480px) {
+  .produto-page { padding: 1rem 0 2rem; }
+  .produto-info__titulo { font-size: clamp(1.2rem, 5.5vw, 1.5rem); }
+  .tamanho-opcoes, .quantidade-opcoes { gap: 0.4rem; }
+  .tamanho-opcao span, .quantidade-opcao span { padding: 0.4rem 0.75rem; font-size: 0.82rem; }
+  .upload-area { padding: 1.25rem 1rem; }
+  .upload-area svg { width: 28px; height: 28px; }
+  .produto-descricao { padding: 2rem 0 3rem; }
+  .produto-beneficios { gap: 0.5rem; }
 }
 
 .produto-descricao__texto h2 {
