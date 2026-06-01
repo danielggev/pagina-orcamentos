@@ -12,12 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------
      1. BANNER RESPONSIVO (troca src por tamanho)
      ------------------------------------------ */
-  const bannerImgs = document.querySelectorAll('.banner-img');
+  const bannerImgs   = document.querySelectorAll('.banner-img');
+  const bannerVideos = document.querySelectorAll('.banner-video');
   const mq = window.matchMedia('(max-width: 768px)');
 
   function updateBanners() {
     bannerImgs.forEach(img => {
       img.src = mq.matches ? img.dataset.mobile : img.dataset.desktop;
+    });
+    bannerVideos.forEach(video => {
+      const src = mq.matches ? video.dataset.mobile : video.dataset.desktop;
+      const source = video.querySelector('source');
+      if (source.src !== new URL(src, location.href).href) {
+        source.src = src;
+        video.load();
+        video.play().catch(() => {});
+      }
     });
   }
 
