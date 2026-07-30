@@ -302,6 +302,30 @@ h1, h2, h3, h4 {
   color: var(--color-white);
 }
 
+/* Rastreie seu pedido */
+.header-track-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 40px;
+  margin-left: 0.5rem;
+  padding: 0 1.1rem;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-100);
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background var(--transition), color var(--transition);
+}
+.header-track-btn:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+.header-track-btn__icon { width: 17px; height: 17px; flex-shrink: 0; }
+
 /* -- Linha de navegação por categorias -- */
 .header-nav {
   background: transparent;
@@ -968,6 +992,19 @@ h1, h2, h3, h4 {
   .header-icon-btn { width: 36px; height: 36px; }
   .header-icon-btn svg { width: 20px; height: 20px; }
   .header-icon-btn--dark { border-radius: var(--radius-sm); }
+
+  .header-track-btn {
+    width: 36px;
+    height: 36px;
+    margin-left: 0;
+    padding: 0;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: none;
+  }
+  .header-track-btn:hover { background: var(--color-gray-100); color: var(--color-pink); }
+  .header-track-btn__label { display: none; }
+  .header-track-btn__icon { width: 20px; height: 20px; }
 
   .header-nav {
     position: relative;
