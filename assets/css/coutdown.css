@@ -1,0 +1,393 @@
+/* ============================================
+   GRUDADO EM VOCÊ — Black Friday · Lista VIP
+   Página isolada (layout próprio, fora do design
+   system das demais páginas do site)
+   ============================================ */
+
+@import url('tokens.css');
+
+:root {
+  --cd-navy: var(--gv-azul-escuro);
+  --cd-navy-dark: #16232c;
+  --cd-pink: var(--gv-rosa);
+  --cd-cyan: var(--gv-azul-claro);
+  --cd-yellow: var(--gv-amarelo);
+  --cd-white: #FFFFFF;
+  --cd-cream: #FFF7F0;
+  --cd-gray: #5b6b76;
+  --cd-gray-light: #E6E1DC;
+  --cd-font: var(--gv-font);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--cd-font);
+  color: var(--cd-navy);
+  background: var(--cd-cream);
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* ============================================
+   LAYOUT — sem scroll vertical no desktop/tablet
+   ============================================ */
+.cd-page {
+  display: grid;
+  grid-template-columns: minmax(480px, 58%) 1fr;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* -------- Coluna esquerda -------- */
+.cd-left {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.6rem, 1.6vh, 1.1rem);
+  padding: clamp(1.5rem, 3.4vh, 2.5rem) clamp(1.5rem, 5.5vw, 4.5rem);
+  min-height: 0;
+  background: linear-gradient(175deg, #FFFFFF 0%, #FFF9F4 55%, #FFF1EC 100%);
+}
+
+.cd-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.7rem, 1.7vh, 1.1rem);
+  width: 100%;
+}
+
+/* Manchas decorativas suaves — dão profundidade sem competir com o conteúdo */
+.cd-left::before,
+.cd-left::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+.cd-left::before {
+  width: 420px; height: 420px;
+  background: var(--cd-yellow);
+  opacity: 0.14;
+  filter: blur(70px);
+  top: -12%;
+  left: -8%;
+}
+.cd-left::after {
+  width: 340px; height: 340px;
+  background: var(--cd-pink);
+  opacity: 0.1;
+  filter: blur(70px);
+  bottom: -14%;
+  left: 12%;
+}
+
+.cd-left > * { position: relative; z-index: 1; }
+
+/* Logo + mascotes — fixo no canto superior esquerdo, fora do fluxo centralizado */
+.cd-logo {
+  --logo-pad: clamp(1.25rem, 3.2vh, 2.25rem);
+  position: absolute;
+  top: var(--logo-pad);
+  left: var(--logo-pad);
+  z-index: 2;
+  display: inline-flex;
+  width: fit-content;
+}
+.cd-logo img { height: clamp(26px, 4vh, 38px); width: auto; }
+
+/* Countdown — elemento principal, deve ser a primeira coisa vista */
+.cd-countdown { display: flex; flex-direction: column; align-items: center; }
+.cd-countdown__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: clamp(0.7rem, 1.1vh, 0.82rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cd-white);
+  background: var(--cd-pink);
+  padding: 0.5em 0.9em;
+  border-radius: var(--gv-radius-pill);
+  box-shadow: 0 6px 16px rgba(239,66,111,0.3);
+  margin-bottom: clamp(0.5rem, 1.3vh, 0.85rem);
+}
+.cd-countdown__label svg { width: 12px; height: 12px; flex-shrink: 0; }
+.cd-countdown__grid {
+  display: flex;
+  gap: clamp(0.55rem, 1.3vw, 1rem);
+}
+.cd-countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  min-width: clamp(72px, 8vw, 112px);
+  padding: clamp(0.6rem, 1.7vh, 1.1rem) 0.3rem;
+  border-radius: var(--gv-radius-lg);
+  background: linear-gradient(160deg, var(--cd-navy) 0%, var(--cd-navy-dark) 100%);
+  box-shadow: 0 14px 28px rgba(37,55,70,0.32);
+}
+.cd-countdown__value {
+  font-family: var(--cd-font);
+  font-weight: 900;
+  font-size: clamp(2rem, 5.2vh, 3.5rem);
+  color: var(--cd-white);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cd-countdown__unit-label {
+  font-size: clamp(0.62rem, 0.95vh, 0.75rem);
+  color: var(--cd-yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+/* Headline */
+.cd-headline {
+  font-family: var(--cd-font);
+  font-weight: 900;
+  font-size: clamp(1.3rem, 3vh, 2rem);
+  line-height: 1.22;
+  color: var(--cd-navy);
+  text-align: center;
+  max-width: 480px;
+  text-wrap: balance;
+  margin-top: clamp(0.3rem, 0.9vh, 0.6rem);
+}
+.cd-highlight { color: var(--cd-pink); }
+
+/* Benefícios */
+.cd-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em 0.9em;
+  margin-top: clamp(0.1rem, 0.5vh, 0.3rem);
+}
+.cd-benefits li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: clamp(0.68rem, 1vh, 0.78rem);
+  font-weight: 700;
+  color: var(--cd-navy);
+  opacity: 0.8;
+}
+.cd-benefits li svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--cd-pink);
+}
+.cd-benefits li:nth-child(2) svg { color: var(--cd-cyan); }
+.cd-benefits li:nth-child(3) svg { color: var(--gv-verde); }
+
+/* -------- Card do formulário -------- */
+.cd-form-card {
+  position: relative;
+  background: var(--cd-white);
+  border-radius: var(--gv-radius-lg);
+  box-shadow: 0 4px 10px rgba(37,55,70,0.06), 0 24px 48px -12px rgba(239,66,111,0.22);
+  padding: clamp(0.9rem, 1.9vh, 1.35rem) clamp(1rem, 2vh, 1.35rem);
+  margin-top: clamp(0.5rem, 1.3vh, 0.9rem);
+  width: 100%;
+  max-width: 380px;
+}
+
+.cd-form-card__title {
+  font-family: var(--cd-font);
+  font-weight: 900;
+  font-size: clamp(0.85rem, 1.4vh, 0.95rem);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--cd-navy);
+  text-align: center;
+  margin-bottom: clamp(0.55rem, 1.2vh, 0.85rem);
+}
+
+.cd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.cd-form__row { position: relative; display: flex; align-items: center; }
+.cd-form__icon {
+  position: absolute;
+  left: 0.85rem;
+  width: 16px;
+  height: 16px;
+  color: #ADB5BD;
+  pointer-events: none;
+}
+.cd-form__row input {
+  width: 100%;
+  padding: 0.65rem 0.85rem 0.65rem 2.35rem;
+  border: 1.5px solid var(--cd-gray-light);
+  border-radius: var(--gv-radius-md);
+  font-family: var(--cd-font);
+  font-size: 0.85rem;
+  color: var(--cd-navy);
+  background: var(--cd-white);
+  transition: border-color 200ms ease;
+}
+.cd-form__row input::placeholder { color: #ADB5BD; }
+.cd-form__row input:focus { outline: none; border-color: var(--cd-pink); }
+
+.cd-form__submit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.5rem;
+  margin-top: 0.2rem;
+  background: var(--cd-pink);
+  color: var(--cd-white);
+  border-radius: var(--gv-radius-pill);
+  font-family: var(--cd-font);
+  font-weight: 900;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  box-shadow: 0 12px 24px rgba(239,66,111,0.38);
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+.cd-form__submit svg { width: 15px; height: 15px; flex-shrink: 0; }
+.cd-form__submit:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 14px 28px rgba(239,66,111,0.46); }
+.cd-form__submit:active { transform: translateY(0); }
+
+.cd-form__success {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cd-navy);
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+.cd-form__microcopy {
+  font-size: 0.68rem;
+  color: var(--cd-gray);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+/* Footer social — extremamente discreto, não compete com a conversão */
+.cd-footer {
+  display: flex;
+  gap: 0.6rem;
+  opacity: 0.45;
+}
+.cd-footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--cd-navy);
+  transition: opacity 200ms ease;
+}
+.cd-footer a:hover { opacity: 0.7; }
+.cd-footer svg { width: 13px; height: 13px; }
+
+/* -------- Coluna direita — placeholder para imagem da campanha -------- */
+.cd-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--cd-navy-dark);
+  border-radius: 28px 0 0 28px;
+}
+.cd-right__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Pequenos elementos decorativos na costura entre as duas áreas —
+   suavizam a transição sem competir com a imagem */
+.cd-seam-star {
+  position: absolute;
+  z-index: 2;
+  font-size: 14px;
+  line-height: 1;
+  pointer-events: none;
+}
+.cd-seam-star--1 { top: 14%; left: -6px; color: var(--cd-yellow); font-size: 16px; opacity: 0.9; }
+.cd-seam-star--2 { top: 46%; left: 10px; color: var(--cd-white); font-size: 10px; opacity: 0.55; }
+.cd-seam-star--3 { bottom: 12%; left: -4px; color: var(--cd-cyan); font-size: 13px; opacity: 0.85; }
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
+
+/* Tablet — a imagem reduz proporcionalmente, mantendo 2 colunas e sem scroll */
+@media (max-width: 1100px) and (min-width: 769px) {
+  .cd-page { grid-template-columns: minmax(440px, 66%) 1fr; }
+  .cd-headline { font-size: clamp(1.2rem, 2.8vh, 1.8rem); }
+}
+
+/* Mobile — coluna única, com scroll natural */
+@media (max-width: 768px) {
+  html, body { height: auto; }
+  .cd-page {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  .cd-left {
+    justify-content: flex-start;
+    padding: 2rem 1.5rem 2.5rem;
+    gap: 1rem;
+  }
+  .cd-content { gap: 0.9rem; }
+  .cd-left::before, .cd-left::after { display: none; }
+  .cd-logo {
+    position: static;
+    margin-bottom: 0.25rem;
+  }
+  .cd-logo img { height: 40px; }
+  .cd-headline { max-width: none; font-size: 1.3rem; }
+  .cd-form-card { max-width: none; }
+  .cd-countdown__unit { min-width: 62px; padding: 0.55rem 0.2rem; }
+  .cd-countdown__value { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+
+  .cd-right {
+    order: 1;
+    border-radius: 28px 28px 0 0;
+    aspect-ratio: 4 / 3;
+    min-height: 220px;
+  }
+  .cd-seam-star--1, .cd-seam-star--2, .cd-seam-star--3 { display: none; }
+}
+
+@media (max-width: 480px) {
+  .cd-countdown__unit { min-width: 50px; }
+  .cd-headline { font-size: 1.2rem; }
+}
