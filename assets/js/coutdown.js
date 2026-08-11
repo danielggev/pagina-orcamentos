@@ -4,44 +4,69 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- CONTAGEM REGRESSIVA ---------- */
-  const target = new Date(2026, 9, 30, 0, 0, 0); // 30/10/2026 00:00
-
+  /* ---------- CONTAGEM REGRESSIVA ----------
+     Os elementos ainda não existem no HTML — o bloco fica inerte até que a
+     contagem volte para a página. Guardado para não precisar reescrever. */
   const elDays = document.getElementById('cd-days');
   const elHours = document.getElementById('cd-hours');
   const elMinutes = document.getElementById('cd-minutes');
   const elSeconds = document.getElementById('cd-seconds');
 
-  function pad(n) { return String(n).padStart(2, '0'); }
+  if (elDays && elHours && elMinutes && elSeconds) {
+    const target = new Date(2026, 9, 30, 0, 0, 0); // 30/10/2026 00:00
 
-  function tick() {
-    const diff = target.getTime() - Date.now();
+    const pad = (n) => String(n).padStart(2, '0');
 
-    if (diff <= 0) {
-      elDays.textContent = '00';
-      elHours.textContent = '00';
-      elMinutes.textContent = '00';
-      elSeconds.textContent = '00';
-      return;
+    function tick() {
+      const diff = Math.max(0, target.getTime() - Date.now());
+
+      elDays.textContent = pad(Math.floor(diff / 86400000));
+      elHours.textContent = pad(Math.floor((diff / 3600000) % 24));
+      elMinutes.textContent = pad(Math.floor((diff / 60000) % 60));
+      elSeconds.textContent = pad(Math.floor((diff / 1000) % 60));
     }
 
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff / 3600000) % 24);
-    const minutes = Math.floor((diff / 60000) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    elDays.textContent = pad(days);
-    elHours.textContent = pad(hours);
-    elMinutes.textContent = pad(minutes);
-    elSeconds.textContent = pad(seconds);
+    tick();
+    setInterval(tick, 1000);
   }
 
-  tick();
-  setInterval(tick, 1000);
-
   /* ---------- FORMULÁRIO ---------- */
+  const WHATSAPP = '5521991909015';
+
   const form = document.getElementById('cd-form');
-  const success = document.getElementById('cd-success');
+  const status = document.getElementById('cd-status');
+  const celular = document.getElementById('cd-celular');
+
+  /* Máscara (99) 99999-9999 — reescreve a partir dos dígitos, então
+     apagar no meio do campo não deixa parênteses ou traço órfãos. */
+  function maskPhone(value) {
+    const d = value.replace(/\D/g, '').slice(0, 11);
+
+    if (d.length <= 2) return d;
+    if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+    if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+    return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+  }
+
+  if (celular) {
+    celular.addEventListener('input', () => {
+      celular.value = maskPhone(celular.value);
+
+      // Fixo tem 10 dígitos, móvel tem 11 — os dois passam
+      const digits = celular.value.replace(/\D/g, '').length;
+      celular.setCustomValidity(
+        digits === 0 || digits >= 10 ? '' : 'Informe o DDD e o número completo.'
+      );
+    });
+  }
+
+  function showStatus(message, ok) {
+    if (!status) return;
+    status.textContent = message;
+    status.hidden = false;
+    status.style.color = ok ? 'var(--gv-verde)' : 'var(--gv-rosa)';
+    status.style.background = ok ? 'var(--gv-verde-10)' : 'var(--gv-rosa-10)';
+  }
 
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -54,17 +79,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const nome = form.nome.value.trim();
       const email = form.email.value.trim();
-      const whatsapp = form.whatsapp.value.trim();
+      const tel = form.celular.value.trim();
 
-      const msg = `Olá! Quero entrar para a Lista VIP da Black Friday da Grudado em Você:\n\n`
+      const msg = 'Olá! Quero entrar para a Lista VIP da Black Friday da Grudado em Você:\n\n'
         + `*Nome:* ${nome}\n`
         + `*E-mail:* ${email}\n`
-        + `*WhatsApp:* ${whatsapp}`;
+        + `*Celular:* ${tel}`;
 
-      window.open(`https://wa.me/5521991909015?text=${encodeURIComponent(msg)}`, '_blank');
+      const win = window.open(
+        `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,
+        '_blank',
+        'noopener'
+      );
+
+      if (!win) {
+        showStatus('Libere os pop-ups do navegador para concluir seu cadastro.', false);
+        return;
+      }
 
       form.hidden = true;
-      if (success) success.hidden = false;
+      showStatus('Prontinho! Você já está na nossa Lista VIP. 🎉', true);
     });
   }
 
