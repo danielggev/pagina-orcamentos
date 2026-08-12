@@ -12,10 +12,10 @@
 }
 
 .store-shell { width: min(95%, 1820px); margin-inline: auto; }
-.store-kicker { padding: 7px 20px; background: var(--store-pink); color: #fff; text-align: center; }
-.store-kicker h1 { margin: 0; color: #fff; font-size: 19px; line-height: 1.2; font-weight: 700; }
+.store-kicker { padding: 7px 20px; background: var(--store-yellow); color: #000; text-align: center; }
+.store-kicker h1 { margin: 0; color: #000; font-size: 19px; line-height: 1.2; font-weight: 700; }
 
-.store-benefits { padding: 20px 0; color: #fff; background: var(--store-orange); }
+.store-benefits { padding: 20px 0; color: #fff; background: #000000; }
 .store-benefits__track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .store-benefit { display: flex; align-items: center; justify-content: center; gap: 12px; }
 .store-benefit__icon { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; color: #111; background: #fff; border-radius: 50%; font-size: 14px; font-weight: 900; }
@@ -50,7 +50,7 @@
 .store-price small { margin-top: 5px; font-size: 15px; font-weight: 400; }
 .store-shipping { display: flex; width: 100%; min-height: 34px; align-items: center; justify-content: center; margin: 17px 0 29px; padding: 6px 9px; color: var(--store-blue); background: #edf0f2; border-radius: 7px; font-size: 12px; }
 .store-buy, .store-view-all { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; border-radius: 999px; font-weight: 700; text-decoration: none; }
-.store-buy { width: 88%; min-height: 56px; margin-top: auto; color: #fff; background: #087512; border-radius: 11px; font-size: 19px; }
+.store-buy { width: 88%; min-height: 56px; margin-top: auto; color: #fff; background: #000000; border-radius: 11px; font-size: 19px; }
 .store-view-all { min-width: 132px; margin: 35px 50% 0; padding: 0 25px; color: #fff; background: var(--store-blue); transform: translateX(-50%); white-space: nowrap; }
 .store-carousel-arrow { position: absolute; top: 46%; z-index: 3; display: grid; width: 46px; height: 46px; place-items: center; padding: 0; color: #111; background: rgba(255,255,255,.94); border: 2px solid #111; border-radius: 50%; cursor: pointer; transform: translateY(-50%); }
 .store-carousel-arrow svg { width: 18px; height: 18px; }

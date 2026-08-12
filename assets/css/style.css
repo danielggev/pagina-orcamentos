@@ -139,7 +139,7 @@ h1, h2, h3, h4 {
    ANNOUNCEMENT BAR
    ============================================ */
 .announcement-bar {
-  background: var(--gv-laranja);
+  background: #000000;
   color: #FFFFFF;
   font-size: 0.8125rem;
   font-family: var(--gv-font);

@@ -580,35 +580,119 @@ body {
 /* Mobile — a forma recua para o rodapé direito, liberando o topo e a esquerda.
    As faixas engrossam em unidades do viewBox para não sumirem na escala menor. */
 @media (max-width: 720px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .cd-page {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+  }
+
   .cd-stage {
     width: 100%;
-    /* A forma ocupa a base da tela — o conteúdo sobe para não encavalar */
-    align-items: flex-start;
-    padding: 8vh 24px 40vh;
+    height: 100%;
+    min-height: 0;
+    align-items: center;
+    padding: clamp(12px, 2.5vh, 24px) 20px;
   }
 
   .cd-panel {
     width: min(100%, 380px);
     margin: 0 auto;
+    gap: clamp(7px, 1.4vh, 12px);
     --cd-panel-x: 0px;
   }
 
   .cd-logo {
-    width: min(70%, 260px);
+    width: min(62%, 220px);
+  }
+
+  .cd-title {
+    font-size: clamp(30px, 9vw, 42px);
+  }
+
+  .cd-subheadline {
+    font-size: clamp(13px, 3.7vw, 15px);
+    line-height: 1.3;
+  }
+
+  .cd-countdown__label {
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
+
+  .cd-countdown__unit {
+    gap: 2px;
+    padding: 0 12px;
+  }
+
+  .cd-countdown__value {
+    font-size: clamp(27px, 8vw, 34px);
+  }
+
+  .cd-form {
+    gap: clamp(7px, 1.2vh, 10px);
+  }
+
+  .cd-field__input {
+    padding-top: clamp(10px, 1.7vh, 13px);
+    padding-bottom: clamp(10px, 1.7vh, 13px);
+  }
+
+  .cd-submit {
+    padding-top: clamp(12px, 2vh, 15px);
+    padding-bottom: clamp(12px, 2vh, 15px);
   }
 
   .cd-shape {
-    right: -16vw;
-    bottom: -6vh;
-    width: min(96vw, 48vh);
+    display: none;
+  }
+}
 
-    --cd-band-outer: 460;
-    --cd-band-mid:   170;
+/* Celulares baixos: preserva todos os campos sem criar rolagem. */
+@media (max-width: 720px) and (max-height: 620px) {
+  .cd-logo {
+    width: min(52%, 180px);
+  }
+
+  .cd-title {
+    font-size: clamp(27px, 8vw, 34px);
+  }
+
+  .cd-subheadline {
+    font-size: 12px;
+  }
+
+  .cd-callout,
+  .cd-microcopy {
+    font-size: 11px;
+  }
+
+  .cd-countdown__value {
+    font-size: 26px;
+  }
+
+  .cd-countdown__unit-label {
+    font-size: 9px;
+  }
+
+  .cd-field__input {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .cd-submit {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 
 /* Telas muito baixas em paisagem */
-@media (max-height: 520px) and (orientation: landscape) {
+@media (min-width: 721px) and (max-height: 520px) and (orientation: landscape) {
   .cd-stage {
     align-items: flex-start;
   }
