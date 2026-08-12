@@ -8,19 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const imagePath = 'assets/images/home-store/';
 
   const bestSellers = [
-    ['bestseller-termocolante.webp', 'Etiqueta Termocolante Personalizada', 'Identifique roupas e uniformes. Aplique com ferro quente.', 'De R$ 42,90', '3x R$ 14,30', '1058 reviews', 'etiqueta-para-roupas-termocolante-personalizada', 'Mais Vendidos'],
-    ['bestseller-mini.webp', 'Etiqueta Mini', 'Compactas, práticas e resistentes para itens pequenos.', 'De R$ 32,90', '3x R$ 10,97', '328 reviews', 'etiqueta-mini-personalizada', 'Mais Vendidos'],
-    ['bestseller-super-mini.webp', 'Etiqueta Super Mini', 'Tamanho mini e utilidade máxima. Ideal para lápis e canetas.', 'De R$ 24,90', '3x R$ 8,30', '385 reviews', 'etiqueta-super-mini'],
+    ['bestseller-termocolante.webp', 'Etiqueta Termocolante Personalizada', 'Identifique roupas e uniformes. Aplique com ferro quente.', 'De R$ 42,90', '3x R$ 14,30', '1058 reviews', 'etiqueta-para-roupas-termocolante-personalizada', '40% OFF'],
+    ['bestseller-mini.webp', 'Etiqueta Mini', 'Compactas, práticas e resistentes para itens pequenos.', 'De R$ 32,90', '3x R$ 10,97', '328 reviews', 'etiqueta-mini-personalizada', 'Black Friday - 40% OFF'],
+    ['bestseller-super-mini.webp', 'Etiqueta Super Mini', 'Tamanho mini e utilidade máxima. Ideal para lápis e canetas.', 'De R$ 24,90', '3x R$ 8,30', '385 reviews', 'etiqueta-super-mini', 'ECONOMIZE 40%'],
     ['bestseller-pulseira.webp', 'Pulseira de ID Reutilizável', 'Tecido macio e trava tripla de segurança.', 'R$ 61,90', '3x R$ 20,63', '474 reviews', 'pulseira-de-id-reutilizavel'],
     ['bestseller-fininha.webp', 'Etiqueta Retangular Fininha', 'Versátil e discreta para identificar objetos.', 'De R$ 24,90', '3x R$ 8,30', '308 reviews', 'etiqueta-retangular-fininha-personalizada']
   ];
 
   const news = [
-    ['new-craque.webp', 'Combo Meu Craque', 'Seu pequeno craque em sua própria figurinha!', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque', 'Novo'],
-    ['new-flamengo.webp', 'Combo Meu Craque Flamengo', 'A paixão pelo Mengão em adesivos para personalizar tudo!', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque-flamengo-pesonalizado', 'Novo'],
-    ['new-corinthians.webp', 'Combo Meu Craque Corinthians', 'Para os pequenos que carregam o Timão no coração.', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque-corinthians-personalizado', 'Novo'],
-    ['kit-contorno.webp', 'Kit Transparente com Contorno', 'Personalização delicada e resistente à água.', 'R$ 43,90', '3x R$ 14,63', '2 reviews', 'kit-de-etiquetas-transparentes-com-contorno-personalizadas', 'Novo'],
-    ['kit-fofo.webp', 'Etiquetas Kit Super Fofo', "Etiquetas à prova d'água com muita personalidade.", 'De R$ 98,90', '3x R$ 32,97', '367 reviews', 'etiquetas-kit-super-fofo', 'Novo']
+    ['new-craque.webp', 'Combo Meu Craque', 'Seu pequeno craque em sua própria figurinha!', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque'],
+    ['new-flamengo.webp', 'Combo Meu Craque Flamengo', 'A paixão pelo Mengão em adesivos para personalizar tudo!', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque-flamengo-pesonalizado'],
+    ['new-corinthians.webp', 'Combo Meu Craque Corinthians', 'Para os pequenos que carregam o Timão no coração.', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque-corinthians-personalizado'],
+    ['kit-contorno.webp', 'Kit Transparente com Contorno', 'Personalização delicada e resistente à água.', 'R$ 43,90', '3x R$ 14,63', '2 reviews', 'kit-de-etiquetas-transparentes-com-contorno-personalizadas'],
+    ['kit-fofo.webp', 'Etiquetas Kit Super Fofo', "Etiquetas à prova d'água com muita personalidade.", 'De R$ 98,90', '3x R$ 32,97', '367 reviews', 'etiquetas-kit-super-fofo']
   ];
 
   const kits = [
@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <article class="store-benefit"><span class="store-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${icon(item[0])}</svg></span><span><strong>${item[1]}</strong><small>${item[2]}</small></span></article>`).join('')}
     </div></section>`;
 
-  const productCard = ([image, title, description, price, installment, reviews, slug, badge]) => `
+  const productCard = ([image, title, description, price, installment, reviews, slug, badge = 'Black Friday']) => `
     <article class="store-product"><a href="${storeUrl}/products/${slug}">
-      <div class="store-product__media">${badge ? `<span class="store-badge${badge === 'Novo' ? ' store-badge--new' : ''}">${badge}</span>` : ''}<button class="store-wishlist" type="button" aria-label="Adicionar ${title} aos favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></button><img src="${imagePath}${image}" alt="${title}" loading="lazy"></div>
+      <div class="store-product__media"><span class="store-badge">${badge}</span><button class="store-wishlist" type="button" aria-label="Adicionar ${title} aos favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></button><img src="${imagePath}${image}" alt="${title}" loading="lazy"></div>
       <div class="store-product__body"><span class="store-stars${reviews ? '' : ' store-stars--empty'}">${reviews ? `★★★★★ <small>${reviews.replace('reviews', 'avaliações')}</small>` : 'Sem avaliações'}</span><h3>${title}</h3><p>${description}</p><strong class="store-price">${price}<small>${installment}</small></strong><span class="store-shipping">Pronto para envio sexta-feira, 14/08</span><span class="store-buy">Comprar</span></div>
     </a></article>`;
 
