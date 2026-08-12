@@ -4,16 +4,61 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- CONTAGEM REGRESSIVA ----------
-     Os elementos ainda não existem no HTML — o bloco fica inerte até que a
-     contagem volte para a página. Guardado para não precisar reescrever. */
+  /* ---------- SELETOR DE COR DO PROTÓTIPO ---------- */
+  const themePicker = document.getElementById('cd-theme-picker');
+  const themeTrigger = document.getElementById('cd-theme-trigger');
+  const themeSwatches = document.querySelectorAll('.cd-theme-picker__swatch');
+
+  if (themePicker && themeTrigger && themeSwatches.length) {
+    const setPickerOpen = (open) => {
+      themePicker.classList.toggle('is-open', open);
+      themeTrigger.setAttribute('aria-expanded', String(open));
+      themeTrigger.setAttribute(
+        'aria-label',
+        open ? 'Fechar seletor de cores' : 'Abrir seletor de cores'
+      );
+    };
+
+    themeTrigger.addEventListener('click', () => {
+      setPickerOpen(!themePicker.classList.contains('is-open'));
+    });
+
+    themeSwatches.forEach((swatch) => {
+      swatch.addEventListener('click', () => {
+        document.documentElement.style.setProperty('--cd-accent', swatch.dataset.themeColor);
+        document.documentElement.style.setProperty('--cd-accent-rgb', swatch.dataset.themeRgb);
+        document.documentElement.style.setProperty('--cd-submit-text', swatch.dataset.themeText);
+
+        themeSwatches.forEach((item) => {
+          const active = item === swatch;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+
+        setPickerOpen(false);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!themePicker.contains(event.target)) setPickerOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setPickerOpen(false);
+        themeTrigger.focus();
+      }
+    });
+  }
+
+  /* ---------- CONTAGEM REGRESSIVA ---------- */
   const elDays = document.getElementById('cd-days');
   const elHours = document.getElementById('cd-hours');
   const elMinutes = document.getElementById('cd-minutes');
   const elSeconds = document.getElementById('cd-seconds');
 
   if (elDays && elHours && elMinutes && elSeconds) {
-    const target = new Date(2026, 9, 30, 0, 0, 0); // 30/10/2026 00:00
+    const target = new Date(2026, 10, 1, 0, 0, 0); // 01/11/2026 00:00
 
     const pad = (n) => String(n).padStart(2, '0');
 

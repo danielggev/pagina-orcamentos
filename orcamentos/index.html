@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <base href="../">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Projetos personalizados de adesivos, etiquetas e stickers. Vinil Branco, Vinil Transparente e DTF com qualidade profissional. Grudado em Você.">
   <title>Projetos Personalizados — Grudado em Você</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/carrinho.css">
-  <link rel="stylesheet" href="assets/css/home-store.css">
 </head>
 <body>
 
@@ -160,17 +160,266 @@
         </div>
     </section>
 
-    <div id="store-home-content"></div>
+    <!-- ============================================================
+         MATERIAIS (3 CARDS)
+         ============================================================ -->
+    <section class="materiais" id="materiais">
+      <div class="container">
+        <div class="section-header animate-on-scroll" data-animation="fade-up">
+          <h2>Escolha o Material Ideal</h2>
+          <p>Cada material tem características únicas para diferentes aplicações.<br>Saiba qual combina melhor com o seu projeto.</p>
+        </div>
+
+        <div class="materiais-grid">
+
+          <!-- Card 1: Vinil Branco -->
+          <a href="colecoes/vinil-branco.html" class="material-card animate-on-scroll" data-animation="scale-in" data-delay="0">
+            <div class="material-card__inner">
+              <img class="material-card__image" src="assets/images/cards/CARD-1.png" alt="Vinil Branco">
+              <div class="material-card__copy">
+                <h3 class="material-card__title">VINIL<br>BRANCO</h3>
+                <span class="material-card__action btn btn--primary">Personalizar Já!</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2: Filme DTF -->
+          <a href="colecoes/dtf.html" class="material-card animate-on-scroll" data-animation="scale-in" data-delay="100">
+            <div class="material-card__inner">
+              <img class="material-card__image" src="assets/images/cards/CARD-2.png" alt="Vinil Transparente">
+              <div class="material-card__copy material-card__copy--sm">
+                <h3 class="material-card__title">FILME<br>DTF</h3>
+                <span class="material-card__action btn btn--primary">Personalizar Já!</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 3: Vinil Transparente -->
+          <a href="colecoes/vinil-transparente.html" class="material-card animate-on-scroll" data-animation="scale-in" data-delay="200">
+            <div class="material-card__inner">
+              <img class="material-card__image" src="assets/images/cards/CARD-3.png" alt="DTF">
+              <div class="material-card__copy">
+                <h3 class="material-card__title">VINIL<br>TRANSPARENTE</h3>
+                <span class="material-card__action btn btn--primary">Personalizar Já!</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         COMO FUNCIONA (VIDEO)
+         ============================================================ -->
+    <section class="como-funciona" id="como-funciona">
+      <div class="container como-funciona__container">
+
+        <!-- Texto lado esquerdo -->
+        <div class="como-funciona__texto animate-on-scroll" data-animation="fade-right">
+          <span class="section-eyebrow">Simples e rápido</span>
+          <h2>Como funciona?</h2>
+          <p>Em poucos passos você personaliza e recebe seus adesivos, etiquetas e rótulos onde quiser. Veja como é fácil criar o seu pedido.</p>
+
+          <ol class="como-funciona__steps">
+            <li class="como-funciona__step">
+              <span class="step-number">01</span>
+              <div>
+                <strong>Escolha o material</strong>
+                <p>Selecione entre vinil branco, transparente, DTF ou super rápido.</p>
+              </div>
+            </li>
+            <li class="como-funciona__step">
+              <span class="step-number">02</span>
+              <div>
+                <strong>Escolha o formato</strong>
+                <p>Redondo, quadrado, retangular, oval ou corte personalizado no seu shape.</p>
+              </div>
+            </li>
+            <li class="como-funciona__step">
+              <span class="step-number">03</span>
+              <div>
+                <strong>Configure seu projeto</strong>
+                <p>Defina tamanho, quantidade e envie seu arquivo ou crie com a gente.</p>
+              </div>
+            </li>
+            <li class="como-funciona__step">
+              <span class="step-number">04</span>
+              <div>
+                <strong>Receba em casa</strong>
+                <p>Produção rápida e entrega para todo o Brasil.</p>
+              </div>
+            </li>
+          </ol>
+
+          <a href="orcamentos/#materiais" class="hero__cta">CRIAR MEU PEDIDO</a>
+        </div>
+
+        <!-- Vídeo lado direito -->
+        <div class="como-funciona__video-wrap animate-on-scroll" data-animation="fade-left">
+          <div class="video-frame">
+            <video
+              id="tutorial-video"
+              class="video-frame__player"
+              src="assets/videos/GrudadoTutorial.mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+            ></video>
+            <!-- Controle de som -->
+            <button class="video-frame__sound-btn" id="sound-toggle" aria-label="Ativar som">
+              <svg class="icon-mute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+              </svg>
+              <svg class="icon-sound" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         MAIS VENDIDOS
+         ============================================================ -->
+    <section class="mais-vendidos" id="mais-vendidos">
+      <div class="container">
+        <div class="mais-vendidos-header animate-on-scroll" data-animation="fade-up">
+          <h2>Mais Vendidos</h2>
+          <a href="https://grudadoemvoce.com.br/collections/all" class="ver-todos">Ver Todos</a>
+        </div>
+
+        <div class="produtos-grid animate-on-scroll" data-animation="fade-up" data-delay="100">
+
+          <!-- Produto 1 -->
+          <a href="produtos/adesivo-quadrado.html" class="produto-card">
+            <div class="produto-card__img">
+              <img src="assets/images/produtos/TESTE-PRODUTOS.png" alt="Adesivos Quadrados Vinil Branco">
+            </div>
+            <p class="produto-card__name">Adesivos Quadrados<br>Vinil Branco</p>
+          </a>
+
+          <!-- Produto 2 -->
+          <a href="produtos/corte-personalizado.html" class="produto-card">
+            <div class="produto-card__img">
+              <img src="assets/images/produtos/PRODUTO-DIECUT.png" alt="Corte Personalizado Vinil Branco">
+            </div>
+            <p class="produto-card__name">Corte Personalizado<br>Vinil Branco</p>
+          </a>
+
+          <!-- Produto 3 -->
+          <a href="produtos/dtf-camiseta.html" class="produto-card">
+            <div class="produto-card__img">
+              <img src="assets/images/produtos/PRODUTO-TERMO.png" alt="Estampa DTF para Camiseta">
+            </div>
+            <p class="produto-card__name">Estampa DTF<br>para Camiseta</p>
+          </a>
+
+          <!-- Produto 4 -->
+          <a href="produtos/adesivo-redondo-branco.html" class="produto-card">
+            <div class="produto-card__img">
+              <img src="assets/images/produtos/PRODUTO-REDONDO.png" alt="Adesivos Redondos Vinil Branco">
+            </div>
+            <p class="produto-card__name">Adesivos Redondos<br>Vinil Branco</p>
+          </a>
+
+          <!-- Produto 5 -->
+          <a href="produtos/adesivo-redondo-transparente.html" class="produto-card">
+            <div class="produto-card__img">
+              <img src="assets/images/produtos/PRODUTO-TRANSP-REDONDO.png" alt="Adesivo Redondo Vinil Transparente">
+            </div>
+            <p class="produto-card__name">Adesivo Redondo<br>Vinil Transparente</p>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         AVALIAÇÕES
+         ============================================================ -->
+    <section class="avaliacoes" id="avaliacoes">
+      <div class="container">
+        <div class="section-header animate-on-scroll" data-animation="fade-up">
+          <h2>O que nossos clientes dizem</h2>
+          <p>Mais de 10.000 pedidos entregues e clientes satisfeitos em todo o Brasil.</p>
+        </div>
+
+        <div class="avaliacoes-grid">
+
+          <article class="depoimento-card animate-on-scroll" data-animation="fade-up" data-delay="0">
+            <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <blockquote>
+              Fiz 200 etiquetas personalizadas para meu negócio e ficaram incríveis! O acabamento vinil branco é de altíssima qualidade, as cores ficaram vibrantes e a entrega foi super rápida. Recomendo demais!
+            </blockquote>
+            <div class="depoimento-card__autor">
+              <div class="depoimento-card__avatar" aria-hidden="true">MP</div>
+              <div class="depoimento-card__info">
+                <strong>Mariana Pereira</strong>
+                <span>Empreendedora — Rio de Janeiro, RJ</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card animate-on-scroll" data-animation="fade-up" data-delay="100">
+            <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <blockquote>
+              Pedi stickers transparentes para minha papelaria e o resultado superou todas as expectativas. O efeito "sem borda" é lindo! O atendimento via WhatsApp foi super atencioso do início ao fim.
+            </blockquote>
+            <div class="depoimento-card__autor">
+              <div class="depoimento-card__avatar" aria-hidden="true">CL</div>
+              <div class="depoimento-card__info">
+                <strong>Carolina Lima</strong>
+                <span>Designer — São Paulo, SP</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card animate-on-scroll" data-animation="fade-up" data-delay="200">
+            <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <blockquote>
+              Uso as estampas DTF para as camisetas da minha loja há mais de 1 ano. A qualidade é constante, as cores não desbotam e o Grudado em Você é parceiro confiável que sempre entrega no prazo!
+            </blockquote>
+            <div class="depoimento-card__autor">
+              <div class="depoimento-card__avatar" aria-hidden="true">RS</div>
+              <div class="depoimento-card__info">
+                <strong>Renata Souza</strong>
+                <span>Lojista — Teresópolis, RJ</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
 
   </main>
 
   <!-- ============================================================
        FOOTER
        ============================================================ -->
-  <footer id="store-home-footer"></footer>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">grudado<span>em</span>você</span>
+        <p class="footer-copy">© 2025 Grudado em Você. Todos os direitos reservados.</p>
+      </div>
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="https://grudadoemvoce.com.br" target="_blank" rel="noopener">Site Principal</a>
+        <a href="https://wa.me/5521991909015" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://instagram.com/grudadoemvoce" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </footer>
 
   <script src="assets/js/script.js"></script>
   <script src="assets/js/carrinho.js"></script>
-  <script src="assets/js/home-store.js"></script>
 </body>
 </html>
+

@@ -10,9 +10,14 @@
   /* Fundo */
   --cd-bg: #1A1D21;
 
+  /* Cor de destaque trocada pelo seletor do protótipo */
+  --cd-accent: var(--gv-azul-claro);
+  --cd-accent-rgb: 5, 195, 222;
+  --cd-submit-text: var(--gv-text-light);
+
   /* Camadas da forma — paleta oficial Grudado em Você */
   --cd-shape-outer: #253746;  /* Azul Escuro · faixa externa   */
-  --cd-shape-mid:   #05C3DE;  /* Azul Claro  · faixa interna   */
+  --cd-shape-mid:   var(--cd-accent); /* Cor de destaque · faixa interna */
   --cd-shape-inner: #8EDD65;  /* Verde       · preenchimento   */
 
   /* Espessura das faixas, em unidades do viewBox.
@@ -26,6 +31,15 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 html,
@@ -69,18 +83,20 @@ body {
   padding: 5vh 3vw;
 }
 
-/* Pilha de conteúdo */
+/* Pilha de conteúdo — ritmo vertical padronizado: um único gap entre
+   todos os blocos, sem margens avulsas somando espaçamento extra. */
 .cd-panel {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--gv-space-lg);
+  gap: var(--gv-space-md);
   width: min(100%, 400px);
 
-  /* Ajuste fino da pilha inteira a partir do centro.
+  /* Ajuste fino da pilha inteira a partir do centro — compensa a faixa
+     escura da forma gráfica, que se estende além da largura do palco.
      X: negativo = esquerda · positivo = direita
      Y: negativo = sobe     · positivo = desce   */
-  --cd-panel-x: 0px;
+  --cd-panel-x: 3.5vw;
   --cd-panel-y: 0px;
   transform: translate(var(--cd-panel-x), var(--cd-panel-y));
 }
@@ -90,7 +106,132 @@ body {
   display: block;
   width: min(78%, 320px);
   height: auto;
-  margin: 0 auto var(--gv-space-sm);
+  margin: 0 auto;
+}
+
+/* Título — "BLACK FRIDAY" grande, logo abaixo da logo */
+.cd-title {
+  align-self: center;
+  width: fit-content;
+  margin: 0;
+  font-family: var(--gv-font);
+  font-weight: 900;
+  font-size: clamp(34px, 7vw, 70px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--gv-text-light);
+}
+.cd-title__accent {
+  display: inline-block;
+  margin-left: 0.3em;
+  background: linear-gradient(90deg, var(--cd-accent) 0%, rgba(var(--cd-accent-rgb), 0.58) 160%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtítulo — logo abaixo do título */
+.cd-subheadline {
+  margin: 0;
+  font-family: var(--gv-font);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+.cd-subheadline strong {
+  font-weight: 700;
+  color: var(--gv-text-light);
+}
+.cd-subheadline__nowrap {
+  white-space: nowrap;
+}
+.cd-subheadline__accent {
+  color: var(--cd-accent);
+}
+
+/* Chamada — entre o contador e o formulário */
+.cd-callout {
+  margin: 0;
+  font-family: var(--gv-font);
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.78);
+}
+.cd-callout strong {
+  font-weight: 900;
+  color: var(--cd-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Contador regressivo
+   -------------------------------------------------------------------------- */
+
+.cd-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cd-countdown__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 var(--gv-space-sm);
+  font-family: var(--gv-font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cd-accent);
+}
+
+.cd-countdown__star {
+  color: var(--cd-accent);
+  font-size: 12px;
+}
+
+.cd-countdown__grid {
+  display: flex;
+  align-items: stretch;
+}
+
+.cd-countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 var(--gv-space-md);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
+.cd-countdown__unit:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+.cd-countdown__unit:last-child {
+  padding-right: 0;
+}
+
+.cd-countdown__value {
+  font-family: var(--gv-font);
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1;
+  color: var(--gv-text-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.cd-countdown__unit-label {
+  font-family: var(--gv-font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.44);
 }
 
 /* --------------------------------------------------------------------------
@@ -106,9 +247,7 @@ body {
 }
 
 .cd-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  position: relative;
 }
 
 .cd-field__label {
@@ -118,9 +257,20 @@ body {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.cd-field__icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
 .cd-field__input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 14px 16px 14px 46px;
   font-family: inherit;
   font-size: 15px;
   font-weight: 400;
@@ -144,8 +294,8 @@ body {
 .cd-field__input:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.09);
-  border-color: var(--gv-azul-claro);
-  box-shadow: 0 0 0 4px var(--gv-azul-claro-10);
+  border-color: var(--cd-accent);
+  box-shadow: 0 0 0 4px rgba(var(--cd-accent-rgb), 0.1);
 }
 
 /* Erro só depois que a pessoa interage — evita campo vermelho ao abrir a página */
@@ -171,8 +321,8 @@ body {
   font-size: 15px;
   font-weight: 900;
   line-height: 1.2;
-  color: var(--gv-text-light);
-  background: var(--gv-azul-claro);
+  color: var(--cd-submit-text);
+  background: var(--cd-accent);
   border: none;
   border-radius: var(--gv-radius-pill);
   cursor: pointer;
@@ -184,7 +334,7 @@ body {
 .cd-submit:hover {
   filter: brightness(1.08);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(5, 195, 222, 0.28);
+  box-shadow: 0 8px 20px rgba(var(--cd-accent-rgb), 0.28);
 }
 
 .cd-submit:active {
@@ -221,12 +371,21 @@ body {
 }
 
 .cd-microcopy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin: 0;
   font-family: var(--gv-font);
   font-size: 12px;
   font-weight: 400;
   text-align: center;
   color: rgba(255, 255, 255, 0.44);
+}
+.cd-microcopy__icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -282,6 +441,115 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+   Seletor de cor do protótipo
+   -------------------------------------------------------------------------- */
+
+.cd-theme-picker {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.cd-theme-picker__menu {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: rgba(26, 29, 33, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--gv-radius-pill);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.92);
+  transform-origin: center bottom;
+  pointer-events: none;
+  transition: opacity var(--gv-duration) var(--gv-ease),
+              visibility var(--gv-duration) var(--gv-ease),
+              transform var(--gv-duration) var(--gv-ease);
+}
+
+.cd-theme-picker:hover .cd-theme-picker__menu,
+.cd-theme-picker:focus-within .cd-theme-picker__menu,
+.cd-theme-picker.is-open .cd-theme-picker__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.cd-theme-picker__swatch {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: var(--swatch-color);
+  border: 2px solid rgba(255, 255, 255, 0.76);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  cursor: pointer;
+  transition: transform 160ms var(--gv-ease), box-shadow 160ms var(--gv-ease);
+}
+
+.cd-theme-picker__swatch:hover,
+.cd-theme-picker__swatch:focus-visible {
+  outline: none;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 0 0 3px #fff, 0 5px 14px rgba(0, 0, 0, 0.3);
+}
+
+.cd-theme-picker__swatch.is-active {
+  box-shadow: 0 0 0 3px #fff, 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.cd-theme-picker__trigger {
+  width: 64px;
+  height: 14px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  transition: height var(--gv-duration) var(--gv-ease),
+              background-color var(--gv-duration) var(--gv-ease);
+}
+
+.cd-theme-picker__trigger span {
+  display: block;
+  width: 22px;
+  height: 3px;
+  margin: 2px auto 0;
+  background: var(--cd-accent);
+  border-radius: var(--gv-radius-pill);
+}
+
+.cd-theme-picker:hover .cd-theme-picker__trigger,
+.cd-theme-picker:focus-within .cd-theme-picker__trigger,
+.cd-theme-picker.is-open .cd-theme-picker__trigger {
+  height: 20px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.cd-theme-picker__trigger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cd-theme-picker__menu,
+  .cd-theme-picker__trigger,
+  .cd-theme-picker__swatch {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Responsivo
    -------------------------------------------------------------------------- */
 
@@ -289,6 +557,17 @@ body {
 @media (max-width: 1024px) {
   .cd-stage {
     width: 46%;
+  }
+
+  .cd-panel {
+    --cd-panel-x: -1vw;
+  }
+
+  /* Palco mais estreito nessa faixa — reduz o teto do título para
+     não vazar para fora da página (o texto ultrapassa a largura do
+     card de propósito, mas não pode passar da borda da viewport). */
+  .cd-title {
+    font-size: clamp(34px, 6vw, 62px);
   }
 
   .cd-shape {
@@ -311,6 +590,7 @@ body {
   .cd-panel {
     width: min(100%, 380px);
     margin: 0 auto;
+    --cd-panel-x: 0px;
   }
 
   .cd-logo {
