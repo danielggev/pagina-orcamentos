@@ -15,6 +15,13 @@
        ANNOUNCEMENT BAR (barra rotativa de anúncios)
        ============================================================ -->
   <div class="announcement-bar" aria-label="Avisos">
+    <div class="announcement-bar__content">
+      <span class="announcement-bar__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.7"/><circle cx="18" cy="18" r="1.7"/></svg>Frete Grátis Acima de R$ 150 para todo BRASIL!</span>
+      <span class="announcement-bar__divider" aria-hidden="true"></span>
+      <span class="announcement-bar__coupon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16v10H4z"/><path d="M7 10h4"/></svg><span>1ª compra</span><strong>PRIMEIRA10</strong><svg class="announcement-bar__copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="10" height="10" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></span>
+      <span class="announcement-bar__divider" aria-hidden="true"></span>
+      <span class="announcement-bar__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.7"/><circle cx="18" cy="18" r="1.7"/></svg>Pague em até 3x Sem Juros</span>
+    </div>
     <div class="announcement-bar__track">
       <div class="announcement-bar__group">
         <span class="announcement-bar__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Frete Grátis Acima de R$150 para todo BRASIL!</span>
@@ -66,6 +73,9 @@
 
         <!-- Ícones à esquerda (mobile: conta + busca) -->
         <div class="header-left">
+          <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+          </button>
           <a href="https://grudadoemvoce.com.br/account" class="header-icon-btn" aria-label="Minha conta">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -87,13 +97,14 @@
 
         <!-- Barra de busca (desktop) -->
         <div class="header-search">
-          <input type="search" placeholder="Buscar" aria-label="Buscar produtos">
-          <button type="button" aria-label="Pesquisar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="m21 21-4.35-4.35"/>
+          <span class="header-search__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"/>
+              <path d="m20 20-4-4"/>
             </svg>
-          </button>
+          </span>
+          <input type="search" placeholder="Buscar produtos, kits, etiquetas e acessórios" aria-label="Buscar produtos">
+          <button type="button">Buscar</button>
         </div>
 
         <!-- Ícones à direita -->
@@ -125,25 +136,23 @@
       </div>
     </div>
 
-  </header>
-
-  <main>
-
-  <!-- Barra de navegação — fora do header para sobrepor o banner -->
+  <!-- Barra de navegação -->
     <nav class="header-nav" aria-label="Categorias">
       <div class="container">
         <ul class="header-nav__list" id="main-nav">
           <li><a href="/">Toda Loja</a></li>
-          <li><a href="/">Kits</a></li>
-          <li><a href="/">Etiquetas</a></li>
-          <li><a href="/">Tags</a></li>
-          <li><a href="/">Pulseiras</a></li>
-          <li><a href="/">Bolsas e Sacos</a></li>
-          <li><a href="/">Necessaires e Estojos</a></li>
+          <li><a href="/">Creche e Escola</a></li>
+          <li><a href="/">Casa e Escritório</a></li>
+          <li><a href="/">Identificação de Roupas</a></li>
+          <li><a href="/">Identificação de Objetos</a></li>
+          <li><a href="/">Ajuda</a></li>
           <li><a href="colecoes/super-rapido.html" class="btn-super-rapido"><svg class="btn-sr-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><polygon points="386.415,193.208 287.481,193.208 359.434,0 161.566,0 125.585,280.151 206.528,280.151 170.557,512"/></svg> Super Rápido</a></li>
         </ul>
       </div>
     </nav>
+  </header>
+
+  <main>
 
     <!-- ============================================================
          HERO / BANNER
@@ -151,11 +160,11 @@
     <section class="hero" id="inicio">
       <div class="hero__slider" id="hero-slider">
           <div class="hero__slide">
-            <video class="hero__video banner-video" autoplay loop muted playsinline
-              data-desktop="HeroBannerGreen-HQ.mp4"
-              data-mobile="HeroBannerMobileGreen-HQ.mp4">
-              <source src="HeroBannerGreen-HQ.mp4" type="video/mp4">
-            </video>
+            <img class="banner-img"
+              src="assets/images/banners/banner_black.png"
+              data-desktop="assets/images/banners/banner_black.png"
+              data-mobile="assets/images/banners/banner_black.png"
+              alt="Promoção Black Friday">
           </div>
         </div>
     </section>

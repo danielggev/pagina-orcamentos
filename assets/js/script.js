@@ -6,8 +6,67 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ------------------------------------------
-     0. ANNOUNCEMENT BAR MARQUEE
+     0. ANNOUNCEMENT BAR MOBILE
      ------------------------------------------ */
+  const announcementBar = document.querySelector('.announcement-bar');
+  const announcementCoupon = document.querySelector('.announcement-bar__coupon');
+  const announcementItems = document.querySelectorAll('.announcement-bar__content > .announcement-bar__item');
+  const announcementSlides = [
+    { element: announcementCoupon, variant: 'coupon' },
+    { element: announcementItems[1], variant: 'installments' },
+    { element: announcementItems[0], variant: 'shipping' }
+  ].filter(slide => slide.element);
+  const announcementMq = window.matchMedia('(max-width: 768px)');
+  let announcementIndex = 0;
+  let announcementTimer;
+
+  function setAnnouncementVariant(variant) {
+    announcementBar?.classList.remove('is-coupon', 'is-installments', 'is-shipping');
+    announcementBar?.classList.add(`is-${variant}`);
+  }
+
+  function showNextAnnouncement() {
+    const currentSlide = announcementSlides[announcementIndex];
+    const nextIndex = (announcementIndex + 1) % announcementSlides.length;
+    const nextSlide = announcementSlides[nextIndex];
+
+    currentSlide.element.classList.remove('is-active');
+    currentSlide.element.classList.add('is-leaving');
+    currentSlide.element.setAttribute('aria-hidden', 'true');
+    nextSlide.element.classList.remove('is-leaving');
+    nextSlide.element.classList.add('is-active');
+    nextSlide.element.setAttribute('aria-hidden', 'false');
+    setAnnouncementVariant(nextSlide.variant);
+
+    window.setTimeout(() => currentSlide.element.classList.remove('is-leaving'), 700);
+    announcementIndex = nextIndex;
+  }
+
+  function updateMobileAnnouncements() {
+    window.clearInterval(announcementTimer);
+    if (!announcementSlides.length || !announcementBar) return;
+
+    if (!announcementMq.matches) {
+      announcementBar.classList.remove('is-coupon', 'is-installments', 'is-shipping');
+      announcementSlides.forEach(({ element }) => {
+        element.classList.remove('is-active', 'is-leaving');
+        element.removeAttribute('aria-hidden');
+      });
+      return;
+    }
+
+    announcementIndex = 0;
+    announcementSlides.forEach(({ element }, index) => {
+      element.classList.toggle('is-active', index === announcementIndex);
+      element.classList.remove('is-leaving');
+      element.setAttribute('aria-hidden', String(index !== announcementIndex));
+    });
+    setAnnouncementVariant(announcementSlides[announcementIndex].variant);
+    announcementTimer = window.setInterval(showNextAnnouncement, 5000);
+  }
+
+  updateMobileAnnouncements();
+  announcementMq.addEventListener('change', updateMobileAnnouncements);
 
   /* ------------------------------------------
      1. BANNER RESPONSIVO (troca src por tamanho)
@@ -86,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.addEventListener('click', () => {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', String(!isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
       headerNav.classList.toggle('is-open', !isOpen);
       document.body.classList.toggle('nav-is-open', !isOpen);
     });
@@ -118,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeNav() {
     if (!navToggle || !headerNav) return;
     navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menu');
     headerNav.classList.remove('is-open');
     document.body.classList.remove('nav-is-open');
   }
