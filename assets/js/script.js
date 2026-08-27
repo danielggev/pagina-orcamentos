@@ -242,10 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mainNav) {
     const mqNav = window.matchMedia('(max-width: 768px)');
     const originalOrder = Array.from(mainNav.children);
+    const preserveOrder = mainNav.dataset.preserveOrder === 'true';
 
     function reorderNav(isMobile) {
       const items = Array.from(mainNav.children);
-      if (isMobile) {
+      if (isMobile && !preserveOrder) {
         // Super Rápido primeiro, Toda Loja por último
         const superRapido = items.find(li => li.querySelector('.btn-super-rapido'));
         const todaLoja    = items.find(li => !li.querySelector('.btn-super-rapido') && li === items[0]);

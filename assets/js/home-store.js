@@ -6,15 +6,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const storeUrl = 'https://www.grudadoemvoce.com.br';
   const imagePath = 'assets/images/home-store/';
+  const isNatalHome = document.body.dataset.storeTheme === 'natal';
+  const isBlackFridayHome = document.body.dataset.storeTheme === 'bf';
   const badgeValues = ['40% OFF', '35% OFF', '30% OFF'];
   const randomBadge = () => badgeValues[Math.floor(Math.random() * badgeValues.length)];
 
   const bestSellers = [
     ['bestseller-termocolante.webp', 'Etiqueta Termocolante Personalizada', 'Identifique roupas e uniformes. Aplique com ferro quente.', 'De R$ 42,90', '3x R$ 14,30', '1058 reviews', 'etiqueta-para-roupas-termocolante-personalizada', '40% OFF'],
     ['bestseller-mini.webp', 'Etiqueta Mini', 'Compactas, práticas e resistentes para itens pequenos.', 'De R$ 32,90', '3x R$ 10,97', '328 reviews', 'etiqueta-mini-personalizada', '35% OFF'],
-    ['bestseller-super-mini.webp', 'Etiqueta Super Mini', 'Tamanho mini e utilidade máxima. Ideal para lápis e canetas.', 'De R$ 24,90', '3x R$ 8,30', '385 reviews', 'etiqueta-super-mini', '50% OFF'],
+    ['bestseller-super-mini.webp', 'Etiqueta Super Mini', 'Tamanho mini e utilidade máxima. Ideais para lápis e canetas.', 'De R$ 24,90', '3x R$ 8,30', '385 reviews', 'etiqueta-super-mini', '50% OFF'],
     ['bestseller-pulseira.webp', 'Pulseira de ID Reutilizável', 'Tecido macio e trava tripla de segurança.', 'R$ 61,90', '3x R$ 20,63', '474 reviews', 'pulseira-de-id-reutilizavel', '35% OFF'],
     ['bestseller-fininha.webp', 'Etiqueta Retangular Fininha', 'Versátil e discreta para identificar objetos.', 'De R$ 24,90', '3x R$ 8,30', '308 reviews', 'etiqueta-retangular-fininha-personalizada', '40% OFF']
+  ];
+
+  const natalProducts = [
+    ['natal-saco.webp', 'Saco de Natal', 'Um Natal mágico com o saco do Papai Noel personalizado!', 'De R$ 80,90', '3x R$ 26,97', '23 reviews', 'saco-de-natal'],
+    ['natal-porta-cartas.webp', 'Porta Cartas de Natal Personalizado', '', 'De R$ 43,90', '3x R$ 14,63', '', 'porta-cartas-de-natal-personalizado'],
+    ['natal-tags-foto.webp', 'Kit com 5 Tags de Natal com Foto', 'Personalize sua árvore com memórias especiais.', 'R$ 40,90', '3x R$ 13,63', '4 reviews', 'kit-com-5-tags-de-natal-com-foto'],
+    ['natal-meia.webp', 'Meia de Natal', 'A meia que transforma pequenos presentes em grandes surpresas.', 'R$ 62,90', '3x R$ 20,97', '4 reviews', 'meia-de-natal']
+  ];
+
+  const giftProducts = [
+    ['presente-etiqueta-de-para.webp', 'Etiqueta De / Para Natal', 'Presentes com nome, amor e um toque exclusivo seu.', 'R$ 42,90', '3x R$ 14,30', '6 reviews', 'etiqueta-de-para-natal'],
+    ['presente-almofada-foto.webp', 'Capa para Almofada com Foto', 'O presente perfeito para emocionar quem você ama.', 'R$ 65,90', '3x R$ 21,97', '', 'capa-para-almofada-com-foto?variant=47039415976188'],
+    ['presente-ima-polaroid.webp', 'Ímã Polaroid', 'Kit com 5 foto-ímãs estilo Polaroid.', 'R$ 73,90', '3x R$ 24,63', '12 reviews', 'ima-polaroid'],
+    ['presente-etiqueta-colorida.webp', 'Etiqueta De / Para Coloridas', 'Presentes com nome, amor e um toque exclusivo seu.', 'R$ 42,90', '3x R$ 14,30', '56 reviews', 'etiqueta-de-para-coloridas']
   ];
 
   const news = [
@@ -46,15 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
         <article class="store-benefit"><span class="store-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${icon(item[0])}</svg></span><span><strong>${item[1]}</strong><small>${item[2]}</small></span></article>`).join('')}
     </div></section>`;
 
+  const productUrl = (slug) => slug === 'etiqueta-super-mini' ? 'produtos/etiqueta-super-mini.html' : `${storeUrl}/products/${slug}`;
+
   const productCard = ([image, title, description, price, installment, reviews, slug]) => `
-    <article class="store-product"><a href="${storeUrl}/products/${slug}">
-      <div class="store-product__media"><span class="store-badge">${randomBadge()}</span><button class="store-wishlist" type="button" aria-label="Adicionar ${title} aos favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></button><img src="${imagePath}${image}" alt="${title}" loading="lazy"></div>
-      <div class="store-product__body"><span class="store-stars${reviews ? '' : ' store-stars--empty'}">${reviews ? `★★★★★ <small>${reviews.replace('reviews', 'avaliações')}</small>` : 'Sem avaliações'}</span><h3>${title}</h3><p>${description}</p><strong class="store-price">${price}<small>${installment}</small></strong><span class="store-shipping">Pronto para envio sexta-feira, 14/08</span><span class="store-buy">Comprar</span></div>
+    <article class="store-product"><a href="${productUrl(slug)}">
+      <div class="store-product__media">${isBlackFridayHome ? `<span class="store-badge">${randomBadge()}</span>` : ''}<button class="store-wishlist" type="button" aria-label="Adicionar ${title} aos favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></button><img src="${imagePath}${image}" alt="${title}" loading="lazy"></div>
+      <div class="store-product__body"><span class="store-stars${reviews ? '' : ' store-stars--empty'}">${reviews ? `★★★★★ <small>${reviews.replace('reviews', 'avaliações')}</small>` : 'Sem avaliações'}</span><h3>${title}</h3><p>${description}</p><strong class="store-price">${price}<small>${installment}</small></strong><span class="store-shipping">Pronto para envio ${isNatalHome ? 'quinta-feira, 27/08' : 'sexta-feira, 14/08'}</span><span class="store-buy">${isNatalHome ? 'Personalizar' : 'Comprar'}</span></div>
     </a></article>`;
 
   const productSection = (title, products, collection, tinted = false) => `
     <section class="store-products${tinted ? ' store-products--tint' : ''}" aria-label="${title}"><div class="store-shell">
-      <header class="store-section-title"><h2>${title}</h2></header><div class="store-products__carousel"><button class="store-carousel-arrow store-carousel-arrow--prev" type="button" aria-label="Produtos anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button><div class="store-product-grid">${products.map(productCard).join('')}</div><button class="store-carousel-arrow store-carousel-arrow--next" type="button" aria-label="Próximos produtos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div>
+      <header class="store-section-title"><h2>${title}</h2></header><div class="store-products__carousel"><button class="store-carousel-arrow store-carousel-arrow--prev" type="button" aria-label="Produtos anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button><div class="store-product-grid" style="--store-product-count: ${products.length}">${products.map(productCard).join('')}</div><button class="store-carousel-arrow store-carousel-arrow--next" type="button" aria-label="Próximos produtos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div>
       <a class="store-view-all" href="${storeUrl}/collections/${collection}">Ver Todos</a>
     </div></section>`;
 
@@ -75,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
   content.innerHTML = `
     <section class="store-kicker"><h1>Etiquetas Personalizadas e Adesivos</h1></section>
     ${benefits()}
-    ${productSection('Mais Vendidos', bestSellers, 'mais-vendidos')}
+    ${isNatalHome ? productSection('Natal', natalProducts, 'natal') : productSection('Mais Vendidos', bestSellers, 'mais-vendidos')}
     <section class="store-categories" aria-label="Categorias em destaque"><div class="store-category-track">${categories.map(item => `<a href="${storeUrl}/collections/${item[2]}"><img src="${imagePath}${item[0]}" alt="${item[1]}" loading="lazy"></a>`).join('')}</div></section>
-    ${productSection('Novidades', news, 'novidades', true)}
+    ${isNatalHome ? productSection('Para Presentear', giftProducts, 'natal', true) : productSection('Novidades', news, 'novidades', true)}
     ${productSection('Kits de Etiquetas', kits, 'kit')}
     <section class="store-blog"><div class="store-shell"><header class="store-section-title"><h2>Últimas do Nosso Blog</h2></header><div class="store-blog__grid">${blog.map(item => `<article><a href="${storeUrl}/blogs/news/${item[4]}"><img src="${imagePath}${item[0]}" alt="${item[2]}" loading="lazy"><time>${item[1]}</time><h3>${item[2]}</h3><p>${item[3]}</p></a></article>`).join('')}</div><a class="store-view-all" href="${storeUrl}/blogs/news">Ver Todos</a></div></section>
     <a class="store-instagram" href="https://www.instagram.com/grudadoemvoce/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><strong>Seu pedido ficou lindo? Queremos ver!</strong><span>@grudadoemvoce</span></a>
@@ -104,6 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="store-footer__social-title">Siga a Grudado em Você</div>
       <div class="store-footer__bottom"><span><strong>GRUDADO EM VOCÊ ETIQUETAS LTDA</strong>&nbsp;&nbsp; CNPJ 12.863.194/0001-38</span></div>
     </div>`;
+
+  if (isNatalHome) {
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const href = link.getAttribute('href').trim();
+      const isExternal = /^(?:(?:https?:)?\/\/|mailto:|tel:)/i.test(href);
+      if (!isExternal) return;
+
+      link.removeAttribute('href');
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+      link.setAttribute('aria-disabled', 'true');
+    });
+  }
 
   content.querySelectorAll('.store-products__carousel').forEach((carousel) => {
     const track = carousel.querySelector('.store-product-grid');

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Índice de páginas do projeto Grudado em Você.">
+  <title>Páginas do projeto — Grudado em Você</title>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: #253746;
+      background: #f4f6f7;
+      font-family: 'Hurme Geometric Sans 1', Arial, sans-serif;
+    }
+
+    .pages-shell {
+      width: min(calc(100% - 32px), 1080px);
+      margin-inline: auto;
+      padding: 48px 0 64px;
+    }
+
+    .pages-header {
+      margin-bottom: 38px;
+      text-align: center;
+    }
+
+    .pages-header img {
+      width: min(210px, 60vw);
+      height: auto;
+      margin-bottom: 24px;
+    }
+
+    .pages-header h1 {
+      margin: 0;
+      color: #172b4f;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1;
+    }
+
+    .pages-header p {
+      margin: 12px 0 0;
+      color: #687781;
+      font-size: 16px;
+    }
+
+    .pages-section + .pages-section { margin-top: 36px; }
+
+    .pages-section h2 {
+      margin: 0 0 14px;
+      color: #172b4f;
+      font-size: 18px;
+    }
+
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .page-button {
+      display: flex;
+      min-height: 74px;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px 18px;
+      color: #253746;
+      background: #fff;
+      border: 1px solid #dfe5e8;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(37, 55, 70, .06);
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .page-button:hover,
+    .page-button:focus-visible {
+      border-color: #08bfc1;
+      box-shadow: 0 7px 18px rgba(37, 55, 70, .12);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .page-button strong { font-size: 15px; }
+
+    .page-button small {
+      margin-top: 4px;
+      overflow: hidden;
+      color: #7a878f;
+      font-size: 11px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .pages-shell { padding-top: 32px; }
+      .pages-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 480px) {
+      .pages-grid { grid-template-columns: 1fr; }
+      .pages-header p { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="pages-shell">
+    <header class="pages-header">
+      <img src="../assets/images/logo.svg" alt="Grudado em Você">
+      <h1>Páginas do projeto</h1>
+      <p>Selecione uma página para abrir.</p>
+    </header>
+
+    <nav aria-label="Páginas disponíveis">
+      <section class="pages-section" aria-labelledby="pages-main-title">
+        <h2 id="pages-main-title">Páginas principais</h2>
+        <div class="pages-grid">
+          <a class="page-button" href="../countdown.html"><strong>Countdown</strong><small>/countdown</small></a>
+          <a class="page-button" href="../orcamentos/"><strong>Orçamentos</strong><small>/orcamentos</small></a>
+          <a class="page-button" href="../rastreio.html"><strong>Rastreamento</strong><small>/rastreio</small></a>
+          <a class="page-button" href="../carrinho.html"><strong>Carrinho</strong><small>/carrinho</small></a>
+          <a class="page-button" href="../checkout.html"><strong>Checkout</strong><small>/checkout</small></a>
+          <a class="page-button" href="../lab/"><strong>Laboratório</strong><small>/lab</small></a>
+        </div>
+      </section>
+
+      <section class="pages-section" aria-labelledby="pages-homes-title">
+        <h2 id="pages-homes-title">Homes</h2>
+        <div class="pages-grid">
+          <a class="page-button" href="../index.html"><strong>Home principal</strong><small>/</small></a>
+          <a class="page-button" href="../home-natal/"><strong>Home Natal</strong><small>/home-natal</small></a>
+          <a class="page-button" href="../home-bf/"><strong>Home Black Friday</strong><small>/home-bf</small></a>
+        </div>
+      </section>
+
+      <section class="pages-section" aria-labelledby="pages-collections-title">
+        <h2 id="pages-collections-title">Coleções</h2>
+        <div class="pages-grid">
+          <a class="page-button" href="../colecoes/vinil-branco.html"><strong>Vinil Branco</strong><small>/colecoes/vinil-branco</small></a>
+          <a class="page-button" href="../colecoes/vinil-transparente.html"><strong>Vinil Transparente</strong><small>/colecoes/vinil-transparente</small></a>
+          <a class="page-button" href="../colecoes/dtf.html"><strong>DTF</strong><small>/colecoes/dtf</small></a>
+          <a class="page-button" href="../colecoes/super-rapido.html"><strong>Super Rápido</strong><small>/colecoes/super-rapido</small></a>
+        </div>
+      </section>
+
+      <section class="pages-section" aria-labelledby="pages-products-title">
+        <h2 id="pages-products-title">Produtos</h2>
+        <div class="pages-grid">
+          <a class="page-button" href="../produtos/adesivo-oval.html"><strong>Adesivo Oval</strong><small>/produtos/adesivo-oval</small></a>
+          <a class="page-button" href="../produtos/adesivo-quadrado.html"><strong>Adesivo Quadrado</strong><small>/produtos/adesivo-quadrado</small></a>
+          <a class="page-button" href="../produtos/adesivo-redondo-branco.html"><strong>Adesivo Redondo Branco</strong><small>/produtos/adesivo-redondo-branco</small></a>
+          <a class="page-button" href="../produtos/adesivo-redondo-transparente.html"><strong>Adesivo Redondo Transparente</strong><small>/produtos/adesivo-redondo-transparente</small></a>
+          <a class="page-button" href="../produtos/adesivo-retangular.html"><strong>Adesivo Retangular</strong><small>/produtos/adesivo-retangular</small></a>
+          <a class="page-button" href="../produtos/corte-personalizado.html"><strong>Corte Personalizado</strong><small>/produtos/corte-personalizado</small></a>
+          <a class="page-button" href="../produtos/dtf-camiseta.html"><strong>DTF para Camiseta</strong><small>/produtos/dtf-camiseta</small></a>
+          <a class="page-button" href="../produtos/kit-super-rapido.html"><strong>Kit Super Rápido</strong><small>/produtos/kit-super-rapido</small></a>
+          <a class="page-button" href="../produtos/etiqueta-super-mini.html"><strong>Etiqueta Super Mini</strong><small>/produtos/etiqueta-super-mini</small></a>
+        </div>
+      </section>
+    </nav>
+  </main>
+</body>
+</html>

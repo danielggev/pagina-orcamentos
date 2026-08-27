@@ -239,6 +239,8 @@ const Carrinho = (() => {
   }
 
   function enviarWhatsApp() {
+    if (document.body.dataset.storeTheme === 'natal') return;
+
     const itens = getItens();
     if (itens.length === 0) return;
 

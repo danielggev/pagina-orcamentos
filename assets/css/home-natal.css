@@ -1,0 +1,98 @@
+/* Tema exclusivo da rota /home-natal. */
+.home-natal {
+  --natal-red: #d6293a;
+  --natal-green: #176b45;
+}
+
+.home-natal .logo-img {
+  width: 192px;
+  max-height: 46px;
+}
+
+.home-natal .header-nav .container {
+  max-width: 1190px;
+}
+
+.home-natal .header-nav__list {
+  gap: 22px;
+}
+
+.home-natal .store-kicker,
+.home-natal .store-kicker h1 {
+  color: #fff;
+}
+
+.home-natal .store-kicker {
+  background: var(--natal-green);
+}
+
+.home-natal .store-benefits,
+.home-natal .store-buy,
+.home-natal .header-search button {
+  background: var(--natal-red);
+}
+
+.home-natal .announcement-bar,
+.home-natal .announcement-bar.is-coupon,
+.home-natal .announcement-bar.is-installments,
+.home-natal .announcement-bar.is-shipping {
+  background-color: var(--natal-red);
+}
+
+.home-natal .header-nav__list li a.btn-super-rapido {
+  border-color: var(--natal-red);
+}
+
+.home-natal .header-nav__list li a.btn-super-rapido .btn-sr-icon {
+  fill: var(--natal-red);
+}
+
+.home-natal .hero__slide {
+  aspect-ratio: 740 / 223;
+  min-height: 0;
+}
+
+.home-natal .hero__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-natal .store-buy {
+  box-shadow: 0 7px 16px rgba(37, 55, 70, .18);
+  transition: box-shadow .2s ease, filter .2s ease, transform .2s ease;
+}
+
+.home-natal .store-product a:hover .store-buy,
+.home-natal .store-product a:focus-visible .store-buy {
+  background: var(--natal-red);
+  box-shadow: 0 9px 20px rgba(37, 55, 70, .24);
+  filter: brightness(.92);
+  transform: translateY(-1px);
+}
+
+.home-natal .header-search button:hover {
+  background: var(--natal-red);
+  filter: brightness(.92);
+}
+
+@media (max-width: 1120px) and (min-width: 769px) {
+  .home-natal .header-nav__list { gap: 13px; }
+  .home-natal .header-nav__list li a { font-size: .7rem; }
+  .home-natal .header-nav__list li a.btn-super-rapido { padding-inline: 10px; }
+}
+
+@media (max-width: 768px) {
+  .home-natal .logo-img {
+    width: auto;
+    height: 30px;
+    max-height: 30px;
+  }
+
+  .home-natal .header-nav__list { gap: 2px; }
+
+  .home-natal .hero__slide {
+    aspect-ratio: 12 / 5;
+  }
+}

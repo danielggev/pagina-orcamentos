@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Área de testes de componentes da Grudado em Você.">
+  <title>Teste de componentes — Grudado em Você</title>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/assets-page.css">
+</head>
+<body>
+  <header class="test-header">
+    <a href="../index.html" aria-label="Voltar para a página inicial">
+      <img src="../assets/images/logo.svg" alt="Grudado em Você">
+    </a>
+    <span>Área de testes</span>
+    <a class="test-header__pages" href="../pages/">Ver todas as páginas</a>
+  </header>
+
+  <main>
+    <nav class="lab-type-navigation" aria-label="Tipos de componentes">
+      <a class="is-active" href="#colecoes" aria-current="page">
+        <span>Coleções</span>
+        <small>4 modelos</small>
+      </a>
+    </nav>
+
+    <section class="lab-type" id="colecoes" aria-labelledby="colecoes-title" data-lab-type>
+      <header class="lab-type__header">
+        <span>Tipo de componente</span>
+        <h1 id="colecoes-title">Coleções</h1>
+        <p>Modelos de navegação e apresentação de coleções.</p>
+      </header>
+
+    <nav class="model-navigation" aria-label="Navegação entre modelos de coleção" data-model-navigation>
+      <button class="model-navigation__arrow" type="button" data-model-previous aria-label="Ver modelo anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Anterior</span>
+      </button>
+      <div class="model-navigation__current">
+        <strong data-current-model-title>MODELO 1</strong>
+        <div class="model-navigation__tabs" role="tablist" aria-label="Selecionar modelo de coleção" data-model-tabs></div>
+      </div>
+      <button class="model-navigation__arrow" type="button" data-model-next aria-label="Ver próximo modelo">
+        <span>Próximo</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </nav>
+
+    <div class="model-preview-divider" role="separator" aria-label="Início da prévia do modelo">
+      <span>Prévia do modelo</span>
+    </div>
+
+    <div class="lab-model is-active" id="modelo-1" data-model-title="MODELO 1">
+      <section class="featured-collection" aria-labelledby="featured-collection-title">
+      <div class="featured-collection__shell">
+        <header class="featured-collection__heading">
+          <strong>Coleção</strong>
+          <h1 id="featured-collection-title">Organização que cresce com eles</h1>
+        </header>
+
+        <div class="featured-collection__layout">
+          <a class="featured-collection__banner" href="https://www.grudadoemvoce.com.br/collections/mais-vendidos" aria-label="Explorar coleção Organização que cresce com eles">
+            <img src="../assets/images/banners/ChatGPT Image 21 de ago. de 2026, 10_40_18.png" alt="Identificação para o dia a dia das crianças">
+          </a>
+
+          <div class="featured-collection__products">
+            <button class="featured-arrow featured-arrow--prev" type="button" aria-label="Produto anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+
+            <div class="featured-product-grid">
+              <article class="featured-product">
+                <a href="https://www.grudadoemvoce.com.br/products/etiqueta-mini-personalizada">
+                  <div class="featured-product__media"><img src="../assets/images/home-store/bestseller-mini.webp" alt="Etiqueta Mini"></div>
+                  <div class="featured-product__body">
+                    <h2>Etiqueta Mini</h2>
+                    <span class="featured-product__rating" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span><small>328</small></span>
+                    <strong class="featured-product__price"><span>De R$ 32,90</span><span>R$ 32,90</span></strong>
+                    <small class="featured-product__installment">3x R$ 10,97</small>
+                    <span class="featured-product__action">Personalizar</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="featured-product">
+                <a href="https://www.grudadoemvoce.com.br/products/etiqueta-super-mini">
+                  <div class="featured-product__media"><img src="../assets/images/home-store/bestseller-super-mini.webp" alt="Etiqueta Super Mini"></div>
+                  <div class="featured-product__body">
+                    <h2>Etiqueta Super Mini</h2>
+                    <span class="featured-product__rating" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span><small>385</small></span>
+                    <strong class="featured-product__price"><span>De R$ 24,90</span><span>R$ 24,90</span></strong>
+                    <small class="featured-product__installment">3x R$ 8,30</small>
+                    <span class="featured-product__action">Personalizar</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="featured-product">
+                <a href="https://www.grudadoemvoce.com.br/products/pulseira-de-id-reutilizavel">
+                  <div class="featured-product__media"><img src="../assets/images/home-store/bestseller-pulseira.webp" alt="Pulseira de ID Reutilizável"></div>
+                  <div class="featured-product__body">
+                    <h2>Pulseira de ID Reutilizável</h2>
+                    <span class="featured-product__rating" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span><small>474</small></span>
+                    <strong class="featured-product__price"><span>R$ 61,90</span><span>R$ 61,90</span></strong>
+                    <small class="featured-product__installment">3x R$ 20,63</small>
+                    <span class="featured-product__action">Personalizar</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="featured-product">
+                <a href="https://www.grudadoemvoce.com.br/products/etiqueta-retangular-fininha-personalizada">
+                  <div class="featured-product__media"><img src="../assets/images/home-store/bestseller-fininha.webp" alt="Etiqueta Retangular Fininha"></div>
+                  <div class="featured-product__body">
+                    <h2>Etiqueta Retangular Fininha</h2>
+                    <span class="featured-product__rating" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span><small>308</small></span>
+                    <strong class="featured-product__price"><span>De R$ 24,90</span><span>R$ 24,90</span></strong>
+                    <small class="featured-product__installment">3x R$ 8,30</small>
+                    <span class="featured-product__action">Personalizar</span>
+                  </div>
+                </a>
+              </article>
+            </div>
+
+            <button class="featured-arrow featured-arrow--next" type="button" aria-label="Próximo produto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+
+            <div class="featured-dots" aria-label="Selecionar produto">
+              <button class="is-active" type="button" aria-label="Ver Etiqueta Mini"></button>
+              <button type="button" aria-label="Ver Etiqueta Super Mini"></button>
+              <button type="button" aria-label="Ver Pulseira de ID Reutilizável"></button>
+              <button type="button" aria-label="Ver Etiqueta Retangular Fininha"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+    </div>
+
+    <div class="lab-model" id="modelo-2" data-model-title="MODELO 2" hidden>
+      <section class="catalog-v2" aria-labelledby="catalog-v2-title">
+        <div class="catalog-v2__shell" data-catalog-collections>
+          <header class="catalog-v2__header">
+            <div class="catalog-v2__title">
+              <h1 id="catalog-v2-title" data-catalog-title>Mais Vendidos</h1>
+              <p data-catalog-description>Os produtos preferidos para identificar e organizar a rotina.</p>
+            </div>
+          </header>
+
+          <nav class="catalog-v2__categories" role="tablist" aria-label="Selecionar coleção">
+            <button class="is-active" type="button" role="tab" aria-selected="true" data-catalog-collection="mais-vendidos"><span>1</span> Mais Vendidos</button>
+            <button type="button" role="tab" aria-selected="false" data-catalog-collection="viagem"><span>2</span> Essenciais para Viagem</button>
+            <button type="button" role="tab" aria-selected="false" data-catalog-collection="roupas"><span>3</span> Para Roupas</button>
+            <button type="button" role="tab" aria-selected="false" data-catalog-collection="necessaires"><span>4</span> Nécessaires e Estojos</button>
+            <button type="button" role="tab" aria-selected="false" data-catalog-collection="casa"><span>5</span> Para Casa e Escritório</button>
+          </nav>
+
+          <div class="catalog-v2__collection-divider" aria-hidden="true"></div>
+
+          <div class="catalog-v2__carousel">
+            <button class="catalog-v2__arrow catalog-v2__arrow--previous" type="button" aria-label="Produtos anteriores">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+
+            <div class="catalog-v2__grid" aria-live="polite"></div>
+
+            <button class="catalog-v2__arrow catalog-v2__arrow--next" type="button" aria-label="Próximos produtos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+
+          <button class="catalog-v2__see-all" type="button" data-catalog-see-all>Ver tudo em Mais Vendidos</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="lab-model" id="modelo-3" data-model-title="MODELO 3" hidden>
+      <section class="collection-nav" aria-labelledby="collection-nav-title">
+        <div class="collection-nav__shell">
+          <header class="collection-nav__header">
+            <h2 id="collection-nav-title">Navegue por Coleções</h2>
+            <p>Encontre a opção ideal para cada momento</p>
+          </header>
+
+          <div class="collection-nav__carousel">
+            <button class="collection-nav__arrow collection-nav__arrow--prev" type="button" aria-label="Coleções anteriores" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+
+            <div class="collection-nav__track" tabindex="0" aria-label="Coleções disponíveis">
+              <div class="collection-nav__page">
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/etiquetas-para-objetos">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/etiq-obj.webp" alt="Etiquetas para Objetos" loading="lazy"></span>
+                  <span class="collection-nav__title">Etiquetas para Objetos</span>
+                </a>
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/etiquetas-para-roupas">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/etiq-roup.webp" alt="Etiquetas para Roupas" loading="lazy"></span>
+                  <span class="collection-nav__title">Etiquetas para Roupas</span>
+                </a>
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/natal">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/natal.webp" alt="Natal" loading="lazy"></span>
+                  <span class="collection-nav__title">Natal</span>
+                </a>
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/presentes-personalizados">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/presente-perso.webp" alt="Presente Personalizado" loading="lazy"></span>
+                  <span class="collection-nav__title">Presente Personalizado</span>
+                </a>
+              </div>
+
+              <div class="collection-nav__page">
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/viagem">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/viagens.webp" alt="Viagem" loading="lazy"></span>
+                  <span class="collection-nav__title">Viagem</span>
+                </a>
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/etiquetas-escolares">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/kit-etiq-escolar.webp" alt="Kits e Etiquetas Escolares" loading="lazy"></span>
+                  <span class="collection-nav__title">Kits e Etiquetas Escolares</span>
+                </a>
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/para-casa">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/p-casa.webp" alt="Para Casa" loading="lazy"></span>
+                  <span class="collection-nav__title">Para Casa</span>
+                </a>
+                <a class="collection-nav__card" href="https://www.grudadoemvoce.com.br/collections/bolsas-e-sacos">
+                  <span class="collection-nav__media"><img class="collection-nav__image" src="../assets/images/cards/bolsas-e-sacos.webp" alt="Bolsas e Sacos" loading="lazy"></span>
+                  <span class="collection-nav__title">Bolsas &amp; Sacos</span>
+                </a>
+              </div>
+            </div>
+
+            <button class="collection-nav__arrow collection-nav__arrow--next" type="button" aria-label="Próximas coleções">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="lab-model" id="modelo-4" data-model-title="MODELO 4" hidden>
+      <section class="collection-showcase" aria-labelledby="collection-showcase-title">
+        <div class="collection-showcase__shell">
+          <header class="collection-showcase__header">
+            <div>
+              <span>Encontre o que precisa</span>
+              <h2 id="collection-showcase-title">Coleções para cada momento</h2>
+            </div>
+            <p>Escolha uma categoria e descubra produtos feitos para facilitar a rotina.</p>
+          </header>
+
+          <div class="collection-showcase__layout">
+            <button class="collection-showcase__card collection-showcase__card--featured" type="button" aria-label="Ver coleção Mais Vendidos">
+              <img src="../assets/images/cards/etiq-obj.webp" alt="Etiquetas personalizadas da coleção Mais Vendidos">
+              <span class="collection-showcase__shade" aria-hidden="true"></span>
+              <span class="collection-showcase__content">
+                <small>01 — Os favoritos</small>
+                <strong>Mais Vendidos</strong>
+                <span>Os produtos escolhidos por quem já organiza tudo do seu jeito.</span>
+              </span>
+              <span class="collection-showcase__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </span>
+            </button>
+
+            <div class="collection-showcase__secondary">
+              <button class="collection-showcase__card" type="button" aria-label="Ver coleção Essenciais para Viagem">
+                <img src="../assets/images/cards/viagens.webp" alt="Produtos da coleção Essenciais para Viagem" loading="lazy">
+                <span class="collection-showcase__shade" aria-hidden="true"></span>
+                <span class="collection-showcase__content"><small>02</small><strong>Essenciais para Viagem</strong></span>
+                <span class="collection-showcase__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+              </button>
+
+              <button class="collection-showcase__card" type="button" aria-label="Ver coleção Para Roupas">
+                <img src="../assets/images/cards/etiq-roup.webp" alt="Etiquetas da coleção Para Roupas" loading="lazy">
+                <span class="collection-showcase__shade" aria-hidden="true"></span>
+                <span class="collection-showcase__content"><small>03</small><strong>Para Roupas</strong></span>
+                <span class="collection-showcase__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+              </button>
+
+              <button class="collection-showcase__card" type="button" aria-label="Ver coleção Nécessaires e Estojos">
+                <img src="../assets/images/cards/bolsas-e-sacos.webp" alt="Produtos da coleção Nécessaires e Estojos" loading="lazy">
+                <span class="collection-showcase__shade" aria-hidden="true"></span>
+                <span class="collection-showcase__content"><small>04</small><strong>Nécessaires e Estojos</strong></span>
+                <span class="collection-showcase__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+              </button>
+
+              <button class="collection-showcase__card" type="button" aria-label="Ver coleção Para Casa e Escritório">
+                <img src="../assets/images/cards/p-casa.webp" alt="Produtos da coleção Para Casa e Escritório" loading="lazy">
+                <span class="collection-showcase__shade" aria-hidden="true"></span>
+                <span class="collection-showcase__content"><small>05</small><strong>Para Casa e Escritório</strong></span>
+                <span class="collection-showcase__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+              </button>
+            </div>
+          </div>
+
+          <button class="collection-showcase__see-all" type="button">
+            Ver todas as coleções
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </section>
+    </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/assets-page.js"></script>
+</body>
+</html>
