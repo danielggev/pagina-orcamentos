@@ -11,6 +11,9 @@
   color: var(--store-blue);
 }
 
+/* Home Black Friday — announcement bar em preto (só nesta home) */
+body.home-bf .announcement-bar { background: #000; }
+
 .store-shell { width: min(95%, 1820px); margin-inline: auto; }
 .store-kicker { padding: 7px 20px; background: var(--store-yellow); color: #000; text-align: center; }
 .store-kicker h1 { margin: 0; color: #000; font-size: 19px; line-height: 1.2; font-weight: 700; }
