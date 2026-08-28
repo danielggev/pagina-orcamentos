@@ -64,12 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>`;
 
   const quickLinks = () => {
+    const quickLinkIcon = (name) => ({
+      flame: '<path d="M12 22a8 8 0 0 0 8-8c0-4-2-7-6-11 .5 4-2 6-4 7 .2-2-1-3.5-2-4.5C5.5 8 4 10.5 4 14a8 8 0 0 0 8 8Z"/><path d="M9.5 17.5c0-2 1.5-3.5 2.5-5.5.5 2 2.5 3 2.5 5.5a2.5 2.5 0 0 1-5 0Z"/>',
+      gift: '<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M7.5 8C5.6 8 5 7 5 5.8 5 4.8 5.8 4 6.8 4 9 4 12 8 12 8M16.5 8C18.4 8 19 7 19 5.8c0-1-.8-1.8-1.8-1.8C15 4 12 8 12 8"/>',
+      backpack: '<path d="M8 7V5.5C8 3.6 9.8 2 12 2s4 1.6 4 3.5V7"/><rect x="4" y="7" width="16" height="15" rx="4"/><path d="M8 12h8M8 17h8M4 14H2v5h2M20 14h2v5h-2"/>',
+      house: '<path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/>',
+      plane: '<path d="M17.8 19 16 11l3.5-3.5c1.5-1.5 2-4 1-5s-3.5-.5-5 1L12 7 4 5 2 7l6.5 4.5L5 15l-3-.5-1 1 4 3 3 4 1-1-.5-3L12 15l4.5 6Z"/>'
+    })[name];
+
     const links = [
-      ['mais-vendidos', '🔥', 'Mais Vendidos', 'Os favoritos de quem já comprou', 'Bestseller', '#ff6846', '#fff1ed', '#ffffff'],
-      ['costura', '🎁', 'Presentes personalizados', 'Personalizados para surpreender', 'Presente', '#8b5cf6', '#f1ecfe', '#ffffff'],
-      ['creche-e-escola', '✏️', 'Creche e Escola', 'Nada mais some na mochila', 'Escolar', '#ef3f73', '#fdebf1', '#ffffff'],
-      ['casa-e-escritorio', '🏠', 'Casa e Escritório', 'Da cozinha à mesa de trabalho', 'Dia a dia', '#f2b705', '#fff8d8', '#24394a'],
-      ['viagens-e-passeios', '✈️', 'Viagens e Passeios', 'Pra quem ama a estrada', 'Férias', '#18b8c8', '#e8f9fb', '#ffffff']
+      ['mais-vendidos', 'flame', 'Mais Vendidos', 'Os favoritos de quem já comprou', 'Bestseller', '#ff6846', '#fff1ed', '#ffffff'],
+      ['costura', 'gift', 'Presentes personalizados', 'Personalizados para surpreender', 'Presente', '#8b5cf6', '#f1ecfe', '#ffffff'],
+      ['creche-e-escola', 'backpack', 'Creche e Escola', 'Nada mais some na mochila', 'Escolar', '#ef3f73', '#fdebf1', '#ffffff'],
+      ['casa-e-escritorio', 'house', 'Casa e Escritório', 'Da cozinha à mesa de trabalho', 'Dia a dia', '#f2b705', '#fff8d8', '#24394a'],
+      ['viagens-e-passeios', 'plane', 'Viagens e Passeios', 'Pra quem ama a estrada', 'Férias', '#18b8c8', '#e8f9fb', '#ffffff']
     ];
 
     return `
@@ -77,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="gv-quick-links__container">
           <header class="gv-quick-links__header"><div class="gv-quick-links__heading-group"><p class="gv-quick-links__eyebrow">Explore a loja</p><h2 class="gv-quick-links__heading">Encontre mais rápido</h2></div></header>
           <div class="gv-quick-links__track" role="list" aria-label="Atalhos para categorias e destaques">
-            ${links.map(item => `<div class="gv-quick-links__item" role="listitem"><a href="${storeUrl}/collections/${item[0]}" class="gv-quick-links__card" style="--gv-ql-accent: ${item[5]}; --gv-ql-icon-bg: ${item[6]}; --gv-ql-badge-text: ${item[7]}" aria-label="${item[2]}"><div class="gv-quick-links__top"><span class="gv-quick-links__icon" aria-hidden="true"><span class="gv-quick-links__icon-text">${item[1]}</span></span><span class="gv-quick-links__badge">${item[4]}</span></div><div class="gv-quick-links__content"><strong class="gv-quick-links__title">${item[2]}</strong><span class="gv-quick-links__subtitle">${item[3]}</span></div><span class="gv-quick-links__arrow" aria-hidden="true">→</span></a></div>`).join('')}
+            ${links.map(item => `<div class="gv-quick-links__item" role="listitem"><a href="${storeUrl}/collections/${item[0]}" class="gv-quick-links__card" style="--gv-ql-accent: ${item[5]}; --gv-ql-icon-bg: ${item[6]}; --gv-ql-badge-text: ${item[7]}" aria-label="${item[2]}"><div class="gv-quick-links__top"><span class="gv-quick-links__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${quickLinkIcon(item[1])}</svg></span><span class="gv-quick-links__badge">${item[4]}</span></div><div class="gv-quick-links__content"><strong class="gv-quick-links__title">${item[2]}</strong><span class="gv-quick-links__subtitle">${item[3]}</span></div><span class="gv-quick-links__arrow" aria-hidden="true">→</span></a></div>`).join('')}
           </div>
         </div>
       </section>`;

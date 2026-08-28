@@ -42,8 +42,9 @@
 .gv-quick-links__card:hover, .gv-quick-links__card:focus-visible { border-color: color-mix(in srgb, var(--gv-ql-accent) 32%, #e7ebee); box-shadow: 0 14px 34px rgb(36 57 74 / .1); outline: none; transform: translateY(-3px); }
 .gv-quick-links__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .gv-quick-links__icon { display: grid; flex: 0 0 54px; width: 54px; height: 54px; place-items: center; background: var(--gv-ql-icon-bg); border: 1px solid color-mix(in srgb, var(--gv-ql-accent) 20%, transparent); border-radius: 16px; transition: background-color 180ms ease, transform 180ms ease; }
-.gv-quick-links__icon-text { font-size: 25px; line-height: 1; }
+.gv-quick-links__icon svg { width: 28px; height: 28px; color: var(--gv-ql-accent); transition: color 180ms ease, transform 180ms ease; }
 .gv-quick-links__card:hover .gv-quick-links__icon, .gv-quick-links__card:focus-visible .gv-quick-links__icon { background: var(--gv-ql-accent); transform: rotate(-3deg) scale(1.04); }
+.gv-quick-links__card:hover .gv-quick-links__icon svg, .gv-quick-links__card:focus-visible .gv-quick-links__icon svg { color: var(--gv-ql-badge-text); transform: scale(1.05); }
 .gv-quick-links__badge { display: inline-flex; min-height: 24px; align-items: center; padding: 5px 8px; color: var(--gv-ql-badge-text); font-size: 9.5px; font-weight: 800; line-height: 1; letter-spacing: .045em; text-transform: uppercase; background: var(--gv-ql-accent); border-radius: 999px; }
 .gv-quick-links__content { display: grid; gap: 5px; margin-top: 18px; }
 .gv-quick-links__title { color: #24394a; font-size: 15px; font-weight: 800; line-height: 1.2; }
