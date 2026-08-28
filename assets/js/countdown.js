@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- FORMULÁRIO ---------- */
-  const WHATSAPP = '5521991909015';
-
   const form = document.getElementById('cd-form');
   const status = document.getElementById('cd-status');
   const celular = document.getElementById('cd-celular');
@@ -75,28 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const nome = form.nome.value.trim();
-      const email = form.email.value.trim();
-      const tel = form.celular.value.trim();
-
-      const msg = 'Olá! Quero entrar para a Lista VIP da Black Friday da Grudado em Você:\n\n'
-        + `*Nome:* ${nome}\n`
-        + `*E-mail:* ${email}\n`
-        + `*Celular:* ${tel}`;
-
-      const win = window.open(
-        `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,
-        '_blank',
-        'noopener'
-      );
-
-      if (!win) {
-        showStatus('Libere os pop-ups do navegador para concluir seu cadastro.', false);
-        return;
-      }
-
       form.hidden = true;
-      showStatus('Prontinho! Você já está na nossa Lista VIP. 🎉', true);
+      showStatus('Cadastro simulado com sucesso no ambiente de testes. 🎉', true);
     });
   }
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projetos personalizados de adesivos, etiquetas e stickers. Vinil Branco, Vinil Transparente e DTF com qualidade profissional. Grudado em Você.">
-  <title>Projetos Personalizados — Grudado em Você</title>
+  <meta name="description" content="Etiquetas personalizadas, adesivos, tags e produtos para organizar a rotina com praticidade. Grudado em Você.">
+  <title>Etiquetas Personalizadas, Adesivos, Tags e Mais — Grudado em Você</title>
   <link rel="stylesheet" href="assets/css/home-neutral-style.css">
   <link rel="stylesheet" href="assets/css/carrinho.css">
   <link rel="stylesheet" href="assets/css/home-neutral-store.css">
@@ -66,7 +66,10 @@
 
         <!-- Ícones à esquerda (mobile: conta + busca) -->
         <div class="header-left">
-          <a href="https://grudadoemvoce.com.br/account" class="header-icon-btn" aria-label="Minha conta">
+          <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+          </button>
+          <a href="#" class="header-icon-btn" aria-label="Minha conta" aria-disabled="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
               <circle cx="12" cy="7" r="4"/>
@@ -81,7 +84,7 @@
         </div>
 
         <!-- Logo centralizado -->
-        <a href="https://grudadoemvoce.com.br" class="logo" aria-label="Grudado em Você — Página inicial">
+        <a href="/" class="logo" aria-label="Grudado em Você — Página inicial">
           <img src="assets/images/logo.svg" alt="Grudado em Você" class="logo-img">
         </a>
 
@@ -98,18 +101,18 @@
 
         <!-- Ícones à direita -->
         <div class="header-right">
-          <a href="https://grudadoemvoce.com.br/account" class="header-icon-btn header-icon-desktop-only" aria-label="Minha conta">
+          <a href="#" class="header-icon-btn header-icon-desktop-only" aria-label="Minha conta" aria-disabled="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
               <circle cx="12" cy="7" r="4"/>
             </svg>
           </a>
-          <a href="https://grudadoemvoce.com.br/wishlist" class="header-icon-btn" aria-label="Lista de desejos">
+          <a href="#" class="header-icon-btn" aria-label="Lista de desejos" aria-disabled="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
           </a>
-          <a href="https://grudadoemvoce.com.br/cart" class="header-icon-btn header-icon-btn--dark" aria-label="Carrinho">
+          <a href="/carrinho.html" class="header-icon-btn header-icon-btn--dark" aria-label="Carrinho">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
@@ -133,14 +136,14 @@
     <nav class="header-nav" aria-label="Categorias">
       <div class="container">
         <ul class="header-nav__list" id="main-nav">
-          <li><a href="/">Toda Loja</a></li>
-          <li><a href="/">Kits</a></li>
-          <li><a href="/">Etiquetas</a></li>
-          <li><a href="/">Tags</a></li>
-          <li><a href="/">Pulseiras</a></li>
-          <li><a href="/">Bolsas e Sacos</a></li>
-          <li><a href="/">Necessaires e Estojos</a></li>
-          <li><a href="colecoes/super-rapido.html" class="btn-super-rapido"><svg class="btn-sr-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><polygon points="386.415,193.208 287.481,193.208 359.434,0 161.566,0 125.585,280.151 206.528,280.151 170.557,512"/></svg> Super Rápido</a></li>
+          <li><a href="#store-home-content">Toda Loja</a></li>
+          <li><a href="#store-home-content">Kits</a></li>
+          <li><a href="#store-home-content">Etiquetas</a></li>
+          <li><a href="#store-home-content">Tags</a></li>
+          <li><a href="#store-home-content">Pulseiras</a></li>
+          <li><a href="#store-home-content">Bolsas e Sacos</a></li>
+          <li><a href="#store-home-content">Necessaires e Estojos</a></li>
+          <li><a href="#store-home-content">Acessórios</a></li>
         </ul>
       </div>
     </nav>
@@ -150,14 +153,39 @@
          ============================================================ -->
     <section class="hero" id="inicio">
       <div class="hero__slider" id="hero-slider">
+        <div class="hero__slides">
+          <a class="hero__slide" href="#store-home-content" aria-label="Conheça a coleção Organização da Casa">
+            <picture>
+              <source media="(max-width: 699px)" srcset="assets/images/home-store/normal-hero-organizacao-mobile.webp">
+              <img src="assets/images/home-store/normal-hero-organizacao-desktop.webp" alt="Organização da casa com etiquetas personalizadas">
+            </picture>
+          </a>
           <div class="hero__slide">
-            <video class="hero__video banner-video" autoplay loop muted playsinline
-              data-desktop="HeroBannerGreen-HQ.mp4"
-              data-mobile="HeroBannerMobileGreen-HQ.mp4">
-              <source src="HeroBannerGreen-HQ.mp4" type="video/mp4">
-            </video>
+            <picture>
+              <source media="(max-width: 699px)" srcset="assets/images/home-store/normal-hero-frete-gratis-mobile.png">
+              <img src="assets/images/home-store/normal-hero-frete-gratis-desktop.png" alt="Frete grátis acima de R$ 150">
+            </picture>
           </div>
+          <a class="hero__slide" href="#store-home-content" aria-label="Conheça as etiquetas com brilho">
+            <picture>
+              <source media="(max-width: 699px)" srcset="assets/images/home-store/normal-hero-vinil-brilho-mobile.webp">
+              <img src="assets/images/home-store/normal-hero-vinil-brilho-desktop.webp" alt="Etiquetas personalizadas com brilho">
+            </picture>
+          </a>
+          <a class="hero__slide" href="#store-home-content" aria-label="Conheça as etiquetas divertidas">
+            <picture>
+              <source media="(max-width: 699px)" srcset="assets/images/home-store/normal-hero-etiquetas-divertidas-mobile.webp">
+              <img src="assets/images/home-store/normal-hero-etiquetas-divertidas-desktop.webp" alt="Etiquetas divertidas personalizadas">
+            </picture>
+          </a>
         </div>
+        <div class="hero__dots" aria-label="Escolher banner">
+          <button class="hero__dot active" type="button" data-index="0" aria-label="Banner 1"></button>
+          <button class="hero__dot" type="button" data-index="1" aria-label="Banner 2"></button>
+          <button class="hero__dot" type="button" data-index="2" aria-label="Banner 3"></button>
+          <button class="hero__dot" type="button" data-index="3" aria-label="Banner 4"></button>
+        </div>
+      </div>
     </section>
 
     <div id="store-home-content"></div>

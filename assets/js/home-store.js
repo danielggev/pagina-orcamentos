@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const footer = document.getElementById('store-home-footer');
   if (!content || !footer) return;
 
-  const storeUrl = 'https://www.grudadoemvoce.com.br';
+  const storeUrl = '#';
   const imagePath = 'assets/images/home-store/';
   const isNatalHome = document.body.dataset.storeTheme === 'natal';
   const isBlackFridayHome = document.body.dataset.storeTheme === 'bf';
@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ${isNatalHome ? productSection('Para Presentear', giftProducts, 'natal', true) : productSection('Produtos Irresistíveis', irresistibleProducts, 'novidades', true)}
     ${productSection('Kits de Etiquetas', kits, 'kit')}
     <section class="store-blog"><div class="store-shell"><header class="store-section-title"><h2>Últimas do Nosso Blog</h2></header><div class="store-blog__grid">${blog.map(item => `<article><a href="${storeUrl}/blogs/news/${item[4]}"><img src="${imagePath}${item[0]}" alt="${item[2]}" loading="lazy"><time>${item[1]}</time><h3>${item[2]}</h3><p>${item[3]}</p></a></article>`).join('')}</div><a class="store-view-all" href="${storeUrl}/blogs/news">Ver Todos</a></div></section>
-    <a class="store-instagram" href="https://www.instagram.com/grudadoemvoce/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><strong>Seu pedido ficou lindo? Queremos ver!</strong><span>@grudadoemvoce</span></a>
+    <a class="store-instagram" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><strong>Seu pedido ficou lindo? Queremos ver!</strong><span>@grudadoemvoce</span></a>
     <section class="store-about"><div class="store-shell store-about__content"><h2>Grudado em Você – Etiquetas e Adesivos Personalizados com Criatividade</h2><p>Bem-vindo à Grudado em Você, a loja online referência em etiquetas personalizadas, adesivos escolares e kits criativos para transformar a rotina de crianças, pais, professores e organizadores. Nossa missão é oferecer produtos de alta qualidade que facilitam a vida e encantam pelo visual.</p><details><summary>Ver mais</summary><p>Trabalhamos com etiquetas para roupas, calçados, lancheiras, brinquedos, livros e materiais escolares. Tudo é personalizável, produzido com materiais resistentes e enviado para todo o Brasil com carinho e rastreamento.</p><h3>Motivos para comprar na Grudado em Você</h3><ul><li>Variedade de modelos e temas criativos</li><li>Materiais de alta qualidade e durabilidade</li><li>Personalização fácil direto no site</li><li>Produção rápida e envio para todo o Brasil</li></ul></details></div></section>
-    <a class="store-affiliate" href="https://parceria.grudadoemvoce.com.br/" target="_blank" rel="noopener"><span>★</span> Conheça o nosso programa de afiliados. <strong>Saiba mais →</strong></a>`;
+    <a class="store-affiliate" href="#"><span>★</span> Conheça o nosso programa de afiliados. <strong>Saiba mais →</strong></a>`;
 
   footer.className = 'store-footer';
   footer.innerHTML = `
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="store-footer__grid">
         <section><h2>Sobre a Grudado em Você</h2><p>A solução para todos os seus problemas de Identificação e Organização.<br>Aqui você encontra Etiquetas Personalizadas pra Escola, Etiquetas Organizadoras para Casa, Quadros de Incentivo, Bolsinhas Personalizadas e outros mimos. Tudo feito à mão e embalado com muito carinho.</p></section>
         <nav aria-label="Ajuda"><h2>Ajuda</h2></nav>
-        <section><h2>Fale Conosco</h2><p>Atendimento de:<br>Segunda à Sexta-feira<br>Das 09:00h às 18:00h<br>E-mail:<br><a href="mailto:contato@grudadoemvoce.com.br">contato@grudadoemvoce.com.br</a><br>Telefones:<br><strong>(21) 2018-2074</strong> ou <strong>(11) 3181-6202</strong></p></section>
+        <section><h2>Fale Conosco</h2><p>Atendimento de:<br>Segunda à Sexta-feira<br>Das 09:00h às 18:00h<br>E-mail:<br><a href="#">contato@grudadoemvoce.com.br</a><br>Telefones:<br><strong>(21) 2018-2074</strong> ou <strong>(11) 3181-6202</strong></p></section>
         <form class="store-newsletter" onsubmit="return false"><h2>Novidades</h2><p>Inscreva-se para receber ofertas, novidades e dicas.</p><div><input id="newsletter-email" type="email" placeholder="Seu melhor e-mail" aria-label="Seu melhor e-mail"><button type="submit">Assinar <b>→</b></button></div><small>Ao cadastrar seu e-mail, você concorda com nossa política de privacidade.</small></form>
       </div>
 

@@ -444,13 +444,15 @@ h1, h2, h3, h4 {
   flex: 0 0 100%;
   display: block;
   position: relative;
-  aspect-ratio: 1920 / 700;
-  min-height: 300px;
+  aspect-ratio: 8 / 3;
+  min-height: 0;
 }
+.hero__slide picture { display: block; width: 100%; height: 100%; }
 .hero__slide img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
@@ -960,7 +962,7 @@ h1, h2, h3, h4 {
 /* Tablet pequeno — ≤ 768px */
 @media (max-width: 768px) {
   .header-search { display: none; }
-  .nav-toggle { display: none; }
+  .nav-toggle { display: flex; }
 
   /* Header mobile: logo centralizado, ícones nas pontas */
   .header-main { padding-block: 0.6rem; }

@@ -3,6 +3,36 @@
    Carrinho com localStorage + drawer lateral
    ============================================ */
 
+function desativarRedirecionamentosExternos(root = document) {
+  const links = [
+    ...(root.matches?.('a[href]') ? [root] : []),
+    ...(root.querySelectorAll?.('a[href]') || [])
+  ];
+
+  links.forEach((link) => {
+    const href = link.getAttribute('href')?.trim();
+    if (!href) return;
+
+    const protocoloExterno = /^(mailto:|tel:|sms:)/i.test(href);
+    let outroDominio = false;
+
+    try {
+      const destino = new URL(href, window.location.href);
+      outroDominio = /^(https?:)$/i.test(destino.protocol) && destino.origin !== window.location.origin;
+    } catch {
+      outroDominio = false;
+    }
+
+    if (!protocoloExterno && !outroDominio) return;
+
+    link.removeAttribute('href');
+    link.removeAttribute('target');
+    link.removeAttribute('rel');
+    link.setAttribute('aria-disabled', 'true');
+    link.dataset.testLinkDisabled = 'true';
+  });
+}
+
 const Carrinho = (() => {
 
   const STORAGE_KEY = 'gev_carrinho';
@@ -239,8 +269,6 @@ const Carrinho = (() => {
   }
 
   function enviarWhatsApp() {
-    if (document.body.dataset.storeTheme === 'natal') return;
-
     const itens = getItens();
     if (itens.length === 0) return;
 
@@ -250,19 +278,8 @@ const Carrinho = (() => {
       return;
     }
 
-    let msg = `Olá! Gostaria de solicitar orçamento:\n\n`;
-    itens.forEach((item, i) => {
-      msg += `*${i + 1}. ${item.nome}*\n`;
-      msg += `   Tamanho: ${item.tamanho}\n`;
-      msg += `   Quantidade: ${item.quantidade} unidades\n`;
-      msg += `   Acabamento: ${item.acabamento}\n`;
-      if (item.arquivo && item.arquivo !== 'Não enviado') msg += `   Arquivo: ${item.arquivo}\n`;
-      if (item.obs) msg += `   Obs: ${item.obs}\n`;
-      msg += `\n`;
-    });
-    msg += `Os arquivos serão enviados em seguida.`;
-
-    window.open(`https://wa.me/5521991909015?text=${encodeURIComponent(msg)}`, '_blank');
+    const isSubpage = window.location.pathname.includes('/produtos/') || window.location.pathname.includes('/colecoes/');
+    window.location.href = isSubpage ? '../checkout.html' : 'checkout.html';
   }
 
   /* ---------- INIT ---------- */
@@ -280,4 +297,13 @@ const Carrinho = (() => {
 
 })();
 
-document.addEventListener('DOMContentLoaded', () => Carrinho.init());
+document.addEventListener('DOMContentLoaded', () => {
+  desativarRedirecionamentosExternos();
+  new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) desativarRedirecionamentosExternos(node);
+    }));
+  }).observe(document.body, { childList: true, subtree: true });
+
+  Carrinho.init();
+});
