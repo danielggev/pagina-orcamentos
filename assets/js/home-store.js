@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const badgeValues = ['40% OFF', '35% OFF', '30% OFF'];
   const randomBadge = () => badgeValues[Math.floor(Math.random() * badgeValues.length)];
 
-  const bestSellers = [
-    ['bestseller-termocolante.webp', 'Etiqueta Termocolante Personalizada', 'Identifique roupas e uniformes. Aplique com ferro quente.', 'De R$ 42,90', '3x R$ 14,30', '1058 reviews', 'etiqueta-para-roupas-termocolante-personalizada', '40% OFF'],
-    ['bestseller-mini.webp', 'Etiqueta Mini', 'Compactas, práticas e resistentes para itens pequenos.', 'De R$ 32,90', '3x R$ 10,97', '328 reviews', 'etiqueta-mini-personalizada', '35% OFF'],
-    ['bestseller-super-mini.webp', 'Etiqueta Super Mini', 'Tamanho mini e utilidade máxima. Ideais para lápis e canetas.', 'De R$ 24,90', '3x R$ 8,30', '385 reviews', 'etiqueta-super-mini', '50% OFF'],
-    ['bestseller-pulseira.webp', 'Pulseira de ID Reutilizável', 'Tecido macio e trava tripla de segurança.', 'R$ 61,90', '3x R$ 20,63', '474 reviews', 'pulseira-de-id-reutilizavel', '35% OFF'],
-    ['bestseller-fininha.webp', 'Etiqueta Retangular Fininha', 'Versátil e discreta para identificar objetos.', 'De R$ 24,90', '3x R$ 8,30', '308 reviews', 'etiqueta-retangular-fininha-personalizada', '40% OFF']
+  const bestDiscounts = [
+    ['melhores-descontos-fininha.webp', 'Etiqueta Retangular Fininha Personalizada', 'Tamanho versátil e discreto para identificar objetos com facilidade.', 'De R$ 24,90', '3x R$ 8,30', '308 reviews', 'etiqueta-retangular-fininha-personalizada'],
+    ['melhores-descontos-saco-visor.webp', 'Saco com Visor', 'Veja por fora, organize por dentro!', 'R$ 54,90', '3x R$ 18,30', '22 reviews', 'saco-com-visor'],
+    ['melhores-descontos-kit-fundamental.webp', 'Kit Fundamental', 'Da mochila ao uniforme, tudo com o nome certinho.', 'R$ 175,90', '3x R$ 58,63', '99 reviews', 'kit-fundamental'],
+    ['melhores-descontos-saco-impermeavel.webp', 'Saco Impermeável Personalizado', 'Indicado para peças úmidas. Não recomendado para roupas encharcadas ou com água acumulada.', 'De R$ 52,90', '3x R$ 17,63', '209 reviews', 'saco-impermeavel-personalizado'],
+    ['melhores-descontos-kit-completo.webp', 'Kit Completo', 'Contém etiquetas para roupas, sapatos, objetos e tags para mochila.', 'De R$ 153,90', '3x R$ 51,30', '208 reviews', 'kit-completo'],
+    ['melhores-descontos-super-mini.webp', 'Etiqueta Super Mini', 'Tamanho mini e utilidade máxima. Ideais para lápis e canetas.', 'De R$ 24,90', '3x R$ 8,30', '385 reviews', 'etiqueta-super-mini']
   ];
 
   const natalProducts = [
@@ -33,12 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ['presente-etiqueta-colorida.webp', 'Etiqueta De / Para Coloridas', 'Presentes com nome, amor e um toque exclusivo seu.', 'R$ 42,90', '3x R$ 14,30', '56 reviews', 'etiqueta-de-para-coloridas']
   ];
 
-  const news = [
-    ['new-craque.webp', 'Combo Meu Craque', 'Seu pequeno craque em sua própria figurinha!', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque', '50% OFF'],
-    ['new-flamengo.webp', 'Combo Meu Craque Flamengo', 'A paixão pelo Mengão em adesivos para personalizar tudo!', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque-flamengo-pesonalizado', '40% OFF'],
-    ['new-corinthians.webp', 'Combo Meu Craque Corinthians', 'Para os pequenos que carregam o Timão no coração.', 'R$ 54,90', '3x R$ 18,30', '', 'combo-meu-craque-corinthians-personalizado', '35% OFF'],
-    ['kit-contorno.webp', 'Kit Transparente com Contorno', 'Personalização delicada e resistente à água.', 'R$ 43,90', '3x R$ 14,63', '2 reviews', 'kit-de-etiquetas-transparentes-com-contorno-personalizadas', '40% OFF'],
-    ['kit-fofo.webp', 'Etiquetas Kit Super Fofo', "Etiquetas à prova d'água com muita personalidade.", 'De R$ 98,90', '3x R$ 32,97', '367 reviews', 'etiquetas-kit-super-fofo', '50% OFF']
+  const irresistibleProducts = [
+    ['produtos-irresistiveis-termocolante.webp', 'Termocolante', 'Identifique roupas e uniformes. Aplique com ferro quente.', 'De R$ 42,90', '3x R$ 14,30', '1058 reviews', 'etiqueta-para-roupas-termocolante-personalizada'],
+    ['produtos-irresistiveis-saco-personalizado.webp', 'Saco Personalizado', 'Organização prática pro leva e traz dos pequenos!', 'De R$ 51,90', '3x R$ 17,30', '219 reviews', 'saco-personalizado'],
+    ['produtos-irresistiveis-saco-natal.webp', 'Saco de Natal', 'Um Natal mágico com o saco do Papai Noel personalizado!', 'De R$ 80,90', '3x R$ 26,97', '23 reviews', 'saco-de-natal'],
+    ['produtos-irresistiveis-kit-foto.webp', 'Kit de Etiquetas com Foto', 'Etiquetas com foto: tudo identificado, nada perdido.', 'De R$ 131,90', '3x R$ 43,97', '22 reviews', 'kit-de-etiquetas-com-foto'],
+    ['produtos-irresistiveis-mini-tag.webp', 'Mini Tag Colorida', 'Identifique mochilas, lancheiras, estojos e outros itens.', 'R$ 38,90', '3x R$ 12,97', '230 reviews', 'mini-tag'],
+    ['produtos-irresistiveis-media-colorida.webp', 'Etiqueta Média Colorida', 'Identifique cadernos, copos e outros com nome + arte divertida.', 'De R$ 31,90', '3x R$ 10,63', '75 reviews', 'etiqueta-media-colorida']
   ];
 
   const kits = [
@@ -72,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const productSection = (title, products, collection, tinted = false) => `
     <section class="store-products${tinted ? ' store-products--tint' : ''}" aria-label="${title}"><div class="store-shell">
-      <header class="store-section-title"><h2>${title}</h2></header><div class="store-products__carousel"><button class="store-carousel-arrow store-carousel-arrow--prev" type="button" aria-label="Produtos anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button><div class="store-product-grid" style="--store-product-count: ${products.length}">${products.map(productCard).join('')}</div><button class="store-carousel-arrow store-carousel-arrow--next" type="button" aria-label="Próximos produtos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div>
+      <header class="store-section-title"><h2>${title}</h2></header><div class="store-products__carousel${products.length > 5 ? ' store-products__carousel--scrollable' : ''}"><button class="store-carousel-arrow store-carousel-arrow--prev" type="button" aria-label="Produtos anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button><div class="store-product-grid" style="--store-product-count: ${products.length}">${products.map(productCard).join('')}</div><button class="store-carousel-arrow store-carousel-arrow--next" type="button" aria-label="Próximos produtos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div>
       <a class="store-view-all" href="${storeUrl}/collections/${collection}">Ver Todos</a>
     </div></section>`;
 
@@ -93,9 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
   content.innerHTML = `
     <section class="store-kicker"><h1>Etiquetas Personalizadas e Adesivos</h1></section>
     ${benefits()}
-    ${isNatalHome ? productSection('Natal', natalProducts, 'natal') : productSection('Mais Vendidos', bestSellers, 'mais-vendidos')}
+    ${isNatalHome ? productSection('Natal', natalProducts, 'natal') : productSection('Melhores Descontos', bestDiscounts, 'mais-vendidos')}
     <section class="store-categories" aria-label="Categorias em destaque"><div class="store-category-track">${categories.map(item => `<a href="${storeUrl}/collections/${item[2]}"><img src="${imagePath}${item[0]}" alt="${item[1]}" loading="lazy"></a>`).join('')}</div></section>
-    ${isNatalHome ? productSection('Para Presentear', giftProducts, 'natal', true) : productSection('Novidades', news, 'novidades', true)}
+    ${isNatalHome ? productSection('Para Presentear', giftProducts, 'natal', true) : productSection('Produtos Irresistíveis', irresistibleProducts, 'novidades', true)}
     ${productSection('Kits de Etiquetas', kits, 'kit')}
     <section class="store-blog"><div class="store-shell"><header class="store-section-title"><h2>Últimas do Nosso Blog</h2></header><div class="store-blog__grid">${blog.map(item => `<article><a href="${storeUrl}/blogs/news/${item[4]}"><img src="${imagePath}${item[0]}" alt="${item[2]}" loading="lazy"><time>${item[1]}</time><h3>${item[2]}</h3><p>${item[3]}</p></a></article>`).join('')}</div><a class="store-view-all" href="${storeUrl}/blogs/news">Ver Todos</a></div></section>
     <a class="store-instagram" href="https://www.instagram.com/grudadoemvoce/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><strong>Seu pedido ficou lindo? Queremos ver!</strong><span>@grudadoemvoce</span></a>
@@ -138,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   content.querySelectorAll('.store-products__carousel').forEach((carousel) => {
     const track = carousel.querySelector('.store-product-grid');
-    carousel.querySelector('.store-carousel-arrow--prev').addEventListener('click', () => track.scrollBy({ left: -track.clientWidth * 0.8, behavior: 'smooth' }));
-    carousel.querySelector('.store-carousel-arrow--next').addEventListener('click', () => track.scrollBy({ left: track.clientWidth * 0.8, behavior: 'smooth' }));
+    carousel.querySelector('.store-carousel-arrow--prev').addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }));
+    carousel.querySelector('.store-carousel-arrow--next').addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }));
   });
 
   content.querySelectorAll('.store-wishlist').forEach((button) => {
