@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   content.innerHTML = `
-    <section class="store-kicker"><h1>Etiquetas Personalizadas e Adesivos</h1></section>
+    <section class="store-kicker"><${isBlackFridayHome ? 'h2' : 'h1'}>Etiquetas Personalizadas e Adesivos</${isBlackFridayHome ? 'h2' : 'h1'}></section>
     ${benefits()}
     ${isNatalHome ? productSection('Natal', natalProducts, 'natal') : productSection('Melhores Descontos', bestDiscounts, 'mais-vendidos')}
     <section class="store-categories" aria-label="Categorias em destaque"><div class="store-category-track">${categories.map(item => `<a href="${storeUrl}/collections/${item[2]}"><img src="${imagePath}${item[0]}" alt="${item[1]}" loading="lazy"></a>`).join('')}</div></section>
@@ -102,6 +102,27 @@ document.addEventListener('DOMContentLoaded', () => {
     <section class="store-blog"><div class="store-shell"><header class="store-section-title"><h2>Últimas do Nosso Blog</h2></header><div class="store-blog__grid">${blog.map(item => `<article><a href="${storeUrl}/blogs/news/${item[4]}"><img src="${imagePath}${item[0]}" alt="${item[2]}" loading="lazy"><time>${item[1]}</time><h3>${item[2]}</h3><p>${item[3]}</p></a></article>`).join('')}</div><a class="store-view-all" href="${storeUrl}/blogs/news">Ver Todos</a></div></section>
     <a class="store-instagram" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><strong>Seu pedido ficou lindo? Queremos ver!</strong><span>@grudadoemvoce</span></a>
     <section class="store-about"><div class="store-shell store-about__content"><h2>Grudado em Você – Etiquetas e Adesivos Personalizados com Criatividade</h2><p>Bem-vindo à Grudado em Você, a loja online referência em etiquetas personalizadas, adesivos escolares e kits criativos para transformar a rotina de crianças, pais, professores e organizadores. Nossa missão é oferecer produtos de alta qualidade que facilitam a vida e encantam pelo visual.</p><details><summary>Ver mais</summary><p>Trabalhamos com etiquetas para roupas, calçados, lancheiras, brinquedos, livros e materiais escolares. Tudo é personalizável, produzido com materiais resistentes e enviado para todo o Brasil com carinho e rastreamento.</p><h3>Motivos para comprar na Grudado em Você</h3><ul><li>Variedade de modelos e temas criativos</li><li>Materiais de alta qualidade e durabilidade</li><li>Personalização fácil direto no site</li><li>Produção rápida e envio para todo o Brasil</li></ul></details></div></section>
+    ${isBlackFridayHome ? `
+    <section class="bf-signup" id="lista-vip-bf" aria-labelledby="bf-signup-title">
+      <div class="store-shell bf-signup__inner">
+        <div class="bf-signup__intro">
+          <span class="bf-signup__eyebrow">✳ Lista VIP Black Friday</span>
+          <h2 id="bf-signup-title">A melhor oferta pode chegar <em>primeiro para você.</em></h2>
+          <p>Cadastre-se para receber ofertas exclusivas e novidades da Black Friday da Grudado em Você.</p>
+          <span class="bf-signup__note">01 de novembro • Prepare-se para aproveitar</span>
+        </div>
+        <form class="bf-signup__form" id="bf-signup-form" data-endpoint="" novalidate>
+          <div class="bf-signup__fields">
+            <div class="bf-signup__field"><label for="bf-signup-name">Nome</label><input id="bf-signup-name" name="name" type="text" autocomplete="name" placeholder="Seu nome" minlength="2" required></div>
+            <div class="bf-signup__field"><label for="bf-signup-email">E-mail</label><input id="bf-signup-email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required></div>
+            <div class="bf-signup__field"><label for="bf-signup-phone">Telefone com DDD</label><input id="bf-signup-phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="(00) 00000-0000" maxlength="15" required></div>
+          </div>
+          <label class="bf-signup__consent" for="bf-signup-consent"><input id="bf-signup-consent" name="consent" type="checkbox" required><span>Autorizo a Grudado em Você a enviar ofertas e conteúdo promocional por e-mail e telefone. Posso cancelar essa autorização a qualquer momento.</span></label>
+          <button class="bf-signup__submit" type="submit">Entrar para a lista VIP <span aria-hidden="true">→</span></button>
+          <p class="bf-signup__status" id="bf-signup-status" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+    </section>` : ''}
     <a class="store-affiliate" href="#"><span>★</span> Conheça o nosso programa de afiliados. <strong>Saiba mais →</strong></a>`;
 
   footer.className = 'store-footer';

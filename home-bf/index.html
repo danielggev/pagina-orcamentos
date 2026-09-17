@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/carrinho.css">
   <link rel="stylesheet" href="assets/css/home-store.css">
+  <link rel="stylesheet" href="assets/css/home-bf.css">
 </head>
 <body class="home-bf" data-store-theme="bf">
 
@@ -158,16 +159,27 @@
     <!-- ============================================================
          HERO / BANNER
          ============================================================ -->
-    <section class="hero" id="inicio">
-      <div class="hero__slider" id="hero-slider">
-          <div class="hero__slide">
-            <img class="banner-img"
-              src="assets/images/banners/banner-bf-desk.webp"
-              data-desktop="assets/images/banners/banner-bf-desk.webp"
-              data-mobile="assets/images/banners/banner-bf-mobile.webp"
-              alt="Black Friday — até 40% em toda loja">
-          </div>
+    <section class="hero bf-hero" id="inicio" aria-labelledby="bf-hero-title">
+      <div class="bf-hero__glow bf-hero__glow--pink" aria-hidden="true"></div>
+      <div class="bf-hero__glow bf-hero__glow--yellow" aria-hidden="true"></div>
+      <div class="container bf-hero__inner">
+        <div class="bf-hero__copy">
+          <span class="bf-hero__eyebrow"><span aria-hidden="true">✳</span> Vem aí a maior temporada de ofertas</span>
+          <h1 class="bf-hero__title" id="bf-hero-title">BLACK <span>FRIDAY</span></h1>
+          <p class="bf-hero__description">Ofertas exclusivas para deixar tudo com a sua cara. Entre na lista e receba as novidades em primeira mão.</p>
+          <a class="bf-hero__cta" href="#lista-vip-bf">Quero receber ofertas <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="bf-hero__countdown-wrap">
+          <span class="bf-hero__countdown-kicker">A contagem já começou</span>
+          <div class="bf-countdown" role="timer" aria-label="Tempo restante até 1º de novembro de 2026, à meia-noite em Brasília">
+            <div class="bf-countdown__unit"><strong id="bf-days">00</strong><span>Dias</span></div>
+            <div class="bf-countdown__unit"><strong id="bf-hours">00</strong><span>Horas</span></div>
+            <div class="bf-countdown__unit"><strong id="bf-minutes">00</strong><span>Minutos</span></div>
+            <div class="bf-countdown__unit"><strong id="bf-seconds">00</strong><span>Segundos</span></div>
+          </div>
+          <p class="bf-hero__date" id="bf-countdown-status">01 NOV <span aria-hidden="true">•</span> 00H <span aria-hidden="true">•</span> HORÁRIO DE BRASÍLIA</p>
+        </div>
+      </div>
     </section>
 
     <div id="store-home-content"></div>
@@ -182,6 +194,6 @@
   <script src="assets/js/script.js"></script>
   <script src="assets/js/carrinho.js"></script>
   <script src="assets/js/home-store.js"></script>
+  <script src="assets/js/home-bf.js"></script>
 </body>
 </html>
-

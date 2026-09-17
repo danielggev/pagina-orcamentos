@@ -1,0 +1,223 @@
+/* Black Friday: banner e captação exclusivos da /home-bf/. */
+.home-bf .bf-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 475px;
+  color: #fff;
+  background: #08090b;
+  line-height: 1.3;
+}
+
+.home-bf .bf-hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  opacity: .3;
+  background: repeating-linear-gradient(115deg, transparent 0 75px, rgba(255,255,255,.045) 76px 77px);
+}
+
+.bf-hero__glow {
+  position: absolute;
+  z-index: -1;
+  width: 460px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.bf-hero__glow--pink { top: -280px; left: -140px; background: rgba(239, 66, 111, .24); }
+.bf-hero__glow--yellow { right: -180px; bottom: -330px; background: rgba(249, 229, 71, .14); }
+
+.bf-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(400px, .85fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+  min-height: 475px;
+  padding-block: 72px;
+}
+.bf-hero__copy { max-width: 680px; }
+.bf-hero__eyebrow,
+.bf-signup__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #f9e547;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.bf-hero__eyebrow span { color: #ef426f; font-size: 22px; line-height: 0; }
+.bf-hero__title {
+  margin: 17px 0 18px;
+  color: #fff;
+  font-size: clamp(58px, 6.4vw, 104px);
+  font-weight: 900;
+  letter-spacing: -.07em;
+  line-height: .9;
+}
+.bf-hero__title span { display: block; color: #ef426f; }
+.bf-hero__description {
+  max-width: 490px;
+  margin: 0 0 26px;
+  color: #e2e3e5;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.5;
+}
+.bf-hero__cta,
+.bf-signup__submit {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  color: #08090b;
+  background: #f9e547;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  transition: transform .2s ease, background .2s ease;
+}
+.bf-hero__cta:hover,
+.bf-signup__submit:hover { transform: translateY(-2px); background: #ffed68; }
+.bf-hero__cta:focus-visible,
+.bf-signup__submit:focus-visible,
+.bf-signup__field input:focus-visible,
+.bf-signup__consent input:focus-visible { outline: 3px solid #05c3de; outline-offset: 3px; }
+.bf-hero__cta span { font-size: 23px; line-height: 0; }
+
+.bf-hero__countdown-wrap {
+  padding: clamp(24px, 3vw, 38px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 20px;
+  background: rgba(255,255,255,.055);
+  box-shadow: 0 24px 60px rgba(0,0,0,.24);
+  text-align: center;
+}
+.bf-hero__countdown-kicker { color: #fff; font-size: 16px; font-weight: 700; }
+.bf-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+  margin: 19px 0;
+}
+.bf-countdown__unit {
+  min-width: 0;
+  padding: 14px 5px 12px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 10px;
+  background: #151719;
+}
+.bf-countdown__unit strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(32px, 3.7vw, 53px);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.bf-countdown__unit span {
+  display: block;
+  margin-top: 8px;
+  color: #bfc2c5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.bf-hero__date { margin: 0; color: #f9e547; font-size: 12px; font-weight: 900; letter-spacing: .1em; }
+.bf-hero__date span { padding-inline: 4px; color: #ef426f; }
+
+.home-bf .bf-signup {
+  position: relative;
+  padding: clamp(42px, 5vw, 68px) 0;
+  color: #fff;
+  background: #0b0d0f;
+  scroll-margin-top: 110px;
+}
+.home-bf .bf-signup::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  content: '';
+  background: linear-gradient(90deg, #ef426f 0 34%, #f9e547 34% 68%, #05c3de 68%);
+}
+.bf-signup__inner {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+}
+.bf-signup__intro { max-width: 470px; }
+.bf-signup__intro h2 {
+  margin: 13px 0 15px;
+  color: #fff;
+  font-size: clamp(30px, 3vw, 46px);
+  line-height: 1.06;
+  letter-spacing: -.04em;
+}
+.bf-signup__intro h2 em { color: #ef426f; font-style: normal; }
+.bf-signup__intro p { max-width: 420px; margin: 0 0 20px; color: #c6c7ca; font-size: 15px; line-height: 1.55; }
+.bf-signup__note { color: #f9e547; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+.bf-signup__form {
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid #303338;
+  border-radius: 16px;
+  background: #191b1f;
+}
+.bf-signup__fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+.bf-signup__field label { display: block; margin-bottom: 7px; color: #fff; font-size: 12px; font-weight: 700; }
+.bf-signup__field input {
+  width: 100%;
+  min-height: 47px;
+  padding: 10px 13px;
+  border: 1px solid #53565b;
+  border-radius: 7px;
+  color: #fff;
+  background: #0c0e10;
+  font: inherit;
+  font-size: 14px;
+}
+.bf-signup__field input::placeholder { color: #999da3; opacity: 1; }
+.bf-signup__consent { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0 17px; color: #d3d4d5; cursor: pointer; font-size: 12px; line-height: 1.45; }
+.bf-signup__consent input { flex: 0 0 18px; width: 18px; height: 18px; margin-top: 1px; accent-color: #f9e547; cursor: pointer; }
+.bf-signup__submit { min-height: 47px; width: 100%; font: inherit; font-size: 14px; font-weight: 900; }
+.bf-signup__submit:disabled { cursor: wait; opacity: .7; transform: none; }
+.bf-signup__status { margin: 12px 0 0; color: #f9e547; font-size: 13px; line-height: 1.4; }
+.bf-signup__status.is-success { color: #8edd65; }
+
+@media (max-width: 1050px) {
+  .bf-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(345px, .9fr); gap: 28px; }
+  .bf-signup__inner { grid-template-columns: 1fr; gap: 25px; }
+  .bf-signup__intro { max-width: 650px; }
+}
+
+@media (max-width: 720px) {
+  .home-bf .bf-hero, .bf-hero__inner { min-height: 0; }
+  .bf-hero__inner { grid-template-columns: 1fr; gap: 32px; padding-block: 52px 44px; }
+  .bf-hero__title { font-size: clamp(58px, 13vw, 88px); }
+  .bf-hero__description { font-size: 16px; }
+  .bf-hero__countdown-wrap { padding: 23px 16px; }
+  .bf-countdown__unit strong { font-size: clamp(28px, 7vw, 42px); }
+  .bf-signup__fields { grid-template-columns: 1fr; }
+  .bf-signup__form { padding: 22px 18px; }
+}
+
+@media (max-width: 380px) {
+  .bf-hero__eyebrow { font-size: 11px; }
+  .bf-countdown { gap: 5px; }
+  .bf-countdown__unit { padding-inline: 2px; }
+  .bf-countdown__unit span { font-size: 9px; letter-spacing: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bf-hero__cta, .bf-signup__submit { transition: none; }
+}

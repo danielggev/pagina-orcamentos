@@ -16,7 +16,7 @@ body.home-bf .announcement-bar { background: #000; }
 
 .store-shell { width: min(95%, 1820px); margin-inline: auto; }
 .store-kicker { padding: 7px 20px; background: var(--store-yellow); color: #000; text-align: center; }
-.store-kicker h1 { margin: 0; color: #000; font-size: 19px; line-height: 1.2; font-weight: 700; }
+.store-kicker h1, .store-kicker h2 { margin: 0; color: #000; font-size: 19px; line-height: 1.2; font-weight: 700; }
 
 .store-benefits { padding: 20px 0; color: #fff; background: #000000; }
 .store-benefits__track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -152,7 +152,7 @@ body.home-bf .announcement-bar { background: #000; }
 
 @media (max-width: 720px) {
   .store-shell { width: calc(100% - 32px); }
-  .store-kicker h1 { font-size: 16px; }
+  .store-kicker h1, .store-kicker h2 { font-size: 16px; }
   .store-benefits__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
   .store-benefit { flex: 0 0 72%; justify-content: flex-start; scroll-snap-align: center; }
   .store-products, .store-blog { padding: 48px 0; }
