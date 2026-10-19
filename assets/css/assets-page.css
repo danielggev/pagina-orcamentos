@@ -5,7 +5,7 @@ body {
   margin: 0;
   color: #253746;
   background: #fff;
-  font-family: 'Hurme Geometric Sans 1', Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 /* <button> não herda font-family do body por padrão nos navegadores —
